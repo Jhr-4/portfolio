@@ -1,19 +1,17 @@
 # Brand Foundation
 
-## Brand Archetype: The Everyman
+## Archetype
+- Sage/Explorer/Creator: Focused on curiosity, learning, innovation, and clarity.
 
-Our brand is built on the Everyman archetype—approachable, inclusive, and trustworthy. We believe technology should be accessible to everyone, regardless of background or expertise. Our mission is to create tools and experiences that feel familiar, reliable, and welcoming.
+## Core Values
+- Curiosity & Learning
+- Innovation & Creation
+- Problem Solving
+- Clarity & Precision
 
-**Core Values:**
-- Community and belonging
-- Practicality and usefulness
-- Simplicity and clarity
-- Empathy and support
+## Brand Voice
+- Insightful, analytical, and open.
+- Purposeful and clear communication.
 
-**Brand Voice:**
-- Friendly, conversational, and supportive
-- Clear and jargon-free
-- Encouraging and inclusive
-
-**Brand Promise:**
-We make web development approachable for everyone.
+## Brand Promise
+- Building smart, innovative solutions through continuous learning and technical skill.

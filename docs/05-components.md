@@ -1,380 +1,347 @@
-# Component Psychology System
+# Component Psychology System: The Sage/Explorer/Creator
 
 ## Components
 
-Our components are designed to be intuitive, approachable, and accessible for everyone. Each component is built with usability and inclusivity in mind, following best practices for accessibility and clear, friendly microcopy.
+Our components are designed for **clarity, precision, and intuitive interaction**, reflecting the Sage/Explorer/Creator archetype. Each component prioritizes usability, accessibility, and conveys a sense of thoughtful construction and intellectual integrity.
 
 **Component Principles:**
-- Simple, familiar patterns
-- Clear labels and instructions
-- Generous touch targets and spacing
-- Consistent interaction states
-
-**Accessibility:**
-- All components meet WCAG AA standards
-- Keyboard and screen reader support by default
+- **Clarity:** Simple, unambiguous interfaces.
+- **Precision:** Well-defined states, clear feedback.
+- **Structure:** Consistent patterns, logical organization.
+- **Accessibility:** Meeting WCAG AA standards is fundamental for clear communication. Keyboard and screen reader support are built-in.
 
 **Examples:**
-- Buttons: Rounded corners, clear text, friendly colors
-- Cards: Soft shadows, ample padding, clear hierarchy
+- **Buttons:** Clear affordances, precise interaction states, potentially using the primary blue for action.
+- **Cards:** Structured layout, clear hierarchy, ample whitespace for focus.
 
 **Contribution:**
-- Community feedback is welcome—everyone’s input helps us improve!
+- Feedback focused on enhancing clarity, usability, and alignment with the brand archetype is encouraged.
 
 ## Psychological Foundation
 
-Our component system is built on principles of cognitive psychology, interaction design research, and behavioral science. Each component is designed to optimize both conscious and unconscious user interactions.
+Our component system leverages cognitive psychology to enhance **clarity, reduce cognitive load, and support focused exploration**. Designs are informed by principles that promote efficient information processing, perceived competence, and trust – key factors for engaging recruiters.
 
 ## shadcn/ui Integration
 
-This project uses [shadcn/ui](https://ui.shadcn.com/) as its component library foundation. shadcn/ui provides a collection of beautifully designed, accessible components built with Radix UI and Tailwind CSS.
+This project utilizes [shadcn/ui](https://ui.shadcn.com/) as its component library foundation. shadcn/ui provides a collection of beautifully designed, accessible components built with Radix UI and Tailwind CSS, aligning well with the Creator's appreciation for well-crafted tools and the Sage's need for reliable structure.
 
 ### Key Benefits of shadcn/ui
 
-- **Not a Component Library**: shadcn/ui components are added directly to your project, allowing for full customization
-- **Built with Radix UI**: Components are built on top of Radix UI primitives for robust accessibility
-- **Styled with Tailwind CSS**: Easy customization using Tailwind's utility classes
-- **Customizable**: Each component can be modified to match your exact design requirements
-- **Versioned Components**: Add and update components individually as needed
+- **Direct Integration**: Components are added directly to your project (`src/components/ui`), allowing for full customization and control (Creator).
+- **Accessibility Foundation**: Built on Radix UI primitives, ensuring robust accessibility (Sage/Inclusivity).
+- **Tailwind CSS Styling**: Leverages the project's utility-first CSS framework for consistent and precise styling (Creator/Precision).
+- **Customizable**: Easily adapt components to match the Sage/Explorer/Creator visual identity defined in `03-color-system.md` and `04-spacing-layout.md`.
+- **Selective Adoption**: Add only the components needed, keeping the project lean.
 
 ### Adding New shadcn/ui Components
 
-You can add new shadcn/ui components using the CLI:
-
+Use the CLI to add components as needed:
 ```bash
-npx shadcn@latest add [component-name]
+npx shadcn-cli@latest add [component-name]
+```
+*(Note: The command might be `shadcn-cli` or `shadcn`, depending on setup. Check `components.json` or project setup.)*
+
+Example:
+```bash
+npx shadcn-cli@latest add dialog
 ```
 
-For example, to add the dropdown menu component:
-
-```bash
-npx shadcn@latest add dropdown-menu
-```
-
-### Base Components (shadcn/ui)
+### Base Components (shadcn/ui) - Sage/Explorer/Creator Lens
 
 #### Button Psychology
 ```tsx
-// Example implementation with psychological principles
-<Button variant="primary" size="default" className="group">
-  <span className="relative transition-transform duration-200 group-hover:translate-x-1">
-    Take Action
-  </span>
+// Example implementation reflecting precision and clarity
+<Button variant="default" size="default">
+  View Project Details
+</Button>
+
+<Button variant="outline" size="sm">
+  <ExternalLink className="mr-2 h-4 w-4" />
+  Live Demo
 </Button>
 ```
 
 **Psychological Properties:**
-- Motion feedback triggers dopamine response
-- Size optimized for Fitts's Law
-- Loading states reduce cognitive uncertainty
-- Hover states provide interaction confidence
+- **Clarity of Action:** Clear labels reduce ambiguity (Sage).
+- **Interaction Feedback:** Subtle transitions provide confidence without being distracting (Creator).
+- **Consistency:** Predictable appearance and behavior build trust (Sage).
+- **Visual Hierarchy:** Variants (default, outline, etc.) guide attention appropriately.
 
 #### Dropdown Menu Component
-
 ```tsx
-// Example implementation with shadcn/ui's dropdown menu
+// Example for organizing actions or navigation clearly
 <DropdownMenu>
   <DropdownMenuTrigger asChild>
-    <Button variant="outline" size="sm">
-      <span>Options</span>
-      <ChevronDown className="ml-2 h-4 w-4" />
+    <Button variant="ghost" size="icon">
+      <MoreVertical className="h-4 w-4" />
+      <span className="sr-only">More options</span>
     </Button>
   </DropdownMenuTrigger>
-  <DropdownMenuContent className="w-56">
-    <DropdownMenuLabel>Menu Actions</DropdownMenuLabel>
+  <DropdownMenuContent align="end">
+    <DropdownMenuLabel>Project Actions</DropdownMenuLabel>
     <DropdownMenuSeparator />
     <DropdownMenuItem>
-      <User className="mr-2 h-4 w-4" />
-      <span>Profile</span>
+      <Code className="mr-2 h-4 w-4" />
+      <span>View Source</span>
     </DropdownMenuItem>
     <DropdownMenuItem>
-      <Settings className="mr-2 h-4 w-4" />
-      <span>Settings</span>
+      <ExternalLink className="mr-2 h-4 w-4" />
+      <span>Visit Deployment</span>
     </DropdownMenuItem>
-    <DropdownMenuSeparator />
-    <DropdownMenuItem className="text-red-500">
-      <LogOut className="mr-2 h-4 w-4" />
-      <span>Log out</span>
-    </DropdownMenuItem>
+    {/* Add other relevant actions */}
   </DropdownMenuContent>
 </DropdownMenu>
 ```
 
 **Psychological Properties:**
-- Hierarchical organization reduces cognitive load
-- Progressive disclosure minimizes decision fatigue
-- Spatial organization creates mental mapping
-- Visual separation enhances decision clarity
+- **Structured Choices:** Grouping related actions reduces cognitive load (Sage/Creator).
+- **Progressive Disclosure:** Hides complexity until needed (Clarity).
+- **Spatial Organization:** Consistent placement aids mental mapping.
+- **Iconography:** Reinforces meaning quickly (Efficiency).
 
-#### Input Fields
+#### Input Fields (If used, e.g., for a contact form)
 ```tsx
-// Example with cognitive enhancement
-<div className="space-y-2">
-  <Label
-    htmlFor="email"
-    className="text-sm font-medium text-gray-700 transition-colors"
-  >
-    Email Address
-  </Label>
-  <Input
-    id="email"
-    type="email"
-    placeholder="Enter your email"
-    className="transition-shadow duration-200 focus:shadow-md"
+// Example emphasizing clarity and precision
+<div className="space-y-1.5">
+  <Label htmlFor="message" className="font-medium">Your Message</Label>
+  <Textarea
+    id="message"
+    placeholder="Enter your inquiry..."
+    className="focus-visible:ring-primary" // Use primary color for focus ring
   />
-  <p className="text-sm text-gray-500">We respect your privacy</p>
+  <p className="text-sm text-muted-foreground">Please provide details about your inquiry.</p>
 </div>
 ```
 
 **Cognitive Principles:**
-- Clear visual hierarchy
-- Immediate feedback mechanisms
-- Error state psychology
-- Progressive disclosure
+- **Clear Labeling:** Reduces ambiguity (Sage).
+- **Focus Indication:** Clear visual cue (`ring-primary`) directs attention (Precision).
+- **Placeholder Text:** Guides input effectively.
+- **Helper Text:** Provides context and manages expectations (Clarity).
 
 ### Complex Components
 
-#### Dialog Psychology
+#### Dialog Psychology (Example: Project Details Modal)
 ```tsx
 <Dialog>
-  <DialogTrigger className="psychological-trigger">Open Dialog</DialogTrigger>
-  <DialogContent className="cognitive-focus-container">
+  <DialogTrigger asChild>
+    <Button variant="outline">Show Project Details</Button>
+  </DialogTrigger>
+  <DialogContent className="sm:max-w-[600px]">
     <DialogHeader>
-      <DialogTitle>Psychologically Optimized Title</DialogTitle>
+      <DialogTitle className="font-serif text-2xl">Project Alpha Details</DialogTitle> {/* Use Serif for title */}
       <DialogDescription>
-        Content structured for cognitive processing
+        An overview of the technical stack and key features.
       </DialogDescription>
     </DialogHeader>
-    <div className="py-4">Main content with optimal spacing</div>
-    <DialogFooter className="action-clarity-zone">
-      <Button type="submit">Confirm Action</Button>
+    <div className="py-4 space-y-4">
+      {/* Detailed content: tech stack, challenges, solutions */}
+      <p>...</p>
+    </div>
+    <DialogFooter>
+      <DialogClose asChild>
+        <Button type="button" variant="secondary">
+          Close
+        </Button>
+      </DialogClose>
     </DialogFooter>
   </DialogContent>
 </Dialog>
 ```
 
 **Interaction Psychology:**
-- Focus management reduces cognitive load
-- Animation timing based on perception research
-- Backdrop blur for attention focusing
-- Escape mechanisms for user control
+- **Focused Context:** Modal isolates information, reducing distraction (Sage).
+- **Structured Presentation:** Header, content, footer create clear zones (Creator).
+- **Clear Exit:** Obvious close mechanism provides user control.
+- **Serif Title:** Adds intellectual weight as per typography guidelines (Sage).
 
 #### Navigation Components
 
-##### Main Navigation Example
+##### Main Navigation (`MainNav`)
 
-The project includes a responsive navigation component (`MainNav`) that uses the dropdown menu for mobile devices:
+The existing `MainNav` component uses a standard horizontal layout for desktop and a `Sheet` (drawer) for mobile. This aligns well with the need for clarity and structure.
 
-```tsx
-// In src/components/main-nav.tsx
-<nav className="flex items-center justify-between w-full py-4">
-  {/* Desktop navigation */}
-  <div className="hidden md:flex items-center gap-6">
-    {routes.map((route) => (
-      <Link 
-        key={route.href} 
-        href={route.href}
-        className="text-sm font-medium transition-colors hover:text-primary"
-      >
-        {route.label}
-      </Link>
-    ))}
-  </div>
-  
-  {/* Mobile navigation with dropdown */}
-  <div className="md:hidden">
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <button aria-label="Open menu" className="p-2">
-          <Menu className="h-5 w-5" />
-        </button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuLabel>Navigation</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        {routes.map((route) => (
-          <DropdownMenuItem key={route.href} asChild>
-            <Link href={route.href}>{route.label}</Link>
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
-  </div>
-</nav>
-```
+- **Desktop:** Clear, concise links using the primary sans-serif font. Spacing should follow `04-spacing-layout.md`.
+- **Mobile:** The `Sheet` component provides a focused, accessible navigation experience.
 
 **Psychological Benefits:**
-- Context-appropriate interactions for device size
-- Consistent mental model between device sizes
-- Minimized cognitive load through familiar patterns
-- Reduced visual complexity for small screens
+- **Familiar Patterns:** Reduces learning curve (Efficiency).
+- **Responsive Clarity:** Adapts structure appropriately for different contexts (Sage/Creator).
+- **Clean Presentation:** Avoids clutter, especially on mobile (Clarity).
 
-##### Sheet (Drawer) Component
+##### Sheet (Drawer) Component (`src/components/ui/sheet.tsx`)
 
-A new Sheet (drawer) component has been added to the UI library at `src/components/ui/sheet.tsx`. This component is based on shadcn/ui and built on top of @radix-ui/react-dialog. It provides a mobile navigation drawer (hamburger menu) for a familiar, accessible, and animated mobile experience.
+The Sheet component provides the mobile navigation drawer.
 
-### Features
-- **Side-drawer navigation**: Supports left, right, top, and bottom slide-in drawers.
-- **Accessibility**: Keyboard navigation, focus management, and backdrop overlay.
-- **Composition**: Includes `Sheet`, `SheetTrigger`, `SheetContent`, `SheetHeader`, and `SheetTitle` for flexible usage.
+**Features:**
+- **Side-drawer navigation**: Supports left, right, top, bottom. Left is standard for mobile nav.
+- **Accessibility**: Built-in focus management, keyboard navigation.
+- **Composition**: Allows structuring content within the drawer (Header, Title, etc.).
 
-### Example Usage
+**Example Usage (as in `MainNav`):**
 ```tsx
 <Sheet>
   <SheetTrigger asChild>
-    <button aria-label="Open menu">
-      <Menu />
-    </button>
+    <Button variant="outline" size="icon" aria-label="Open menu"> {/* Use outline/ghost */}
+      <Menu className="h-5 w-5" />
+    </Button>
   </SheetTrigger>
-  <SheetContent side="left">
+  <SheetContent side="left" className="w-[300px]"> {/* Adjust width as needed */}
     <SheetHeader>
-      <SheetTitle>Menu</SheetTitle>
+      <SheetTitle className="font-serif">Navigation</SheetTitle> {/* Use Serif */}
     </SheetHeader>
-    <nav>
+    <nav className="flex flex-col space-y-2 p-4">
       {/* Navigation links */}
     </nav>
   </SheetContent>
 </Sheet>
 ```
 
-##### MainNav Component (Updated)
-
-- The `MainNav` component now uses the Sheet drawer for mobile navigation, providing a standard hamburger menu interaction.
-- Desktop navigation remains a horizontal flex layout.
-- All navigation is mobile-first, touch-friendly, and visually consistent.
-
-### Example (from `src/components/main-nav.tsx`):
+##### Tabs (If used, e.g., for project categories)
 ```tsx
-<nav className="flex items-center justify-between w-full py-4 px-2 md:px-8">
-  <Link href="/" className="text-xl font-semibold text-primary-700">Welcome</Link>
-  <div className="hidden md:flex items-center gap-6">{/* Desktop links */}</div>
-  <div className="md:hidden">{/* Mobile Sheet navdrawer */}</div>
-</nav>
-```
-
-##### Tabs
-```tsx
-<Tabs defaultValue="account" className="cognitive-organization">
-  <TabsList className="visual-hierarchy">
-    <TabsTrigger value="account">Account</TabsTrigger>
-    <TabsTrigger value="password">Password</TabsTrigger>
+<Tabs defaultValue="category1" className="w-full">
+  <TabsList className="grid w-full grid-cols-3"> {/* Example layout */}
+    <TabsTrigger value="category1">Web Apps</TabsTrigger>
+    <TabsTrigger value="category2">Mobile</TabsTrigger>
+    <TabsTrigger value="category3">Experiments</TabsTrigger>
   </TabsList>
-  <TabsContent value="account" className="content-clarity">
-    Account settings content
+  <TabsContent value="category1" className="mt-4">
+    {/* Content for category 1 */}
   </TabsContent>
-  <TabsContent value="password" className="content-clarity">
-    Password settings content
+  <TabsContent value="category2" className="mt-4">
+    {/* Content for category 2 */}
   </TabsContent>
+  {/* ... */}
 </Tabs>
 ```
 
 **Psychological Benefits:**
-- Clear mental model mapping
-- Reduced cognitive overhead
-- Progressive information disclosure
-- Context maintenance
-
-### Form Components
-
-#### Select Component
-```tsx
-<Select>
-  <SelectTrigger className="cognitive-trigger">
-    <SelectValue placeholder="Select option" />
-  </SelectTrigger>
-  <SelectContent className="choice-architecture">
-    <SelectGroup>
-      <SelectLabel>Choices</SelectLabel>
-      <SelectItem value="1">Option 1</SelectItem>
-      <SelectItem value="2">Option 2</SelectItem>
-    </SelectGroup>
-  </SelectContent>
-</Select>
-```
-
-**Choice Architecture:**
-- Option grouping for cognitive processing
-- Clear visual hierarchy
-- Optimal number of choices (5-7)
-- Progressive disclosure patterns
+- **Clear Segmentation:** Organizes information logically (Sage/Creator).
+- **Contextual Focus:** Displays relevant content, hiding irrelevant details (Clarity).
+- **Efficient Navigation:** Allows quick switching between related sections (Explorer).
 
 ### Feedback Components
 
-#### Toast Notifications
+#### Toast Notifications (If used for feedback)
 ```tsx
-<Toast>
-  <ToastTitle className="cognitive-alert">Action Completed</ToastTitle>
-  <ToastDescription className="processing-clarity">
-    Your changes have been saved successfully
-  </ToastDescription>
-</Toast>
+// Example using a hypothetical useToast hook from shadcn/ui
+const { toast } = useToast()
+
+// ... later
+toast({
+  title: "Action Successful",
+  description: "Your message has been sent.",
+  variant: "default", // Or 'success' if defined
+})
 ```
 
 **Psychological Implementation:**
-- Timed display based on reading speed research
-- Position optimized for peripheral vision
-- Color psychology for status indication
-- Motion designed for attention without disruption
+- **Clear Feedback:** Confirms actions unambiguously (Precision).
+- **Non-intrusive:** Provides information without disrupting workflow significantly.
+- **Status Indication:** Color/icon can quickly convey success/error (if variants are defined).
 
 ### Loading States
 
-#### Skeleton Components
+#### Skeleton Components (If needed for data loading)
 ```tsx
-<div className="cognitive-loading-state">
+// Example using shadcn/ui Skeleton
+import { Skeleton } from "@/components/ui/skeleton"
+
+<div className="space-y-2">
   <Skeleton className="h-4 w-[250px]" />
   <Skeleton className="h-4 w-[200px]" />
-  <Skeleton className="h-4 w-[150px]" />
 </div>
 ```
 
 **Loading Psychology:**
-- Progressive loading reduces perceived wait time
-- Skeleton shapes maintain context
-- Animation timing based on attention span research
-- Reduced cognitive load during waiting periods
+- **Perceived Performance:** Reduces perceived wait time compared to spinners (Efficiency).
+- **Context Preservation:** Mimics layout, preparing the user for content (Structure).
+- **Reduced Uncertainty:** Shows progress is being made.
 
 ### Implementation Guidelines
 
-#### Component Hierarchy
-1. **Primary Components**
-   - High visibility
-   - Critical interaction points
-   - Maximum psychological optimization
+#### Component Hierarchy & Usage
+1.  **Core Content Components (Card, Text elements):** Prioritize clarity, readability, and structure. Use ample whitespace.
+2.  **Interactive Components (Button, Dropdown, Input):** Focus on precision, clear affordances, and reliable feedback. Use `primary` color for key actions.
+3.  **Organizational Components (Tabs, Dialog, Sheet):** Ensure logical flow, clear segmentation, and focus management.
 
-2. **Supporting Components**
-   - Contextual enhancement
-   - Secondary interactions
-   - Cognitive support role
+### Psychological Testing Protocol (Sage/Explorer/Creator Focus)
 
-3. **Utility Components**
-   - Background processes
-   - System feedback
-   - Environmental enhancement
-
-### Psychological Testing Protocol
-
-#### Component Testing
-1. **Interaction Testing**
-   - Response time measurement
-   - Error rate tracking
-   - Completion rate analysis
-   - Cognitive load assessment
-
-2. **Visual Testing**
-   - Eye tracking studies
-   - Heat map analysis
-   - Focus path tracking
-   - Attention retention measurement
-
-3. **Emotional Testing**
-   - User satisfaction metrics
-   - Frustration point analysis
-   - Confidence measurement
-   - Engagement tracking
+- **Clarity & Comprehension:** Can recruiters quickly understand the information presented within components?
+- **Perceived Competence:** Do components feel well-crafted, precise, and reliable?
+- **Efficiency:** Can users interact with components quickly and without confusion?
+- **Trustworthiness:** Does the overall component system feel professional and credible?
+- **Alignment:** Does the component feel align with the Sage (clarity, structure), Explorer (efficiency, discovery), and Creator (precision, craft) archetypes?
 
 ### Research References
 
-1. "Component Psychology in Digital Interfaces" - HCI Journal 2024
-2. "Cognitive Load in UI Components" - Interface Psychology Review
-3. "Interaction Patterns and Mental Models" - Digital Psychology Quarterly
-4. "Motion Psychology in User Interfaces" - UX Research Journal
+*(Keep relevant references, update if needed)*
+1.  Norman, D. A. (2013). *The Design of Everyday Things: Revised and Expanded Edition*. Basic Books. (Principles of usability, feedback, affordances)
+2.  Krug, S. (2014). *Don't Make Me Think, Revisited: A Common Sense Approach to Web Usability*. New Riders. (Clarity, intuitive design)
+3.  Weinschenk, S. (2011). *100 Things Every Designer Needs to Know About People*. New Riders. (Cognitive psychology principles)
+4.  WCAG 2.1 Guidelines. (Accessibility standards)
+
+# Component System
+
+This document outlines the core reusable components used in the portfolio.
+
+## Core Components
+
+1.  **`MainNav` (`@/components/main-nav.tsx`)**
+    *   **Description:** The main site navigation bar. Displays brand link and desktop navigation links.
+    *   **Structure:** Server Component.
+    *   **Dependencies:** `Link` (Next.js), `MobileNav` (dynamic import).
+    *   **Styling:** Uses `bg-background`, `border-b`, `text-primary` (brand), `text-foreground/80` (links).
+
+2.  **`MobileNav` (`@/components/mobile-nav.tsx`)**
+    *   **Description:** Client-side component providing the mobile navigation experience using a slide-out sheet.
+    *   **Structure:** Client Component (`"use client"`).
+    *   **Dependencies:** `useState`, `Link` (Next.js), `lucide-react` (Menu icon), `@/components/ui/sheet`.
+    *   **Styling:** Uses `Sheet` component styles, `bg-background`, `border-border`, `text-foreground`, `hover:bg-muted`.
+
+3.  **`Button` (`@/components/ui/button.tsx`)**
+    *   **Description:** Standard button component from shadcn/ui.
+    *   **Usage:** Used for primary actions (e.g., CTA on home page).
+    *   **Styling:** Variants (`default`, `destructive`, `outline`, `secondary`, `ghost`, `link`) defined by shadcn/ui, using CSS variables from `globals.css`.
+
+4.  **`Card` (`@/components/ui/card.tsx`)**
+    *   **Description:** Container component from shadcn/ui for grouping content.
+    *   **Usage:** Used for project display on the Projects page.
+    *   **Styling:** Uses `bg-card`, `text-card-foreground`, `border`, `rounded-lg`, `shadow-sm` by default. Refined with `hover:shadow-md` on Projects page.
+    *   **Sub-components:** `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter`.
+
+5.  **`Sheet` (`@/components/ui/sheet.tsx`)**
+    *   **Description:** Slide-out panel component from shadcn/ui.
+    *   **Usage:** Used within `MobileNav` for the mobile menu.
+    *   **Styling:** Defined by shadcn/ui, using CSS variables.
+    *   **Sub-components:** `SheetTrigger`, `SheetContent`, `SheetHeader`, `SheetTitle`, `SheetDescription`, `SheetFooter`, `SheetClose`.
+
+6.  **`DropdownMenu` (`@/components/ui/dropdown-menu.tsx`)**
+    *   **Description:** Component from shadcn/ui for displaying menus.
+    *   **Usage:** *Currently not used* (Removed from `MainNav` in previous steps). Available if needed.
+    *   **Styling:** Defined by shadcn/ui, using CSS variables.
+
+## Utility Components/Functions
+
+*   **`cn` (`@/lib/utils.ts`)**
+    *   **Description:** Utility function from shadcn/ui (combines `clsx` and `tailwind-merge`) for conditionally applying Tailwind classes.
+    *   **Usage:** Used throughout components to merge base styles with variant/prop styles.
+
+## Implementation Notes
+
+*   Components primarily rely on Tailwind CSS utility classes and CSS variables defined in `globals.css` for styling.
+*   Shadcn/ui components provide the base structure and accessibility.
+*   Custom components (`MainNav`, `MobileNav`) integrate these UI primitives.
+
+# Components
+
+- **MainNav:** Top navigation bar (brand/logo, links, mobile menu).
+- **MobileNav:** Slide-out mobile menu (Sheet component).
+- **Button:** For actions/CTAs (shadcn/ui).
+- **Card:** For project display (shadcn/ui).
+- **Sheet:** For mobile nav (shadcn/ui).
+- **DropdownMenu:** Not currently used.
+- **cn (utils):** Utility for conditional classNames.
+
+All components use Tailwind and CSS variables for styling.
+```

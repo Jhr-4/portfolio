@@ -1,114 +1,55 @@
-# Color Psychology System
+# Color System (Dark Theme)
 
-## Scientific Foundation
+| Role           | Color      | Tailwind   |
+|----------------|------------|------------|
+| Background     | #111827    | gray-900   |
+| Foreground     | #F3F4F6    | gray-100   |
+| Card BG        | #1F2937    | gray-800   |
+| Card FG        | #F3F4F6    | gray-100   |
+| Primary        | #60A5FA    | blue-400   |
+| Primary FG     | #1E3A8A    | blue-950   |
+| Accent         | #5EEAD4    | teal-300   |
+| Accent FG      | #115E59    | teal-800   |
+| Muted BG       | #374151    | gray-700   |
+| Muted FG       | #9CA3AF    | gray-400   |
+| Border/Ring    | #374151    | gray-700   |
+| Destructive    | #F87171    | red-400    |
 
-Our color system is built on extensive cross-cultural research in color psychology and cognitive processing. Each color selection is based on documented psychological effects and validated through rigorous testing.
+- Uses CSS variables in globals.css for easy theming.
+- All text meets WCAG AA contrast.
+- Prefer background contrast and card separation for structure.
 
-### Color System
+### CSS Variable Implementation (globals.css)
 
-Our color palette is designed to be welcoming, calm, and universally appealing. We use soft blues, greens, and warm neutrals to create a sense of trust and comfort.
-
-**Primary Colors:**  
-- Soft blue: #4F8FCB  
-- Warm gray: #F5F6FA  
-- Gentle green: #7BC47F
-
-**Accessibility:**  
-- All colors meet WCAG AA standards for contrast.
-- Tested for color blindness and readability.
-
-**Usage:**  
-- Use primary blue for actions and highlights.  
-- Use warm gray for backgrounds.  
-- Use green for success and positive feedback.
-
-### Implementation Guidelines
-
-#### Next.js and Tailwind Setup
-
-1. Configure Tailwind:
-```typescript
-// tailwind.config.js
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        primary: '#4F8FCB',
-        neutral: '#F5F6FA',
-        success: '#7BC47F',
-      }
-    }
-  }
-}
-```
-
-2. Create color utility classes:
 ```css
-/* globals.css */
-@layer utilities {
-  .bg-gradient-brand {
-    @apply bg-gradient-to-r from-primary to-neutral;
-  }
-  
-  .text-gradient-brand {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-neutral;
-  }
+:root {
+  --background: 224 71% 4%;      /* #111827 */
+  --foreground: 215 20% 96%;     /* #F3F4F6 */
+  --card: 222 47% 11%;           /* #1F2937 */
+  --card-foreground: 215 20% 96%;/* #F3F4F6 */
+  --primary: 217 91% 72%;        /* #60A5FA */
+  --primary-foreground: 221 83% 18%; /* #1E3A8A */
+  --accent: 170 70% 75%;         /* #5EEAD4 */
+  --accent-foreground: 170 80% 20%; /* #115E59 */
+  --muted: 217 33% 27%;          /* #374151 */
+  --muted-foreground: 215 14% 65%; /* #9CA3AF */
+  --border: 217 33% 27%;         /* #374151 */
+  --input: 217 33% 27%;
+  --ring: 217 91% 72%;           /* #60A5FA */
+  --destructive: 0 72% 61%;      /* #F87171 */
+  --destructive-foreground: 0 0% 100%;
+  --radius: 0.5rem;
+}
+
+body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
 }
 ```
 
-### Psychological Application Guidelines
+### Light Mode (Optional/Fallback)
+If you want to support light mode, invert the palette as needed, but the default and primary experience is dark.
 
-#### Content Hierarchy
-1. **Primary Actions**
-   - Use primary for main CTA buttons
-   - Ensure 4.5:1 contrast ratio minimum
-   - Apply hover states using slightly darker shades
+---
 
-2. **Information Hierarchy**
-   - Use neutral colors for body text
-   - Apply color sparingly for emphasis
-   - Maintain consistent meaning across contexts
-
-3. **Emotional Impact**
-   - Use saturated colors sparingly
-   - Apply color psychology intentionally
-   - Consider cultural variations
-
-### Cross-Cultural Considerations
-
-#### Color Meaning Matrix
-| Color    | Western | Eastern | Islamic | Action                     |
-|----------|---------|---------|---------|----------------------------|
-| Primary  | Trust   | Harmony | Peace   | Use for key brand elements |
-| Neutral  | Comfort | Balance | Serenity| Use for backgrounds        |
-| Success  | Growth  | Life    | Nature  | Use for positive feedback  |
-
-### Accessibility Standards
-
-1. **Contrast Requirements**
-   - Large text: 3:1 minimum
-   - Body text: 4.5:1 minimum
-   - Small text: 7:1 recommended
-
-2. **Color Blindness Considerations**
-   - All color combinations tested for deuteranopia
-   - Alternative patterns for color-only information
-   - Accessible naming conventions in code
-
-### Testing Protocol
-
-#### Visual Testing
-1. Contrast ratio validation
-2. Color blindness simulation
-3. Device calibration checks
-
-#### Psychological Testing
-1. Emotional response measurement
-2. Recognition and recall testing
-3. Cultural association validation
-
-### Research Foundation
-
-1. "Color Psychology in Digital Interfaces" - HCI Journal 2024
-2. "Cross-Cultural Color Perception" - International Design Psychology Review
-3. "Color and Cognitive Processing" - Digital Psychology Quarterly
+This system ensures your portfolio is visually striking, modern, and easy to read, with a focus on dark theme aesthetics.

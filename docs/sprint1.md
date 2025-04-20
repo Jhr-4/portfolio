@@ -1,32 +1,54 @@
-# Sprint 1: Everyman Brand Transformation Checklist
+# Sprint 1: Portfolio Foundation
 
-## Visual Design
-- [ ] Update global typography to use friendly, approachable sans-serif fonts (Inter, Open Sans, Nunito)
-- [ ] Remove mono fonts from headings and use sentence case
-- [ ] Update color palette in Tailwind and CSS to soft blues, greens, and warm neutrals
-- [ ] Ensure all UI elements meet accessibility contrast standards
-- [ ] Increase whitespace and padding for a relaxed, welcoming feel
-- [ ] Use consistent 4px spacing scale and responsive layouts
-- [ ] Soften component corners and add gentle shadows
+**Goal:** Establish the core structure and home page for a personal software developer portfolio website.
 
-## Content & Messaging
-- [ ] Rewrite hero and section titles to use friendly, inclusive language
-- [ ] Update descriptions to focus on clarity, honesty, and practical solutions
-- [ ] Change calls to action to approachable, supportive phrases
-- [ ] Review and update microcopy for clarity and inclusivity
+**Key Features:**
 
-## Implementation
-- [ ] Update `src/app/globals.css` for typography, color, and spacing
-- [ ] Update `src/app/page.tsx` for new content and visual style
-- [ ] Update `src/components/ui/button.tsx` and `card.tsx` for new palette and style
-- [ ] Update `src/components/main-nav.tsx` for navigation tone and structure
-- [ ] Review all UI components for accessibility and Everyman alignment
+1.  **Project Setup:**
+    *   Initialize Next.js project with TypeScript.
+    *   Set up Tailwind CSS for styling.
+    *   Integrate shadcn/ui for basic components (Button, Card).
+    *   Configure basic linting and formatting (ESLint, Prettier).
 
-## QA & Review
-- [ ] Test site for accessibility (contrast, keyboard navigation, screen reader)
-- [ ] Test responsiveness and layout on all device sizes
-- [ ] Review for consistent tone and visual style throughout
+2.  **Layout & Navigation:**
+    *   Create a main layout (`layout.tsx`) including a header/navigation component (`MainNav`).
+    *   Navigation should link to Home, About, and Projects pages.
+    *   Implement responsive mobile navigation (using `Sheet` from shadcn/ui).
 
----
+3.  **Home Page (`/`):**
+    *   **Hero Section:**
+        *   Display name prominently (e.g., "RJay1").
+        *   Include a brief tagline or professional summary (e.g., "Software Developer specializing in...").
+        *   Clean and focused UI.
+    *   **About Snippet:**
+        *   A short paragraph introducing myself and my passion for development.
+    *   **Skills Section:**
+        *   List key technical skills (e.g., React, Next.js, TypeScript, Node.js, CSS, HTML).
+        *   Consider using tags or simple list format.
+    *   **Call to Action (CTA):**
+        *   A clear button or link encouraging users to view projects (e.g., "View My Work", "Explore Projects").
 
-_This checklist will be updated as tasks are completed during the sprint._
+4.  **About Page (`/about`):**
+    *   Placeholder page structure.
+    *   Content to be expanded later with more detailed background, experience, and interests.
+
+5.  **Projects Page (`/projects`):**
+    *   Placeholder page structure.
+    *   Basic title like "Projects".
+    *   Indicate that project details will be added here soon.
+    *   *(Future Implementation):* Display projects using a card layout. Each card will be clickable, leading to more details (implementation in a later sprint).
+
+**Design System Integration:**
+
+*   Apply basic brand colors, typography, and spacing defined in the design system documentation (`docs/` folder) to ensure consistency.
+*   Focus on a clean, professional, and modern aesthetic suitable for a personal portfolio.
+
+**Definition of Done:**
+
+*   Project structure is set up.
+*   Layout and navigation are functional on desktop and mobile.
+*   Home page displays the hero section, about snippet, skills, and CTA.
+*   About and Projects pages exist with placeholder content.
+*   Basic styling consistent with the design system is applied.
+*   Code is reasonably clean and follows basic linting rules.
+*   The application runs without critical errors.

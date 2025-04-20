@@ -1,62 +1,86 @@
-# Implementation Guide
+# Implementation Guide: The Sage/Explorer/Creator
 
-Welcome! This guide is designed for everyone—whether you’re new to web development or a seasoned pro. Our goal is to make building beautiful, accessible apps simple and approachable for all.
+Welcome! This guide details the technical implementation of the portfolio, aligning with the **Sage/Explorer/Creator** brand archetype. It focuses on **clarity, precision, structured innovation, and accessibility** to create a professional and compelling experience for recruiters and visitors.
 
-## Project Setup
+## Implementation
 
-### Next.js 14 Setup
+- **Framework:** Next.js (App Router, TypeScript)
+- **Styling:** Tailwind CSS, CSS variables, shadcn/ui
+- **Structure:**
+  - src/app/: Pages, layout, global styles
+  - src/components/: UI and navigation components
+  - src/lib/: Utility functions
+  - docs/: Design system and project docs
+- **Dark theme:** Default, with all colors as CSS variables
+- **Responsive:** Uses Tailwind grid/flex utilities
+- **Accessibility:** All text and UI meet contrast and keyboard/focus standards
+- **Add components:** Use shadcn/ui CLI or create in src/components/
 
-```bash
-# Initial setup
-npx create-next-app@latest my-app --typescript --tailwind --eslint
-cd my-app
-```
+## Core Technologies
 
-### Key Dependencies
+*   **Framework:** Next.js (App Router)
+*   **Language:** TypeScript
+*   **Styling:** Tailwind CSS
+*   **UI Components:** shadcn/ui
+*   **Linting/Formatting:** ESLint, Prettier
 
-```json
-{
-  "dependencies": {
-    "@radix-ui/react-dialog": "^1.0.5",
-    "@radix-ui/react-slot": "^1.0.2",
-    "@radix-ui/react-tabs": "^1.0.4",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.0.0",
-    "lucide-react": "^0.292.0",
-    "tailwind-merge": "^2.0.0",
-    "tailwindcss-animate": "^1.0.7"
-  }
-}
-```
+## Project Structure
 
-### Directory Structure
+*   `src/app/`: Contains page routes, global layout (`layout.tsx`), and global styles (`globals.css`).
+*   `src/components/`: Reusable React components.
+    *   `src/components/ui/`: Unstyled components from shadcn/ui (Button, Card, etc.).
+    *   `src/components/main-nav.tsx`: Main navigation (Server Component).
+    *   `src/components/mobile-nav.tsx`: Mobile navigation (Client Component).
+*   `src/lib/`: Utility functions (e.g., `cn` from shadcn/ui).
+*   `public/`: Static assets (images, icons).
+*   `docs/`: Design system documentation.
+*   Configuration files (`tailwind.config.mjs`, `tsconfig.json`, etc.) in the root.
 
-```
-src/
-├── app/
-│   ├── layout.tsx
-│   └── page.tsx
-├── components/
-│   ├── ui/           # shadcn components
-│   └── shared/       # reusable components
-├── styles/
-│   ├── globals.css
-│   └── typography.css
-└── lib/
-    └── utils.ts      # utility functions
-```
+## Styling Implementation
+
+1.  **Tailwind CSS:** Utility classes are used directly in components for layout, spacing, typography, etc.
+2.  **CSS Variables:** Colors and border radius are defined as CSS variables in `src/app/globals.css` under the `:root` and `.dark` selectors, following shadcn/ui conventions.
+3.  **`tailwind.config.mjs`:**
+    *   Configured for dark mode (`darkMode: ["class"]`).
+    *   Extends the theme to map CSS variables to Tailwind color names (e.g., `primary: "hsl(var(--primary))"`).
+    *   Extends the theme for custom spacing scale.
+    *   Configures fonts (`fontFamily`).
+    *   Includes `tailwindcss-animate` plugin.
+4.  **`globals.css`:**
+    *   Imports Tailwind base, components, and utilities.
+    *   Defines CSS variables for light and dark themes.
+    *   Applies base styles (body background/text, heading fonts, link styles, etc.) using `@layer base`.
+    *   Removes default margins from headings/paragraphs.
+5.  **`cn` Utility:** Used within components to merge default styles with variant or prop-based styles.
+
+## Key Files for Theming
+
+*   `docs/03-color-system.md`: Defines the color palette and rationale.
+*   `docs/02-typography.md`: Defines font choices and base styles.
+*   `src/app/globals.css`: Contains CSS variable definitions and base element styles.
+*   `tailwind.config.mjs`: Configures Tailwind to use the CSS variables and custom scales.
+
+## Adding New Components
+
+1.  **Shadcn/ui:** Use the CLI: `npx shadcn-ui@latest add [component-name]`
+2.  **Custom Component:**
+    *   Create the file in `src/components/`.
+    *   Use existing shadcn/ui components or HTML elements.
+    *   Style using Tailwind utility classes.
+    *   Use `cn` for conditional classes if needed.
+    *   Determine if it needs to be a Client Component (`"use client"`) or Server Component (default).
 
 ## Configuration Files
 
-### Tailwind Configuration
+### Tailwind Configuration (`tailwind.config.mjs`)
 
-The project uses Tailwind CSS v3.3.3 which is fully compatible with Next.js 14.1.3 and our design system. Our configuration extends the base Tailwind setup with custom theme values derived from our design system documentation.
+This configuration needs to be updated to reflect the Sage/Explorer/Creator color system, typography, and spacing defined in `docs/02-typography.md`, `docs/03-color-system.md`, and `docs/04-spacing-layout.md`.
 
 ```typescript
-// tailwind.config.mjs
+// tailwind.config.mjs (Updated Example)
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: "class", // Uses class strategy for dark mode toggling
+  darkMode: "class", // Use class strategy
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -66,58 +90,26 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'], // Dynamic font loading
-        mono: ['var(--font-mono)', 'monospace'], // IBM Plex Mono
-        heading: ['var(--font-mono)', 'monospace'], // Used for brand typography
+        // Define sans and serif based on docs/02-typography.md
+        sans: ['var(--font-sans)', 'Inter', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', '"Source Serif Pro"', 'serif'], // Example
       },
       colors: {
-        // Core Brand Colors - Complete color scale for gradient creation
-        primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
-          950: '#082f49',
-        },
-        secondary: {
-          // ...complete color scale
-        },
-        accent: {
-          // ...complete color scale
-        },
-        neutral: {
-          // ...complete grayscale
-        },
-        
-        // Semantic Colors - For contextual meaning
-        success: {
-          light: '#dcfce7',
-          DEFAULT: '#22c55e',
-          dark: '#15803d',
-        },
-        error: {
-          light: '#fee2e2',
-          DEFAULT: '#ef4444',
-          dark: '#b91c1c',
-        },
-        warning: {
-          light: '#fef3c7',
-          DEFAULT: '#f59e0b',
-          dark: '#b45309',
-        },
-        
-        // System Colors - Theme-aware using CSS variables
+        // Define colors based on docs/03-color-system.md
+        // Example using HSL variables defined in globals.css
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
+        ring: "hsl(var(--ring))", // Often set to primary
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))", // Optional: Define if needed
+          foreground: "hsl(var(--secondary-foreground))",
+        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -125,6 +117,10 @@ export default {
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))", // Teal/Emerald from docs/03
+          foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -134,64 +130,142 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Add specific shades if needed (e.g., primary-hover)
       },
-      
-      // Border radius system follows the design system's radius scale
       borderRadius: {
-        lg: "var(--radius)",  // 0.5rem by default
-        md: "calc(var(--radius) - 2px)", // 0.375rem
-        sm: "calc(var(--radius) - 4px)", // 0.25rem
+        // Align with shadcn/ui defaults or customize based on docs/04
+        lg: "var(--radius)", // Example: 0.5rem
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
-      
-      // Container configuration for consistent layouts
+      spacing: {
+        // Define spacing scale based on 4px/8px unit from docs/04
+        // Example:
+        '0.5': '2px',
+        '1': '4px',
+        '1.5': '6px',
+        '2': '8px',
+        '2.5': '10px',
+        '3': '12px',
+        '3.5': '14px',
+        '4': '16px',
+        '5': '20px',
+        '6': '24px',
+        '7': '28px',
+        '8': '32px',
+        '10': '40px',
+        '12': '48px',
+        '16': '64px',
+        // ... add more as needed
+      },
       container: {
         center: true,
-        padding: "2rem",
+        padding: "2rem", // Default padding
         screens: {
           "2xl": "1400px", // Max container width
         },
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")], // Ensure animate plugin is present for shadcn/ui
 }
 ```
 
-#### CSS Variables Implementation
+#### CSS Variables Implementation (`src/app/globals.css`)
 
-Our theme uses CSS variables for dynamic theming support, implemented in `globals.css`:
+Define the core color palette using HSL values in `globals.css` for light and dark modes, based on `docs/03-color-system.md`.
 
 ```css
+/* src/app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer base {
   :root {
-    /* Color Palette Variables (HSL format for theme flexibility) */
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Define Light Mode HSL values from docs/03 */
+    --background: 0 0% 100%; /* White */
+    --foreground: 222 84% 5%; /* Near Black */
+    --muted: 215 20% 65%; /* Medium Gray */
+    --muted-foreground: 215 16% 47%; /* Darker Gray */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 201 96% 32%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 142 72% 29%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 270 95% 75%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 201 96% 32%;
-    --radius: 0.5rem;
+    --popover-foreground: 222 84% 5%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 84% 5%;
+    --border: 214 32% 91%; /* Light Gray */
+    --input: 214 32% 91%;
+    --primary: 217 91% 60%; /* Intelligent Blue (Tailwind blue-500) */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 215 28% 17%; /* Optional: Darker Blue/Gray */
+    --secondary-foreground: 0 0% 100%;
+    --accent: 160 84% 39%; /* Teal/Emerald (Tailwind teal-500) */
+    --accent-foreground: 0 0% 100%; /* Or a dark contrast color */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --ring: 217 91% 60%; /* Primary color for focus rings */
+    --radius: 0.5rem; /* Default border radius */
+
+    /* Typography Variables from docs/02 */
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-serif: 'Source Serif Pro', serif;
+    --line-height-body: 1.7;
   }
 
   .dark {
-    /* Dark mode overrides */
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    /* ...additional dark mode variables */
+    /* Define Dark Mode HSL values from docs/03 */
+    --background: 222 47% 11%; /* Very Dark Blue/Gray (Tailwind gray-900) */
+    --foreground: 210 40% 98%; /* Light Gray/Off-White */
+    --muted: 217 33% 50%; /* Medium Gray */
+    --muted-foreground: 215 20% 65%; /* Lighter Gray */
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --border: 217 33% 25%; /* Dark Gray */
+    --input: 217 33% 25%;
+    --primary: 217 91% 60%; /* Keep primary blue consistent or adjust slightly */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 28% 25%; /* Optional: Slightly lighter dark blue/gray */
+    --secondary-foreground: 0 0% 100%;
+    --accent: 160 70% 45%; /* Adjust accent for dark mode contrast */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 63% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --ring: 217 91% 60%;
+    /* Radius and fonts remain the same */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border; /* Apply border color globally */
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    line-height: var(--line-height-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Base Typography Styles from docs/02 */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-semibold tracking-tight; /* Use Serif for headings */
+  }
+
+  h1 { @apply text-4xl lg:text-5xl xl:text-6xl; }
+  h2 { @apply text-3xl lg:text-4xl; }
+  h3 { @apply text-2xl lg:text-3xl; }
+  h4 { @apply text-xl lg:text-2xl; }
+  /* Add other heading styles as needed */
+
+  p {
+    @apply mb-4; /* Consistent paragraph spacing */
+  }
+
+  /* Add other base styles like links */
+  a {
+    @apply text-primary underline-offset-4 hover:underline;
   }
 }
 ```
@@ -200,397 +274,190 @@ Our theme uses CSS variables for dynamic theming support, implemented in `global
 
 ### 1. Typography Implementation
 
-1. Install Inter font:
-```typescript
-// layout.tsx
-import { Inter } from 'next/font/google'
+1.  **Install Fonts:** Ensure `Inter` and `Source Serif Pro` (or chosen alternatives) are installed via npm (`@fontsource-variable/inter`, `@fontsource/source-serif-pro`) as shown in `docs/02-typography.md`.
+2.  **Load Fonts:** Import fonts in `src/app/layout.tsx` and assign CSS variables.
+    ```typescript
+    // src/app/layout.tsx
+    import { Inter } from 'next/font/google';
+    import { Source_Serif_Pro } from 'next/font/google'; // Example import
+    import './globals.css';
+    import { cn } from '@/lib/utils';
 
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-})
-```
+    const fontSans = Inter({
+      subsets: ['latin'],
+      variable: '--font-sans',
+      display: 'swap',
+    });
 
-2. Apply base typography styles:
-```css
-/* globals.css */
-@layer base {
-  :root {
-    --font-sans: 'Inter var';
-  }
+    const fontSerif = Source_Serif_Pro({ // Configure weights as needed
+      subsets: ['latin'],
+      weight: ['400', '600', '700'],
+      variable: '--font-serif',
+      display: 'swap',
+    });
 
-  body {
-    @apply text-base text-gray-900 leading-relaxed;
-  }
-
-  h1 {
-    @apply text-4xl font-semibold tracking-tight lg:text-5xl;
-  }
-  /* ...other typography styles */
-}
-```
+    export default function RootLayout({ children }: { children: React.ReactNode }) {
+      return (
+        <html lang="en" suppressHydrationWarning>
+          <body className={cn(
+            "min-h-screen bg-background font-sans antialiased",
+            fontSans.variable,
+            fontSerif.variable
+          )}>
+            {/* Add ThemeProvider if implementing dark mode toggle */}
+            {children}
+          </body>
+        </html>
+      );
+    }
+    ```
+3.  **Apply Base Styles:** Ensure `globals.css` applies `var(--font-sans)` to `body` and `var(--font-serif)` to headings (`h1`-`h6`). Set base `line-height`. (Covered in CSS Variables section above).
 
 ### 2. Color System Implementation
 
-We’ve chosen colors that are easy on the eyes and work well for everyone. Our palette is designed to feel welcoming and familiar.
+1.  **Define CSS Variables:** Set up HSL color variables in `globals.css` for light and dark modes (Covered above).
+2.  **Configure Tailwind:** Ensure `tailwind.config.mjs` references these CSS variables for `colors`, `borderColor`, `backgroundColor`, `textColor`, `ringColor`, etc. (Covered above).
+3.  **Apply Colors:** Use Tailwind utility classes (`bg-background`, `text-foreground`, `text-primary`, `border-border`, `ring-ring`, `text-accent`) throughout components and pages.
 
-1. Define color variables:
-```css
-/* globals.css */
-@layer base {
-  :root {
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    /* ...other color variables */
-  }
-}
-```
+### 3. Component Implementation (Sage/Explorer/Creator Alignment)
 
-2. Create color utility classes:
-```css
-/* globals.css */
-@layer utilities {
-  .gradient-brand {
-    @apply bg-gradient-to-r from-primary-600 to-primary-500;
-  }
-}
-```
+Refer to `docs/05-components.md` for detailed psychological principles. Apply styles consistently.
 
-### 3. Component Implementation
-
-All our components are built to be intuitive and easy to use, with clear documentation and plenty of examples.
-
-#### Example Button Component
+#### Example: Button (`src/components/ui/button.tsx`)
+Ensure variants use the defined palette:
 ```typescript
-// components/ui/button.tsx
-import { cva } from 'class-variance-authority'
-
-const buttonVariants = cva(
-  'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
-  {
-    variants: {
-      variant: {
-        default: 'bg-primary-500 text-white hover:bg-primary-600',
-        secondary: 'bg-secondary-500 text-white hover:bg-secondary-600',
-        // ...other variants
-      },
-      size: {
-        default: 'h-10 py-2 px-4',
-        sm: 'h-9 px-3',
-        lg: 'h-11 px-8',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-      size: 'default',
-    },
-  }
-)
+// Simplified example within buttonVariants cva
+variants: {
+  variant: {
+    default:
+      "bg-primary text-primary-foreground hover:bg-primary/90", // Use primary color
+    destructive:
+      "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+    outline:
+      "border border-input bg-background hover:bg-accent hover:text-accent-foreground", // Use accent for hover
+    secondary:
+      "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+    ghost:
+      "hover:bg-accent hover:text-accent-foreground", // Use accent for hover
+    link:
+      "text-primary underline-offset-4 hover:underline",
+  },
+  // ... sizes
+},
 ```
 
-### 4. Navigation Drawer (Sheet) Implementation
-
-#### Mobile Navigation Drawer (Sheet)
-
-A mobile navigation drawer (hamburger menu) is implemented using a custom shadcn/ui Sheet component, which is built on top of @radix-ui/react-dialog. This provides a familiar, accessible, and animated drawer experience for mobile users.
-
-- The Sheet component is located at `src/components/ui/sheet.tsx` and exposes `Sheet`, `SheetTrigger`, `SheetContent`, `SheetHeader`, and `SheetTitle`.
-- The main navigation (`src/components/main-nav.tsx`) uses Sheet for mobile navigation, providing a left-side sliding drawer with large, touch-friendly links.
-- The Sheet is fully accessible, supports keyboard navigation, and uses a backdrop overlay for focus management.
-
-#### Example Usage
+#### Example: Card (`src/components/ui/card.tsx`)
+Ensure card uses theme variables and appropriate spacing/rounding:
 ```tsx
-<Sheet>
-  <SheetTrigger asChild>
-    <button aria-label="Open menu">
-      <Menu />
-    </button>
-  </SheetTrigger>
-  <SheetContent side="left">
-    <SheetHeader>
-      <SheetTitle>Menu</SheetTitle>
-    </SheetHeader>
-    <nav>
-      {/* Navigation links */}
-    </nav>
-  </SheetContent>
-</Sheet>
+// Simplified example within Card component
+<div
+  className={cn(
+    "rounded-lg border bg-card text-card-foreground shadow-sm", // Use theme variables
+    className
+  )}
+  {...props}
+/>
 ```
 
-#### Main Navigation Component
-
-- Desktop navigation uses a horizontal flex layout with clear, accessible links.
-- Mobile navigation uses the Sheet navdrawer for a standard hamburger menu interaction.
-- All navigation is mobile-first and fully responsive.
-
-#### Example (from `src/components/main-nav.tsx`):
+#### Example: Main Navigation (`src/components/main-nav.tsx`)
+Apply fonts, colors, and spacing.
 ```tsx
-<nav className="flex items-center justify-between w-full py-4 px-2 md:px-8">
-  <Link href="/" className="text-xl font-semibold text-primary-700">Welcome</Link>
-  <div className="hidden md:flex items-center gap-6">{/* Desktop links */}</div>
-  <div className="md:hidden">{/* Mobile Sheet navdrawer */}</div>
+// Simplified example
+<nav className="flex items-center justify-between p-4 md:px-8 border-b">
+  <Link href="/" className="font-serif text-xl font-semibold text-primary">
+    Your Name / Brand
+  </Link>
+  {/* Desktop Nav */}
+  <div className="hidden md:flex items-center gap-6">
+    {routes.map((route) => (
+      <Link
+        key={route.href}
+        href={route.href}
+        className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+      >
+        {route.label}
+      </Link>
+    ))}
+  </div>
+  {/* Mobile Nav (Sheet Trigger) */}
+  <div className="md:hidden">
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button variant="ghost" size="icon" aria-label="Open menu">
+          <Menu className="h-5 w-5" />
+        </Button>
+      </SheetTrigger>
+      <SheetContent side="left">
+        <SheetHeader>
+          <SheetTitle className="font-serif">Navigation</SheetTitle>
+        </SheetHeader>
+        {/* ... Sheet links */}
+      </SheetContent>
+    </Sheet>
+  </div>
 </nav>
 ```
 
-### Summary of Recent Changes
-- Added a shadcn/ui Sheet (drawer) component for mobile navigation.
-- Updated MainNav to use Sheet for a beautiful, accessible navdrawer on mobile.
-- Ensured all navigation is mobile-first, touch-friendly, and visually consistent.
-- Installed and documented all required dependencies (`@radix-ui/react-dialog`, `critters`).
+### 4. Content Implementation
 
-## Testing Protocol
+- **Homepage (`src/app/page.tsx`):** Rewrite headings and text to be insightful, clear, and focused on skills/value proposition for recruiters. Use `font-serif` for main headings. Structure content logically using Cards or other layout elements, applying spacing from `docs/04-spacing-layout.md`.
+- **About Page (`src/app/about/page.tsx`):** Reflect the Sage/Explorer/Creator journey – curiosity, learning, building.
+- **Projects Page (`src/app/projects/page.tsx`):** This is critical. Use Cards or a similar structure to present projects clearly. For each project:
+    - Use `font-serif` for the project title (`CardTitle`).
+    - Clearly describe the problem, solution, and your role (Sage/Creator).
+    - Highlight key technologies used (Precision).
+    - Mention innovative aspects or challenges overcome (Explorer).
+    - Include links to live demos or source code (Buttons with `primary` or `outline` variant).
+    - Use the `accent` color sparingly for highlighting key results or technologies.
 
-### 1. Visual Regression Testing
-- Use tools like Chromatic or Percy
-- Test across breakpoints
-- Validate color contrast
-- Check typography scaling
+## Testing Protocol (Sage/Explorer/Creator Focus)
 
-### 2. Accessibility Testing
-- Automated testing with axe-core
-- Manual keyboard navigation testing
-- Screen reader compatibility
-- Color contrast validation
+### 1. Visual & Functional Testing
+- **Consistency:** Verify colors, fonts, spacing match the design system across all pages and components.
+- **Responsiveness:** Test thoroughly on various screen sizes (mobile, tablet, desktop). Layout should adapt gracefully (`docs/04-spacing-layout.md`).
+- **Interaction States:** Check hover, focus, active states for all interactive elements (buttons, links, inputs).
+- **Browser Compatibility:** Test on major browsers (Chrome, Firefox, Safari, Edge).
 
-### 3. Performance Testing
-- Lighthouse metrics
-- Core Web Vitals
-- Bundle size analysis
-- Runtime performance
+### 2. Accessibility Testing (Clarity & Precision)
+- **WCAG Compliance:** Use automated tools (axe-core) and manual checks to ensure AA compliance.
+- **Contrast:** Verify all text meets contrast requirements (4.5:1 normal, 3:1 large) in both light and dark modes.
+- **Keyboard Navigation:** Ensure all interactive elements are reachable and operable via keyboard.
+- **Screen Reader:** Test with screen readers (NVDA, VoiceOver) for logical flow and clear labeling.
+- **Semantic HTML:** Validate the use of correct HTML tags (headings, landmarks, lists).
 
-### 4. Psychological Testing
-- User interaction recording
-- Heat map analysis
-- Eye-tracking studies
-- A/B testing key components
+### 3. Performance Testing (Efficiency)
+- **Lighthouse:** Audit for Performance, Accessibility, Best Practices, SEO.
+- **Core Web Vitals:** Monitor LCP, FID (or INP), CLS.
+- **Bundle Size:** Analyze JavaScript bundle sizes; optimize where necessary.
+
+### 4. Content & Messaging Review (Sage Voice)
+- **Clarity:** Is the language clear, concise, and easy to understand for a recruiter audience?
+- **Precision:** Is technical information accurate?
+- **Insight:** Does the content convey expertise and thoughtful problem-solving?
+- **Tone:** Does the voice align with the Sage/Explorer/Creator archetype (insightful, curious, competent)?
 
 ## Quality Assurance Checklist
 
-We believe everyone deserves a great experience. That’s why we test for accessibility, responsiveness, and ease of use on all devices.
-
-### Typography
-- [ ] Font loading optimization
-- [ ] Responsive type scaling
-- [ ] Line length constraints
-- [ ] Proper hierarchy implementation
-
-### Colors
-- [ ] Contrast ratios met
-- [ ] Color blindness testing
-- [ ] Dark mode compatibility
-- [ ] System color preferences
-
-### Layout
-- [ ] Responsive breakpoints
-- [ ] Grid system implementation
-- [ ] Spacing consistency
-- [ ] Container queries where needed
-
-### Components
-- [ ] Accessibility compliance
-- [ ] Interaction states
-- [ ] Loading states
-- [ ] Error handling
+- [ ] **Typography:** Fonts loaded correctly, hierarchy applied, line height optimal, responsive scaling works.
+- [ ] **Colors:** Palette implemented correctly in light/dark modes, contrast ratios met, semantic colors used appropriately.
+- [ ] **Layout & Spacing:** Consistent spacing applied, grid structure works, responsive breakpoints handled correctly, whitespace used effectively.
+- [ ] **Components:** All components styled consistently, interaction states defined, accessibility features working.
+- [ ] **Content:** Text updated to match brand voice, project descriptions are clear and compelling.
+- [ ] **Accessibility:** WCAG AA met, keyboard navigation flawless, screen reader compatible.
+- [ ] **Performance:** Lighthouse scores acceptable, Core Web Vitals healthy.
+- [ ] **Functionality:** All links work, forms submit (if any), interactive elements behave as expected.
 
 ## Maintenance Guidelines
 
-### 1. Version Control
-- Use semantic versioning
-- Document breaking changes
-- Maintain changelog
-- Tag releases
-
-### 2. Documentation
-- Keep design tokens updated
-- Document component variants
-- Maintain usage examples
-- Update testing protocols
-
-### 3. Performance Monitoring
-- Track Core Web Vitals
-- Monitor bundle sizes
-- Analyze runtime performance
-- Test new browser versions
-
-### 4. Accessibility Audits
-- Regular WCAG compliance checks
-- Screen reader testing
-- Keyboard navigation testing
-- Color contrast validation
+- **Consistency:** Adhere strictly to the defined typography, color, and spacing systems when adding new content or components.
+- **Component Updates:** When updating shadcn/ui components, re-verify styling against the design system.
+- **Documentation:** Keep these implementation docs (`06-implementation.md`) and related design docs (`01-05`) updated with any significant changes.
+- **Regular Audits:** Periodically re-run accessibility and performance tests.
 
 ## Resources
 
-### Official Documentation
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [shadcn/ui Documentation](https://ui.shadcn.com)
-
-### Design Psychology References
-- See individual system documents for specific research references
-- Regular updates based on new research findings
-- Cross-reference with UX psychology studies
-- Monitor industry best practices
-
-## Project File Index
-
-This comprehensive index documents all key files in the project, their purpose, and their key functionalities to ensure AI developers have complete context when working with the codebase.
-
-### Configuration Files
-
-| File | Purpose | Key Features |
-|------|---------|-------------|
-| **package.json** | Project dependencies and scripts | Next.js 14.1.3, React 18.2.0, Tailwind CSS 3.3.3, TypeScript 5 |
-| **tsconfig.json** | TypeScript configuration | Strict mode enabled, path aliases (e.g., `@/components`) |
-| **next.config.mjs** | Next.js configuration | SWC minification, image optimization, experimental features |
-| **postcss.config.mjs** | PostCSS plugins | Tailwind CSS, Autoprefixer |
-| **tailwind.config.mjs** | Tailwind CSS theme | Custom colors, fonts, border radius, container settings |
-| **eslint.config.mjs** | ESLint rules | TypeScript, React, and Next.js specific rules |
-| **components.json** | UI components config | shadcn/ui configuration for component generation |
-
-### Application Files
-
-| File | Purpose | Key Features |
-|------|---------|-------------|
-| **src/app/layout.tsx** | Root layout component | Font loading, metadata, viewport settings, HTML structure |
-| **src/app/page.tsx** | Homepage component | Hero section, feature cards, call-to-action |
-| **src/app/globals.css** | Global styles | CSS variables, base styles, utility classes |
-
-### Component Files
-
-| File | Purpose | Key Features |
-|------|---------|-------------|
-| **src/components/ui/button.tsx** | Button component | Variants: default, destructive, outline, ghost, link; Sizes: default, sm, lg, icon |
-| **src/components/ui/card.tsx** | Card component | Subcomponents: CardHeader, CardTitle, CardDescription, CardContent, CardFooter |
-| **src/components/ui/sheet.tsx** | Sheet (drawer) component | Variants: side (left, right, top, bottom), accessibility features |
-| **[Additional UI components]** | Various UI elements | Follow similar patterns to Button and Card components |
-
-### Utility Files
-
-| File | Purpose | Key Features |
-|------|---------|-------------|
-| **src/lib/utils.ts** | Utility functions | `cn()`: className merging with clsx and tailwind-merge<br>`formatDate()`: Date formatting<br>`debounce()`: Function debouncing<br>`generateId()`: Random ID generation<br>`getNestedValue()`: Safe object property access |
-
-### Documentation Files
-
-| File | Purpose | Key Features |
-|------|---------|-------------|
-| **docs/01-brand-foundation.md** | Brand guidelines | Mission, values, voice, tone |
-| **docs/02-typography.md** | Typography system | Font families, scales, usage guidelines |
-| **docs/03-color-system.md** | Color palette | Primary, secondary, accent colors, semantic colors |
-| **docs/04-spacing-layout.md** | Layout guidelines | Grid system, spacing scale, responsive breakpoints |
-| **docs/05-components.md** | Component library | Component documentation, variants, accessibility |
-| **docs/06-implementation.md** | Implementation guide | Technical setup, configuration, maintenance guide |
-
-## Key Functionality Reference
-
-This section details critical functionality implemented across the codebase to help AI developers understand the system capabilities.
-
-### 1. Theming System
-
-The project uses a CSS variables-based theming system that supports:
-
-- Light/dark mode using the `class` strategy
-- HSL color format for flexible opacity adjustments
-- Dynamic font loading with next/font
-- Consistent spacing and component sizing
-
-```tsx
-// How the theme is applied to HTML
-<html lang="en" className={`${isDarkMode ? 'dark' : ''}`}>
-  <body className={`${inter.variable} ${ibmPlexMono.variable} font-sans antialiased`}>
-    {children}
-  </body>
-</html>
-```
-
-### 2. Component Composition Pattern
-
-Components follow a composition pattern that enables flexibility while maintaining design consistency:
-
-```tsx
-// Example usage showing composition pattern
-<Card>
-  <CardHeader>
-    <CardTitle>Card Title</CardTitle>
-    <CardDescription>Card description text</CardDescription>
-  </CardHeader>
-  <CardContent>
-    <p>Card content here</p>
-  </CardContent>
-  <CardFooter>
-    <Button>Action</Button>
-  </CardFooter>
-</Card>
-```
-
-### 3. Utility Function System
-
-The utils.ts file contains essential utility functions that should be used consistently:
-
-```typescript
-// Example usage of utility functions
-import { cn, formatDate, debounce } from "@/lib/utils";
-
-// Combining class names
-const className = cn(
-  "base-style", 
-  isActive && "active-style", 
-  variant === "primary" ? "primary-style" : "secondary-style"
-);
-
-// Formatting dates
-const formattedDate = formatDate(new Date(), { 
-  month: 'short', 
-  year: 'numeric' 
-});
-
-// Debouncing event handlers
-const handleResize = debounce(() => {
-  // Handle resize logic
-}, 200);
-```
-
-### 4. Responsive Design Pattern
-
-The project follows a mobile-first responsive approach using Tailwind's breakpoint system:
-
-```html
-<div class="text-sm md:text-base lg:text-lg">
-  Responsive text that scales across breakpoints
-</div>
-
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-  Responsive grid layout
-</div>
-```
-
-## Version Compatibility Notes
-
-This project has specific version dependencies that must be maintained for compatibility:
-
-- **Next.js version**: 14.1.3 (Not compatible with Next.js 15+ without migration)
-- **React version**: 18.2.0
-- **Tailwind CSS**: 3.3.3 (Not compatible with Tailwind v4 without significant changes)
-- **TypeScript**: 5.x
-- **Node.js**: 18.x or 20.x recommended
-
-### Critical Version Dependencies
-
-Some packages have strict peer dependencies:
-
-- class-variance-authority: 0.7.1 (works with Tailwind 3.x)
-- eslint-config-next: 14.1.3 (must match Next.js version)
-- tailwind-merge: 1.14.0 (compatible with Tailwind 3.x)
-
-## Update and Maintenance Process
-
-When updating any part of this system:
-
-1. **Document all changes** in the relevant documentation file
-2. **Update this index** if new files or functionality are added
-3. **Verify version compatibility** between interdependent packages
-4. **Test across all supported browsers** and device sizes
-5. **Run accessibility checks** to maintain WCAG compliance
-
-This documentation should be treated as a living document that evolves with the codebase.
+- [WCAG 2.1 Guidelines](https://www.w3.org/TR/WCAG21/)
+- Project Design Docs (`docs/01-05.md`)

@@ -1,35 +1,41 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { IBM_Plex_Mono, Inter } from "next/font/google";
+// Import Inter and Source Serif 4 fonts
+import { Inter, Source_Serif_4 } from "next/font/google"; // Corrected font name
 import { MainNav } from "@/components/main-nav";
+import { cn } from "@/lib/utils"; // Import cn utility
 
+// Configure Inter font
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-sans", // Use CSS variable --font-sans
   display: "swap",
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
-  weight: ['400', '500', '600', '700'],
+// Configure Source Serif 4 font
+const sourceSerif4 = Source_Serif_4({ // Corrected variable name
+  weight: ['400', '600', '700'], // Include weights needed for headings
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-serif", // Use CSS variable --font-serif
   display: "swap",
 });
 
+// Update metadata for a personal portfolio
 export const metadata: Metadata = {
   title: {
-    default: "Outlaw AI Consultancy",
-    template: "%s | Outlaw AI Consultancy",
+    default: "Jay Rana - Software Developer Portfolio",
+    template: "%s | Jay Rana Portfolio",
   },
-  description: "Challenging the AI status quo with radical honesty and evidence-based disruption",
-  authors: [{ name: "Outlaw AI Consultancy" }],
-  keywords: ["AI consultancy", "digital transformation", "disruptive innovation"],
+  description: "Showcasing my software development projects and skills. Explore my work in web development, problem-solving, and more.",
+  authors: [{ name: "Jay Rana" }],
+  keywords: ["software developer", "portfolio", "web development", "full stack", "react", "nextjs", "typescript", "projects", "Jay Rana", "personal website"]
 };
 
+// Update viewport theme colors to match new palette
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#111827" },
+    { media: "(prefers-color-scheme: light)", color: "hsl(var(--background))" }, // Use CSS variable
+    { media: "(prefers-color-scheme: dark)", color: "hsl(var(--background))" }, // Use CSS variable
   ],
   width: "device-width",
   initialScale: 1,
@@ -41,8 +47,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${ibmPlexMono.variable} font-sans antialiased`}>
+    // Apply font variables to html tag - REMOVED suppressHydrationWarning
+    <html lang="en" className={`${inter.variable} ${sourceSerif4.variable}`}>
+      {/* Apply font-sans to body as the default */}
+      <body className={`font-sans antialiased`}>
         <MainNav />
         {children}
       </body>

@@ -4,121 +4,55 @@
 
 @layer base {
   :root {
-    /* Brand Typography Variables */
-    --font-sans: 'Inter', 'Open Sans', 'Nunito', system-ui, sans-serif;
-    --line-height-body: 1.625;
-    --tracking-heading-tight: -0.01em;
-
-    /* Everyman Brand Colors in HSL */
-    --background: 220 20% 98%;
-    --foreground: 220 15% 20%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 220 15% 20%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 20%;
-
-    --primary: 210 60% 60%; /* Soft blue */
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 140 40% 70%; /* Gentle green */
-    --secondary-foreground: 0 0% 20%;
-
-    --muted: 220 20% 95%;
-    --muted-foreground: 220 10% 40%;
-
-    --accent: 40 30% 90%; /* Warm neutral */
-    --accent-foreground: 0 0% 20%;
-
-    --destructive: 0 70% 60%;
+    --background: 224 71% 4%;      /* #111827 */
+    --foreground: 215 20% 96%;     /* #F3F4F6 */
+    --card: 222 47% 11%;           /* #1F2937 */
+    --card-foreground: 215 20% 96%;/* #F3F4F6 */
+    --primary: 217 91% 72%;        /* #60A5FA */
+    --primary-foreground: 221 83% 18%; /* #1E3A8A */
+    --accent: 170 70% 75%;         /* #5EEAD4 */
+    --accent-foreground: 170 80% 20%; /* #115E59 */
+    --muted: 217 33% 27%;          /* #374151 */
+    --muted-foreground: 215 14% 65%; /* #9CA3AF */
+    --border: 217 33% 27%;         /* #374151 */
+    --input: 217 33% 27%;
+    --ring: 217 91% 72%;           /* #60A5FA */
+    --destructive: 0 72% 61%;      /* #F87171 */
     --destructive-foreground: 0 0% 100%;
-
-    --border: 220 20% 85%;
-    --input: 220 20% 85%;
-    --ring: 210 60% 60%;
-
-    --radius: 0.75rem;
+    --radius: 0.5rem;
   }
+}
 
-  .dark {
-    --background: 220 15% 15%;
-    --foreground: 0 0% 100%;
-    --card: 220 15% 18%;
-    --card-foreground: 0 0% 100%;
-    --popover: 220 15% 18%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 210 60% 60%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 140 40% 50%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 220 15% 20%;
-    --muted-foreground: 220 10% 60%;
-    --accent: 40 30% 30%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 70% 40%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 220 15% 30%;
-    --input: 220 15% 30%;
-    --ring: 210 60% 60%;
-  }
-
+@layer base {
   * {
     @apply border-border;
   }
-
   body {
-    @apply font-sans bg-background text-foreground text-base leading-relaxed;
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-
-  /* Everyman Typography Base Styles */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans font-semibold tracking-tight capitalize;
+    @apply font-serif font-semibold tracking-tight;
   }
-
-  h1 { @apply text-4xl md:text-5xl lg:text-6xl mb-4; }
-  h2 { @apply text-3xl md:text-4xl lg:text-5xl mb-3; }
-  h3 { @apply text-2xl md:text-3xl mb-2; }
-  h4 { @apply text-xl md:text-2xl mb-2; }
-
+  h1 { @apply text-4xl md:text-5xl; }
+  h2 { @apply text-3xl md:text-4xl; }
+  h3 { @apply text-2xl md:text-3xl; }
+  h4 { @apply text-xl md:text-2xl; }
   p {
-    @apply text-base leading-relaxed mb-4;
+    @apply text-base leading-relaxed text-foreground/90;
   }
-
-  .supporting-text {
-    @apply text-sm text-muted-foreground;
+  a {
+    @apply text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm;
   }
-}
-
-@layer components {
-  .card {
-    @apply rounded-xl shadow-md bg-card text-card-foreground p-6 mb-6;
+  blockquote {
+    @apply mt-6 border-l-2 pl-6 italic text-muted-foreground;
   }
-  .button {
-    @apply rounded-lg shadow-sm font-medium px-5 py-2 transition-colors;
+  pre, code {
+    @apply font-mono text-sm;
   }
-}
-
-@layer utilities {
-  /* Brand Gradient Utilities */
-  .bg-gradient-brand {
-    @apply bg-gradient-to-r from-primary-400 to-accent-200;
-  }
-  
-  .text-gradient-brand {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-accent-200;
-  }
-
-  .bg-gradient-innovation {
-    @apply bg-gradient-to-r from-secondary-400 to-accent-100;
-  }
-
-  /* High-contrast text utilities for accessibility */
-  .text-high-contrast {
-    @apply text-neutral-900 dark:text-neutral-50;
-  }
-
-  .text-medium-contrast {
-    @apply text-neutral-700 dark:text-neutral-300;
+  pre {
+    @apply p-4 rounded-md bg-muted overflow-x-auto;
   }
 }
