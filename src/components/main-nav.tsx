@@ -19,8 +19,9 @@ export function MainNav() {
   return (
     <nav className="flex items-center justify-between w-full py-4 px-4 md:px-8 border-b border-border bg-background">
       {/* Brand/Logo */}
-      <Link href="/" className="font-serif text-xl font-semibold text-primary hover:text-primary/90 transition-colors">
-        JR
+      <Link href="/" className="font-serif text-xl font-semibold text-primary hover:text-primary/90 transition-colors flex items-center gap-2">
+        <img src="/jr-logo.svg" alt="JR Logo" className="h-12 w-12 -my-2" />
+        <span className="sr-only">Home</span>
       </Link>
       {/* Desktop navigation links */}
       <div className="hidden md:flex items-center gap-6">

@@ -179,51 +179,231 @@ Validate typography choices against:
 
 # Typography System
 
-## Fonts
+## Font Families
 
-*   **Serif (Headings):** Source Serif 4 (Variable: `--font-serif`)
-    *   Weights: 400 (Regular), 600 (Semibold), 700 (Bold)
-    *   Usage: Applied to `h1` through `h6` elements via base styles in `globals.css`.
-*   **Sans-serif (Body):** Inter (Variable: `--font-sans`)
-    *   Weights: Variable (typically 400-700 used)
-    *   Usage: Applied to `body` via base styles in `globals.css`, making it the default.
+Our typography system uses a carefully selected combination of fonts to balance professionalism, readability, and personality.
 
-## Base Styles (`globals.css`)
+### Primary Font: Inter
 
-*   Headings (`h1`-`h6`): Use `font-serif`, `font-semibold`, `tracking-tight`.
-*   Paragraphs (`p`): Use `text-base`, `leading-relaxed`, `text-foreground/90`.
-*   Links (`a`): Use `text-primary`, `underline-offset-4`, `hover:underline`, and focus ring styles.
-*   `blockquote`, `code`, `pre` have base styling applied.
-*   **Important:** Default margins are removed from headings and paragraphs. Use utility classes (`mb-X`, `space-y-X`) for spacing.
+Inter is our primary font family, selected for its exceptional readability across screen sizes and clean, modern aesthetic.
 
-## Type Scale (Tailwind Defaults + Config)
+```css
+font-family: 'Inter', sans-serif;
+```
 
-Tailwind's default type scale is used. Headings in `globals.css` are mapped:
+### Secondary Font: Playfair Display
 
-*   `h1`: `text-4xl` / `md:text-5xl`
-*   `h2`: `text-3xl` / `md:text-4xl`
-*   `h3`: `text-2xl` / `md:text-3xl`
-*   `h4`: `text-xl` / `md:text-2xl`
-*   `p`: `text-base`
+For headings and special elements that require more personality:
 
-Adjustments can be made using Tailwind utility classes (e.g., `text-lg`, `text-sm`).
+```css
+font-family: 'Playfair Display', serif;
+```
 
-## Usage
+### Monospace Font: Fira Code
 
-*   Use semantic HTML heading tags (`h1` - `h6`).
-*   Use `<p>` tags for body text.
-*   Apply spacing between elements using margin (`m-`, `mt-`, `mb-`, etc.) or space (`space-y-`, `space-x-`) utility classes.
-*   Use `text-muted-foreground` for secondary or less important text.
+For code snippets, technical content, and tabular data:
 
-# Typography
+```css
+font-family: 'Fira Code', monospace;
+```
 
-- **Headings:** Source Serif 4 (`font-serif`), used for all headings.
-- **Body:** Inter (`font-sans`), used for all body text.
-- **Type Scale:**
-  - h1: text-4xl/md:text-5xl
-  - h2: text-3xl/md:text-4xl
-  - h3: text-2xl/md:text-3xl
-  - h4: text-xl/md:text-2xl
-  - p: text-base
-- **Links:** text-primary, underline on hover.
-- **Spacing:** No default margins; use Tailwind utilities for spacing.
+### System Font Fallback
+
+For optimal performance and consistent rendering, we use a comprehensive system font fallback stack:
+
+```css
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+```
+
+## Font Sizes
+
+We follow a modular scale with a 1.250 ratio (Major Third) for consistent visual hierarchy:
+
+| Name | Size (rem) | Size (px) | Usage |
+|------|------------|-----------|-------|
+| xs   | 0.75rem    | 12px      | Fine print, captions |
+| sm   | 0.875rem   | 14px      | Secondary text, helper text |
+| base | 1rem       | 16px      | Body text (default) |
+| lg   | 1.125rem   | 18px      | Enhanced body text |
+| xl   | 1.25rem    | 20px      | Subheadings |
+| 2xl  | 1.5rem     | 24px      | Small headings |
+| 3xl  | 1.875rem   | 30px      | Medium headings |
+| 4xl  | 2.25rem    | 36px      | Large headings |
+| 5xl  | 3rem       | 48px      | Extra large headings |
+| 6xl  | 3.75rem    | 60px      | Display headings |
+| 7xl  | 4.5rem     | 72px      | Hero headings |
+| 8xl  | 6rem       | 96px      | Jumbo headings |
+
+## Font Weights
+
+| Name       | Weight | Usage |
+|------------|--------|-------|
+| Thin       | 100    | Decorative use only |
+| Extra Light| 200    | Decorative use only |
+| Light      | 300    | Large headings |
+| Regular    | 400    | Body text (default) |
+| Medium     | 500    | Emphasis, subheadings |
+| Semi-Bold  | 600    | Strong emphasis, headings |
+| Bold       | 700    | Major headings |
+| Extra Bold | 800    | Hero headings, display text |
+| Black      | 900    | Special use only |
+
+## Line Heights
+
+| Name     | Value | Usage |
+|----------|-------|-------|
+| Tight    | 1     | Headlines, short text fragments |
+| Snug     | 1.25  | Headings |
+| Normal   | 1.5   | Body text (default) |
+| Relaxed  | 1.625 | Long-form content |
+| Loose    | 2     | Double-spaced content |
+
+## Letter Spacing
+
+| Name     | Value    | Usage |
+|----------|----------|-------|
+| Tighter  | -0.05em  | Large headlines |
+| Tight    | -0.025em | Headings |
+| Normal   | 0        | Body text (default) |
+| Wide     | 0.025em  | All-caps text, emphasis |
+| Wider    | 0.05em   | Small all-caps, buttons |
+| Widest   | 0.1em    | Uppercase display text |
+
+## Text Styles
+
+### Headings
+
+```css
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem; /* 48px */
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.25rem; /* 36px */
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.25rem;
+}
+
+/* Additional heading styles follow the same pattern */
+```
+
+### Body Text
+
+```css
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem; /* 16px */
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+small {
+  font-size: 0.875rem; /* 14px */
+}
+```
+
+### Special Text Elements
+
+```css
+.lead-text {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.625;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  border-left: 4px solid #4361EE;
+  padding-left: 1rem;
+}
+
+.code {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9em;
+  background-color: #f1f5f9;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+```
+
+## Icons and Typography
+
+### Google Material UI Icons
+
+Our design system incorporates Google Material UI icons to complement our typography:
+
+1. **Icon Sizing**:
+   - Small: 16px (1rem) - Inline with text, UI elements
+   - Medium: 24px (1.5rem) - Standard buttons, navigation
+   - Large: 32px (2rem) - Featured elements, headers
+   - Extra Large: 48px+ (3rem+) - Hero sections, feature highlights
+
+2. **Icon Weight**:
+   - Use outlined icons for most UI elements
+   - Use filled icons for active states
+   - Use rounded icons for more friendly UI elements
+
+3. **Icon Text Pairing**:
+   - Icons should be vertically aligned with adjacent text
+   - Icon size should be proportional to the text size (typically 1.25x the x-height)
+   - Maintain consistent spacing between icons and text (0.5em recommended)
+
+## Responsive Typography
+
+Our typography scales responsively using fluid typography principles:
+
+```css
+/* Example of fluid typography */
+:root {
+  --fluid-min-width: 320;
+  --fluid-max-width: 1140;
+  --fluid-min-size: 16;
+  --fluid-max-size: 19;
+  --fluid-min-scale: 1.2;
+  --fluid-max-scale: 1.25;
+}
+
+body {
+  font-size: clamp(
+    var(--fluid-min-size) * 1px, 
+    calc(var(--fluid-min-size) * 1px + (var(--fluid-max-size) - var(--fluid-min-size)) * 
+    ((100vw - (var(--fluid-min-width) * 1px)) / ((var(--fluid-max-width) - var(--fluid-min-width)) * 1px))),
+    var(--fluid-max-size) * 1px
+  );
+}
+```
+
+## Font Loading Strategy
+
+To optimize web performance:
+
+1. Use `font-display: swap` for critical text
+2. Preload critical fonts with `<link rel="preload">`
+3. Subset fonts to include only necessary characters
+4. Use variable fonts where possible for responsive design
+
+## Implementation in Tailwind
+
+The typography system is configured in our Tailwind setup:
+
+```js
+// Example from tailwind.config.mjs
+const fontFamily = {
+  sans: ['Inter', ...defaultTheme.fontFamily.sans],
+  serif: ['Playfair Display', ...defaultTheme.fontFamily.serif],
+  mono: ['Fira Code', ...defaultTheme.fontFamily.mono],
+}
+```

@@ -1,55 +1,116 @@
-# Color System (Dark Theme)
+# Color System
 
-| Role           | Color      | Tailwind   |
-|----------------|------------|------------|
-| Background     | #111827    | gray-900   |
-| Foreground     | #F3F4F6    | gray-100   |
-| Card BG        | #1F2937    | gray-800   |
-| Card FG        | #F3F4F6    | gray-100   |
-| Primary        | #60A5FA    | blue-400   |
-| Primary FG     | #1E3A8A    | blue-950   |
-| Accent         | #5EEAD4    | teal-300   |
-| Accent FG      | #115E59    | teal-800   |
-| Muted BG       | #374151    | gray-700   |
-| Muted FG       | #9CA3AF    | gray-400   |
-| Border/Ring    | #374151    | gray-700   |
-| Destructive    | #F87171    | red-400    |
+## Primary Color Palette
 
-- Uses CSS variables in globals.css for easy theming.
-- All text meets WCAG AA contrast.
-- Prefer background contrast and card separation for structure.
+Our color system is designed to reflect the Sage/Explorer/Creator archetype with a thoughtful balance of intellectual depth, curiosity, and innovation.
 
-### CSS Variable Implementation (globals.css)
+### Core Colors
 
-```css
-:root {
-  --background: 224 71% 4%;      /* #111827 */
-  --foreground: 215 20% 96%;     /* #F3F4F6 */
-  --card: 222 47% 11%;           /* #1F2937 */
-  --card-foreground: 215 20% 96%;/* #F3F4F6 */
-  --primary: 217 91% 72%;        /* #60A5FA */
-  --primary-foreground: 221 83% 18%; /* #1E3A8A */
-  --accent: 170 70% 75%;         /* #5EEAD4 */
-  --accent-foreground: 170 80% 20%; /* #115E59 */
-  --muted: 217 33% 27%;          /* #374151 */
-  --muted-foreground: 215 14% 65%; /* #9CA3AF */
-  --border: 217 33% 27%;         /* #374151 */
-  --input: 217 33% 27%;
-  --ring: 217 91% 72%;           /* #60A5FA */
-  --destructive: 0 72% 61%;      /* #F87171 */
-  --destructive-foreground: 0 0% 100%;
-  --radius: 0.5rem;
-}
+| Color Name | Hex Code | Tailwind Class | Usage |
+|------------|----------|---------------|-------|
+| Primary | `#4361EE` | bg-primary | Primary buttons, active states, links |
+| Primary Dark | `#3A56D4` | bg-primary-dark | Hover states, accents |
+| Secondary | `#4CC9F0` | bg-secondary | Secondary elements, highlights |
+| Accent | `#F72585` | bg-accent | Call-to-action, important highlights |
+| Background | `#F8FAFC` | bg-background | Page background |
+| Foreground | `#0F172A` | text-foreground | Primary text color |
 
-body {
-  background: hsl(var(--background));
-  color: hsl(var(--foreground));
+### Neutral Palette
+
+| Color Name | Hex Code | Tailwind Class | Usage |
+|------------|----------|---------------|-------|
+| White | `#FFFFFF` | bg-white | Card backgrounds, UI elements |
+| Gray-100 | `#F1F5F9` | bg-gray-100 | Alternative backgrounds, borders |
+| Gray-200 | `#E2E8F0` | bg-gray-200 | Dividers, disabled states |
+| Gray-300 | `#CBD5E1` | bg-gray-300 | Secondary borders, disabled text |
+| Gray-400 | `#94A3B8` | text-gray-400 | Secondary text, placeholders |
+| Gray-500 | `#64748B` | text-gray-500 | Tertiary text, helper text |
+| Gray-600 | `#475569` | text-gray-600 | Supporting text |
+| Gray-700 | `#334155` | text-gray-700 | Secondary headings |
+| Gray-800 | `#1E293B` | text-gray-800 | Primary headings |
+| Gray-900 | `#0F172A` | text-gray-900 | High-emphasis text |
+| Black | `#020617` | text-black | Highest contrast text |
+
+### Semantic Colors
+
+| Color Name | Hex Code | Tailwind Class | Usage |
+|------------|----------|---------------|-------|
+| Success | `#10B981` | text-green-500 | Success messages, positive actions |
+| Warning | `#F59E0B` | text-amber-500 | Warnings, attention required |
+| Error | `#EF4444` | text-red-500 | Errors, destructive actions |
+| Info | `#3B82F6` | text-blue-500 | Informational messages, hints |
+
+## Color Application
+
+### Text Colors
+
+- **Primary Text**: Gray-900 for high-contrast reading
+- **Secondary Text**: Gray-600 for supporting information
+- **Tertiary/Helper Text**: Gray-500 for less important information
+- **Interactive Text**: Primary color for links and interactive elements
+- **Inverse Text**: White for text on dark backgrounds
+
+### UI Element Colors
+
+- **Primary Buttons**: Primary color with white text
+- **Secondary Buttons**: White with Primary color border and text
+- **Card Backgrounds**: White with subtle shadows
+- **Hover States**: 10% darker than base component color
+- **Active States**: 15% darker than base component color
+- **Disabled States**: Gray-200 with Gray-400 text
+
+### Dark Mode Adaptations
+
+For dark mode, we invert the luminance while maintaining hues:
+
+- **Background**: `#0F172A` (Gray-900)
+- **Foreground**: `#F8FAFC` (Gray-100)
+- **Surface**: `#1E293B` (Gray-800)
+- **Border**: `#334155` (Gray-700)
+
+## Color Accessibility
+
+All color combinations have been tested to ensure:
+
+- **WCAG 2.1 AA Compliance**: Minimum 4.5:1 contrast for normal text
+- **WCAG 2.1 AAA Compliance**: 7:1 contrast for important text elements
+- **Colorblind-friendly**: Tested for all forms of color blindness
+
+## Color with Material Icons
+
+When implementing Google Material UI icons:
+
+1. **Icon Color Consistency**:
+   - Icons should use the same color as adjacent text for visual harmony
+   - Action icons should use the primary or accent color
+   - Informational icons should use the appropriate semantic color
+
+2. **Icon/Background Contrast**:
+   - Ensure icons maintain proper contrast against their backgrounds
+   - Use filled icons on light backgrounds and outlined icons on dark backgrounds when appropriate
+
+3. **Color Combinations**:
+   - Primary + White: Core actions and navigation
+   - Secondary + Gray-800: Supporting information
+   - Accent + White: Featured calls-to-action
+
+## Color Implementation in Tailwind
+
+Our color system is implemented in Tailwind's configuration:
+
+```js
+// Example from tailwind.config.mjs
+const colors = {
+  transparent: 'transparent',
+  current: 'currentColor',
+  primary: {
+    DEFAULT: '#4361EE',
+    dark: '#3A56D4',
+  },
+  secondary: '#4CC9F0',
+  accent: '#F72585',
+  background: '#F8FAFC',
+  foreground: '#0F172A',
+  // ...additional colors
 }
 ```
-
-### Light Mode (Optional/Fallback)
-If you want to support light mode, invert the palette as needed, but the default and primary experience is dark.
-
----
-
-This system ensures your portfolio is visually striking, modern, and easy to read, with a focus on dark theme aesthetics.

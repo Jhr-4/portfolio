@@ -22,6 +22,7 @@ Welcome! This guide details the technical implementation of the portfolio, align
 *   **Language:** TypeScript
 *   **Styling:** Tailwind CSS
 *   **UI Components:** shadcn/ui
+*   **Icons:** Google Material Icons, Lucide React
 *   **Linting/Formatting:** ESLint, Prettier
 
 ## Project Structure
@@ -36,10 +37,61 @@ Welcome! This guide details the technical implementation of the portfolio, align
 *   `docs/`: Design system documentation.
 *   Configuration files (`tailwind.config.mjs`, `tsconfig.json`, etc.) in the root.
 
+## Navigation Structure
+
+The site features a responsive navigation system that adapts to different screen sizes:
+
+1. **Desktop Navigation (`main-nav.tsx`):**
+   - Horizontal navigation bar with brand logo
+   - Direct links to main sections (Home, About, Projects)
+   - Server-side rendered for better performance
+
+2. **Mobile Navigation (`mobile-nav.tsx`):**
+   - Client-side component with dynamic import
+   - Uses Sheet component for slide-out menu
+   - Same routes as desktop navigation
+   - Hamburger menu trigger with Lucide React icons
+
+## Fonts and Icons
+
+1. **Fonts:**
+   - Primary font (sans): Inter from Google Fonts
+   - Secondary font (serif): Source Serif 4 from Google Fonts
+   - Set as CSS variables (`--font-sans`, `--font-serif`) and applied via Tailwind
+
+2. **Icons:**
+   - Google Material Icons (loaded via CDN in layout.tsx)
+   - Lucide React for specific UI elements
+
+## Dark Theme Implementation
+
+The site uses a dark theme by default, with all colors defined as CSS variables:
+
+```css
+:root {
+  --background: 224 71% 4%;      /* #111827 */
+  --foreground: 215 20% 96%;     /* #F3F4F6 */
+  --card: 222 47% 11%;           /* #1F2937 */
+  --card-foreground: 215 20% 96%;/* #F3F4F6 */
+  --primary: 217 91% 72%;        /* #60A5FA */
+  --primary-foreground: 221 83% 18%; /* #1E3A8A */
+  --accent: 170 70% 75%;         /* #5EEAD4 */
+  --accent-foreground: 170 80% 20%; /* #115E59 */
+  --muted: 217 33% 27%;          /* #374151 */
+  --muted-foreground: 215 14% 65%; /* #9CA3AF */
+  --border: 217 33% 27%;         /* #374151 */
+  --input: 217 33% 27%;
+  --ring: 217 91% 72%;           /* #60A5FA */
+  --destructive: 0 72% 61%;      /* #F87171 */
+  --destructive-foreground: 0 0% 100%;
+  --radius: 0.5rem;
+}
+```
+
 ## Styling Implementation
 
 1.  **Tailwind CSS:** Utility classes are used directly in components for layout, spacing, typography, etc.
-2.  **CSS Variables:** Colors and border radius are defined as CSS variables in `src/app/globals.css` under the `:root` and `.dark` selectors, following shadcn/ui conventions.
+2.  **CSS Variables:** Colors and border radius are defined as CSS variables in `src/app/globals.css` under the `:root` selector, following shadcn/ui conventions.
 3.  **`tailwind.config.mjs`:**
     *   Configured for dark mode (`darkMode: ["class"]`).
     *   Extends the theme to map CSS variables to Tailwind color names (e.g., `primary: "hsl(var(--primary))"`).
@@ -48,7 +100,7 @@ Welcome! This guide details the technical implementation of the portfolio, align
     *   Includes `tailwindcss-animate` plugin.
 4.  **`globals.css`:**
     *   Imports Tailwind base, components, and utilities.
-    *   Defines CSS variables for light and dark themes.
+    *   Defines CSS variables for the dark theme.
     *   Applies base styles (body background/text, heading fonts, link styles, etc.) using `@layer base`.
     *   Removes default margins from headings/paragraphs.
 5.  **`cn` Utility:** Used within components to merge default styles with variant or prop-based styles.
@@ -69,6 +121,31 @@ Welcome! This guide details the technical implementation of the portfolio, align
     *   Style using Tailwind utility classes.
     *   Use `cn` for conditional classes if needed.
     *   Determine if it needs to be a Client Component (`"use client"`) or Server Component (default).
+
+## Metadata and SEO
+
+The site includes comprehensive metadata for search engine optimization:
+
+```typescript
+export const metadata: Metadata = {
+  title: {
+    default: "Jay Rana - Software Developer Portfolio",
+    template: "%s | Jay Rana Portfolio",
+  },
+  description: "Showcasing my software development projects and skills. Explore my work in web development, problem-solving, and more.",
+  authors: [{ name: "Jay Rana" }],
+  keywords: ["software developer", "portfolio", "web development", "full stack", "react", "nextjs", "typescript", "projects", "Jay Rana", "personal website"]
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "hsl(var(--background))" },
+    { media: "(prefers-color-scheme: dark)", color: "hsl(var(--background))" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+};
+```
 
 ## Configuration Files
 
