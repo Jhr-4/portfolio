@@ -1,6 +1,7 @@
 // Home page: modernized single-screen design
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { Linkedin, Github, MailOpen  } from "lucide-react"
 
 export default function Home() {
   // Condensed list of key skills
@@ -27,14 +28,14 @@ export default function Home() {
               Jay Rana
             </h1>
             <p className="text-xl md:text-2xl text-foreground/90 max-w-xl">
-              Computer Science student passionate about software development, web technologies, and exploring emerging tech.
+            👋 Hey there, I'm a Computer Science student passionate about software development, web technologies, and exploring emerging tech.
             </p>
             <div className="flex items-center text-muted-foreground">
               <span className="material-icons text-sm mr-2">location_on</span>
               <span>New Jersey, USA</span>
             </div>
           </section>
-
+          <hr/>
           {/* CTA buttons */}
           <div className="flex flex-wrap gap-4 pt-4">
             <Button 
@@ -42,13 +43,7 @@ export default function Home() {
               variant="outline"
               asChild
             >
-              <a href="/Jay_Rana_Resume.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
-            </Button>
-            <Button 
-              className="font-medium bg-primary text-primary-foreground hover:bg-primary/90" 
-              asChild
-            >
-              <a href="https://linkedin.com/in/jay-rana-23441a298" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://drive.google.com/file/d/1Ae3dx-PYWJt1_luJGHlUZnlBSK0RAdI7/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Resume</a>
             </Button>
             <Button 
               className="font-medium bg-accent hover:bg-accent/90 text-accent-foreground" 
@@ -56,6 +51,17 @@ export default function Home() {
             >
               <Link href="/projects">My Projects</Link>
             </Button>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            <a href="https://www.linkedin.com/in/jay-rana-23441a298/" target="_blank">
+            <Linkedin color="#60A5FA" strokeWidth={1.25} absoluteStrokeWidth className="mr-2 hover:scale-125"/>
+            </a>
+            <a href="https://github.com/jhr-4" target="_blank">
+            <Github color="#60A5FA" strokeWidth={1.25} absoluteStrokeWidth className="mr-2 hover:scale-125"/>
+            </a>
+            <a href="mailto:jhr4@njit.edu">
+              <MailOpen color="#60A5FA" strokeWidth={1.25} absoluteStrokeWidth className="mr-2 hover:scale-125"/>
+            </a>
           </div>
         </div>
 
@@ -79,7 +85,7 @@ export default function Home() {
             
             <div className="mt-8 pt-6 border-t border-border">
               <p className="text-muted-foreground">
-                "I'm looking for opportunities to learn from professionals and make real-world impact."
+                I'm looking for opportunities to learn from professionals and make real-world impact.
               </p>
             </div>
           </div>
