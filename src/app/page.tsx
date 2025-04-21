@@ -18,7 +18,7 @@ export default function Home() {
   ]
 
   return (
-    <div className="min-h-screen bg-background flex flex-col justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-background to-primary-foreground/40 flex flex-col justify-center">
       <main className="container mx-auto px-4 py-8 flex flex-col md:flex-row items-center gap-12">
         {/* Left section with intro and CTAs */}
         <div className="flex-1 space-y-8">
@@ -53,14 +53,14 @@ export default function Home() {
             </Button>
           </div>
           <div className="flex flex-wrap gap-4">
-            <a href="https://www.linkedin.com/in/jay-rana-23441a298/" target="_blank">
-            <Linkedin color="#60A5FA" strokeWidth={1.25} absoluteStrokeWidth className="mr-2 hover:scale-125"/>
+            <a href="https://www.linkedin.com/in/jay-rana-23441a298/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+              <Linkedin className="text-primary mr-2 hover:scale-125 transition-transform" strokeWidth={1.25} absoluteStrokeWidth />
             </a>
-            <a href="https://github.com/jhr-4" target="_blank">
-            <Github color="#60A5FA" strokeWidth={1.25} absoluteStrokeWidth className="mr-2 hover:scale-125"/>
+            <a href="https://github.com/jhr-4" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+              <Github className="text-primary mr-2 hover:scale-125 transition-transform" strokeWidth={1.25} absoluteStrokeWidth />
             </a>
-            <a href="mailto:jhr4@njit.edu">
-              <MailOpen color="#60A5FA" strokeWidth={1.25} absoluteStrokeWidth className="mr-2 hover:scale-125"/>
+            <a href="mailto:jhr4@njit.edu" aria-label="Email Contact">
+              <MailOpen className="text-primary mr-2 hover:scale-125 transition-transform" strokeWidth={1.25} absoluteStrokeWidth />
             </a>
           </div>
         </div>
@@ -85,7 +85,7 @@ export default function Home() {
             
             <div className="mt-8 pt-6 border-t border-border">
               <p className="text-muted-foreground">
-                I'm looking for opportunities to learn from professionals and make real-world impact.
+                "I'm looking for opportunities to learn while making meaningful contributions."
               </p>
             </div>
           </div>

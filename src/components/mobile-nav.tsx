@@ -43,9 +43,15 @@ export function MobileNav() {
               {route.label}
             </Link>
           ))}
-            <Link href="https://drive.google.com/file/d/1Ae3dx-PYWJt1_luJGHlUZnlBSK0RAdI7/view?usp=sharing" className="block w-full rounded-lg px-4 py-3 text-base font-medium text-left hover:bg-muted focus:bg-muted transition-colors" target="_blank"
-            > Resume
-            </Link>
+          <Link 
+            href="https://drive.google.com/file/d/1Ae3dx-PYWJt1_luJGHlUZnlBSK0RAdI7/view?usp=sharing" 
+            onClick={() => setIsOpen(false)}
+            className="block w-full rounded-lg px-4 py-3 text-base font-medium text-left hover:bg-muted focus:bg-muted" 
+            target="_blank"
+            rel="noopener noreferrer"
+          > 
+            Resume
+          </Link>
         </nav>
       </SheetContent>
     </Sheet>

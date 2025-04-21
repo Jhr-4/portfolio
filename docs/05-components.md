@@ -347,19 +347,19 @@ All components use Tailwind and CSS variables for styling.
 
 ## Icon System
 
-### Google Material UI Icons
+### Icons Implementation
 
-Our site uses Google Material UI icons for consistent, recognizable UI elements across all pages.
+Our site uses a combination of Google Material Icons and Lucide React icons for consistent, recognizable UI elements across all pages.
 
 **Implementation:**
-- Integrated via the official `@mui/icons-material` package
-- Used for navigation, actions, and informational indicators
+- Google Material Icons loaded via CDN in layout.tsx
+- Lucide React icons imported directly in components
 - Icons follow the site's color system, using primary and accent colors for interactive elements
 - Default size set to match our typography scale (typically 24px for standard UI elements)
 
 **Usage Examples:**
-- Navigation: Menu, Home, Back, and Forward controls
-- Actions: Download, Share, and Save functionality
+- Navigation: Menu icon from Lucide React in the mobile menu
+- Actions: External links, code snippets, and other functional indicators
 - States: Success, Error, Warning, and Information indicators
 - Content: Document, File, and Media type indicators
 
@@ -367,14 +367,3 @@ Our site uses Google Material UI icons for consistent, recognizable UI elements 
 - All icons used in UI components include appropriate ARIA labels
 - Interactive icons have proper focus states and keyboard accessibility
 - Non-decorative icons include alternative text for screen readers
-
-### Icon Sizing Guidelines
-
-| Context | Size | Tailwind Class | Usage |
-|---------|------|---------------|-------|
-| Small UI | 16px | w-4 h-4 | Dense interfaces, supporting indicators |
-| Standard UI | 24px | w-6 h-6 | Default for most interface elements |
-| Featured | 32px | w-8 h-8 | Highlighting important functions |
-| Display | 40px+ | w-10+ h-10+ | Hero sections, feature highlights |
-
-When using icons alongside text, align to the text baseline and match the visual weight of adjacent typography.

@@ -35,7 +35,13 @@ export function MainNav() {
             {route.label}
           </Link>
         ))}
-        <Link href="https://drive.google.com/file/d/1Ae3dx-PYWJt1_luJGHlUZnlBSK0RAdI7/view?usp=sharing" className="text-base font-medium transition-colors hover:text-white" target="_blank"> Resume
+        <Link 
+          href="https://drive.google.com/file/d/1Ae3dx-PYWJt1_luJGHlUZnlBSK0RAdI7/view?usp=sharing" 
+          className="text-base font-medium transition-colors hover:text-foreground/80" 
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Resume
         </Link>
       </div>
       {/* Mobile navigation menu */}

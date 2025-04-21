@@ -65,7 +65,7 @@ The site features a responsive navigation system that adapts to different screen
 
 ## Dark Theme Implementation
 
-The site uses a dark theme by default, with all colors defined as CSS variables:
+The site uses a dark theme by default, with all colors defined as CSS variables directly on the root element:
 
 ```css
 :root {
@@ -85,8 +85,11 @@ The site uses a dark theme by default, with all colors defined as CSS variables:
   --destructive: 0 72% 61%;      /* #F87171 */
   --destructive-foreground: 0 0% 100%;
   --radius: 0.5rem;
+  --line-height-body: 1.7;
 }
 ```
+
+While `tailwind.config.mjs` is configured with `darkMode: "class"`, the project currently uses a single dark theme applied by default without theme switching functionality. All components leverage these CSS variables through Tailwind's color utilities like `bg-background`, `text-foreground`, etc.
 
 ## Styling Implementation
 

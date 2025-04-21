@@ -23,7 +23,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center pt-20 px-4 pb-16">
+    <div className="min-h-screen bg-gradient-to-br from-background to-primary-foreground/40 flex flex-col items-center pt-20 px-4 pb-16">
       <main className="max-w-4xl w-full space-y-12 py-12">
         <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary text-center mb-10">My Projects</h1>
         {/* Project cards grid */}
@@ -31,7 +31,7 @@ export default function Projects() {
           {projects.map((project, index) => (
             <Card key={index} className="flex flex-col bg-card hover:shadow-md transition-shadow duration-200">
               <CardHeader>
-                <CardTitle className="text-xl text-primary">{project.title}</CardTitle>
+                <CardTitle className="text-xl font-serif text-primary">{project.title}</CardTitle>
                 <CardDescription className="text-muted-foreground">{project.description}</CardDescription>
               </CardHeader>
               <CardContent className="mt-auto">

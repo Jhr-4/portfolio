@@ -3,22 +3,22 @@ import Link from "next/link"
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center pt-20 px-4 pb-16">
+    <div className="min-h-screen bg-gradient-to-br from-background to-primary-foreground/40 flex flex-col items-center pt-20 px-4 pb-16">
       <main className="max-w-3xl w-full space-y-8 py-12">
         <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary text-center mb-8">About Me</h1>
         
         {/* Background and profile summary */}
         <section className="space-y-6 text-lg text-foreground">
           <p>
-            Hi, I'm Jay Rana, a Computer Science student at NJIT with a passion for software development, web, and mobile technologies. I enjoy learning new tools and frameworks, and I'm always looking for ways to build and improve digital experiences.
+            Hey, I'm Jay Rana, a Computer Science undergraduate at NJIT. I have a passion for using technologies to solve problems and finding creative ways to use the technologies. I am currently interested in various fields like software development, web, and AI.
           </p>
           
           <p>
-            I'm currently exploring various technologies including AI, web development, and software engineering. I'm particularly interested in learning how these technologies can solve real-world problems and create positive change. While emerging technologies like AI fascinate me, I'm equally enthusiastic about strengthening my foundation in core programming concepts and software design principles.
+            This portfolio showcases my work and projects, and also includes a Playground page of small projects testing new technologies. Currently, I'm looking into AI technologies such as agentic coding and AI APIs while developing prompt engineering skills and learning how to integrate AI into projects.
           </p>
           
           <p>
-            I'm looking for opportunities to work with and learn from experienced professionals who can help me grow as a developer. Whether it's through internships, mentorship, or collaborative projects, I'm eager to contribute to meaningful work while expanding my technical skills. My goal is to build a versatile skill set that allows me to tackle challenging problems and make a tangible impact in whatever field I work in.
+            Currently, I'm seeking internships and opportunities that will help me grow as a developer. I would like to learn more about Computer Science and gain experience in the various fields it offers. Through the opportunities, I hope to learn from professionals while making a meaningful impact. I want to gain practical experience solving problems and expanding my technical skills across multiple areas.
           </p>
         </section>
         
