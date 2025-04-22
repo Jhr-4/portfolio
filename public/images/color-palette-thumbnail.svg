@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <!-- Background -->
+  <rect width="300" height="300" fill="#f8f9fa" />
+  
+  <!-- Color stripes -->
+  <g transform="translate(30, 50)">
+    <!-- Primary color and its variants -->
+    <rect x="0" y="0" width="48" height="200" rx="6" fill="#60A5FA" />
+    <rect x="52" y="0" width="48" height="200" rx="6" fill="#339AF0" />
+    <rect x="104" y="0" width="48" height="200" rx="6" fill="#228BE6" />
+    <rect x="156" y="0" width="48" height="200" rx="6" fill="#1C7ED6" />
+    <rect x="208" y="0" width="48" height="200" rx="6" fill="#1971C2" />
+  </g>
+  
+  <!-- Labels -->
+  <text x="150" y="280" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#333">Color Palette Generator</text>
+  
+  <!-- Color picker circle -->
+  <circle cx="220" cy="65" r="15" stroke="#333" stroke-width="2" fill="white" />
+  <circle cx="220" cy="65" r="8" fill="#60A5FA" />
+</svg>

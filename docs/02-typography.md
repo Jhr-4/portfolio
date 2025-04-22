@@ -1,5 +1,3 @@
-Okay, here is the combined content from the Brand Foundation and Typography System sections, formatted into a single markdown file.
-
 # Brand Foundation & Typography System
 
 ## I. Brand Foundation

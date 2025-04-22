@@ -258,12 +258,76 @@ import { Skeleton } from "@/components/ui/skeleton"
 - **Context Preservation:** Mimics layout, preparing the user for content (Structure).
 - **Reduced Uncertainty:** Shows progress is being made.
 
+### Digital Sandbox Components
+
+#### Creative Sandbox Visual
+
+A custom-built visual representation that unifies the playground and projects sections under the "Digital Sandbox" concept.
+
+**Features:**
+- **Grid lines:** Background grid representing development environment
+- **Gradient sand texture:** Visual metaphor for a sandbox
+- **Animated concepts:** Contextual words with staggered pulse animations (using Tailwind's animate-pulse)
+- **Code element:** Shows relevant code tag with blinking cursor animation
+
+**Animation Implementation:**
+- A simple keyframe animation for the cursor blinking effect is defined in globals.css
+- The animation creates a pulsing effect that mimics a code editor cursor
+- Staggered animations are created using animation delays applied to different elements
+
+**Psychological Benefits:**
+- **Visual Metaphor:** Reinforces the concept of exploration and experimentation (Explorer)
+- **Intellectual Structure:** Grid lines convey precision and organization (Sage)
+- **Creative Expression:** Animated elements and code snippet showcase craftsmanship (Creator)
+- **Unified Experience:** Creates visual consistency across different sections of the portfolio
+
+#### Interactive Playground Components
+
+Each playground component (CoinFlip, Animation, etc.) is implemented directly in its respective page file, adhering to a consistent structure:
+
+```tsx
+export default function PlaygroundPage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-background to-accent/20 flex flex-col items-center pt-16 px-4 pb-16">
+      <main className="max-w-5xl w-full space-y-8 py-8">
+        {/* Navigation elements */}
+        
+        {/* Project display using Card component */}
+        <div className="bg-card border border-border rounded-lg p-6 min-h-[80vh]">
+          <Card className="border-border overflow-hidden">
+            <CardHeader>
+              <CardTitle className="font-serif text-2xl">Project Title</CardTitle>
+              <CardDescription>
+                Project description text
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {/* Interactive component specific to each page */}
+            </CardContent>
+            <CardFooter className="border-t border-border">
+              {/* Project details/metadata */}
+            </CardFooter>
+          </Card>
+        </div>
+      </main>
+    </div>
+  )
+}
+```
+
+**Psychological Benefits:**
+- **Consistency:** Uniform layout creates a predictable experience (Sage).
+- **Focus on Content:** Simple container lets interactive elements shine (Explorer).
+- **Structured Information:** Clear separation of title, description, content, and metadata (Creator).
+- **Visual Coherence:** Uses the same background gradient and card structure across all playground pages.
+
 ### Implementation Guidelines
 
 #### Component Hierarchy & Usage
 1.  **Core Content Components (Card, Text elements):** Prioritize clarity, readability, and structure. Use ample whitespace.
 2.  **Interactive Components (Button, Dropdown, Input):** Focus on precision, clear affordances, and reliable feedback. Use `primary` color for key actions.
 3.  **Organizational Components (Tabs, Dialog, Sheet):** Ensure logical flow, clear segmentation, and focus management.
+4.  **Digital Sandbox Components:** Create visual unity between playground and projects sections with consistent visual elements.
 
 ### Psychological Testing Protocol (Sage/Explorer/Creator Focus)
 
@@ -318,8 +382,26 @@ This document outlines the core reusable components used in the portfolio.
 
 6.  **`DropdownMenu` (`@/components/ui/dropdown-menu.tsx`)**
     *   **Description:** Component from shadcn/ui for displaying menus.
-    *   **Usage:** *Currently not used* (Removed from `MainNav` in previous steps). Available if needed.
+    *   **Usage:** *Currently not used* but available if needed for future implementation.
     *   **Styling:** Defined by shadcn/ui, using CSS variables.
+
+7.  **Digital Sandbox Visual (`included in playground/page.tsx` and `projects/page.tsx`)**
+    *   **Description:** Custom-built visual component that represents the digital sandbox concept.
+    *   **Usage:** Used on both playground and projects pages to create visual cohesion.
+    *   **Styling:** Uses grid, gradients, and animations to create an engaging visual element.
+    *   **Features:** Animated typography, grid lines, code element with blinking cursor.
+
+8.  **Playground Project Components (`/src/app/playground/*/page.tsx`)**
+    *   **Description:** Self-contained interactive component implementations directly in their respective page files.
+    *   **Structure:** Client Components (`"use client"`)
+    *   **Dependencies:** Various shadcn/ui components and React hooks.
+    *   **Styling:** Consistent layout and styling across all playground project pages.
+
+9.  **`ProjectCard` (Function component in `playground/page.tsx`)**
+    *   **Description:** Card component for displaying individual playground projects.
+    *   **Usage:** Rendered for each project in the playgroundProjects array.
+    *   **Dependencies:** shadcn/ui Card components, Link, Button.
+    *   **Styling:** Uses Card with consistent category styling, thumbnails, and action buttons.
 
 ## Utility Components/Functions
 
@@ -327,23 +409,20 @@ This document outlines the core reusable components used in the portfolio.
     *   **Description:** Utility function from shadcn/ui (combines `clsx` and `tailwind-merge`) for conditionally applying Tailwind classes.
     *   **Usage:** Used throughout components to merge base styles with variant/prop styles.
 
+*   **Additional utilities in `@/lib/utils.ts`:**
+    *   `formatDate`: For date formatting using Intl.DateTimeFormat
+    *   `debounce`: Function debouncer for performance optimization
+    *   `generateId`: Creates random IDs for elements that need unique identifiers
+    *   `getNestedValue`: Safe object property accessor for deeply nested data
+
 ## Implementation Notes
 
-*   Components primarily rely on Tailwind CSS utility classes and CSS variables defined in `globals.css` for styling.
-*   Shadcn/ui components provide the base structure and accessibility.
-*   Custom components (`MainNav`, `MobileNav`) integrate these UI primitives.
+*   All interactive playground projects have been moved from separate component files into their respective page files for a more self-contained architecture.
+*   Both the playground and projects pages share a consistent visual language with the new Digital Sandbox elements.
+*   Components follow the Sage/Explorer/Creator archetype with emphasis on clarity, precision, and thoughtful construction.
+*   Custom animations (like `animate-blink`) are defined in `globals.css` and used for interactive elements.
 
 # Components
-
-- **MainNav:** Top navigation bar (brand/logo, links, mobile menu).
-- **MobileNav:** Slide-out mobile menu (Sheet component).
-- **Button:** For actions/CTAs (shadcn/ui).
-- **Card:** For project display (shadcn/ui).
-- **Sheet:** For mobile nav (shadcn/ui).
-- **DropdownMenu:** Not currently used.
-- **cn (utils):** Utility for conditional classNames.
-
-All components use Tailwind and CSS variables for styling.
 
 ## Icon System
 

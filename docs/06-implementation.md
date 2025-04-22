@@ -32,10 +32,94 @@ Welcome! This guide details the technical implementation of the portfolio, align
     *   `src/components/ui/`: Unstyled components from shadcn/ui (Button, Card, etc.).
     *   `src/components/main-nav.tsx`: Main navigation (Server Component).
     *   `src/components/mobile-nav.tsx`: Mobile navigation (Client Component).
-*   `src/lib/`: Utility functions (e.g., `cn` from shadcn/ui).
+    *   `src/components/playground/`: Contains playground project registration and format definitions.
+*   `src/lib/`: Utility functions (e.g., `cn` from shadcn/ui, as well as formatDate, debounce, etc. for future use).
 *   `public/`: Static assets (images, icons).
 *   `docs/`: Design system documentation.
 *   Configuration files (`tailwind.config.mjs`, `tsconfig.json`, etc.) in the root.
+
+## Digital Sandbox Implementation
+
+The "Digital Sandbox" concept unifies both the Interactive Playground and Portfolio Collection sections of the site. This concept is implemented through several key elements:
+
+### Unified Visual Design
+
+Both the playground and projects pages share:
+
+1. **Common Title:** "Welcome to my Digital Sandbox" appears at the top of both pages
+2. **Tabbed Navigation:** A tab-like toggle component that allows users to switch between Interactive Playground and Portfolio Collection
+3. **Shared Visual Language:** Both pages implement the same visual sandbox metaphor with grid lines, gradients, and animated elements
+
+### Creative Sandbox Visual Component
+
+This custom-built visual element was added to both pages to reinforce the sandbox concept:
+
+**Key Features:**
+- Grid lines representing a development environment
+- Gradient "sand" texture at the bottom
+- Animated concept words with contextually relevant terms (Explore/Build/Learn for playground, Design/Develop/Deploy for projects)
+- Code element with a tag and blinking cursor
+
+### Custom Animations
+
+Simple animations are defined in globals.css to enhance the visual experience:
+- A blinking cursor effect that mimics code editors
+- Pulse animations using Tailwind's built-in utilities
+- Animation delays for staggered effects
+
+### Implementation in Page Structure
+
+Both pages follow a similar structure:
+
+1. Main title ("Welcome to my Digital Sandbox")
+2. Toggle navigation between sections
+3. Brief descriptive text
+4. Creative sandbox visual
+5. Content grid (project cards)
+
+This creates a cohesive experience while still differentiating between experimental projects and portfolio work.
+
+## Playground and Projects Section
+
+The portfolio includes a unified "Digital Sandbox" concept that encompasses both the Interactive Playground projects and the Portfolio Collection. These sections share a consistent visual language but represent different aspects of the work:
+
+### Shared Design Elements
+
+1. **Page Title:** Both pages use "Welcome to my Digital Sandbox" as the title
+2. **Toggle Navigation:** Users can switch between the Interactive Playground and Portfolio Collection
+3. **Creative Sandbox Visual:** Both pages incorporate a creative visual element with:
+   - Grid lines in the background representing a development environment
+   - A gradient "sand" texture at the bottom 
+   - Animated concept words with staggered pulse animations
+   - A code-inspired element with a blinking cursor animation
+
+### Interactive Playground Section
+
+- **Purpose:** Showcases small, experimental interactive projects
+- **Implementation:** Each playground project is fully contained within its own page
+- **Project Card Grid:** Displays all available interactive projects with thumbnails
+- **Launch Action:** Users can launch each interactive project in its own page
+
+### Portfolio Collection Section
+
+- **Purpose:** Showcases more polished external projects and collaborations
+- **Implementation:** Uses a similar card-based grid layout
+- **External Links:** Cards link to external project deployments when available
+
+### Custom Animations
+
+The project includes custom animations for enhanced visual interest:
+
+```css
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.animate-blink {
+  animation: blink 1.2s infinite steps(1);
+}
+```
 
 ## Navigation Structure
 
@@ -51,6 +135,10 @@ The site features a responsive navigation system that adapts to different screen
    - Uses Sheet component for slide-out menu
    - Same routes as desktop navigation
    - Hamburger menu trigger with Lucide React icons
+
+3. **Section Toggle:**
+   - Within the Projects/Playground pages, users can toggle between sections
+   - Visual indicators show the current active section
 
 ## Fonts and Icons
 

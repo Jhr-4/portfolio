@@ -58,3 +58,13 @@
     @apply p-4 rounded-md bg-muted overflow-x-auto;
   }
 }
+
+/* Custom animations */
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.animate-blink {
+  animation: blink 1.2s infinite steps(1);
+}
