@@ -59,6 +59,20 @@
   }
 }
 
+/* Add loading spinner animation */
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+.loading-spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 3px solid hsl(var(--muted)/0.2);
+  border-top-color: hsl(var(--primary));
+  animation: spinner 0.8s linear infinite;
+}
+
 /* Custom animations */
 @keyframes blink {
   0%, 100% { opacity: 0; }
@@ -68,3 +82,4 @@
 .animate-blink {
   animation: blink 1.2s infinite steps(1);
 }
+

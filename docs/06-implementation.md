@@ -99,6 +99,9 @@ The portfolio includes a unified "Digital Sandbox" concept that encompasses both
 - **Implementation:** Each playground project is fully contained within its own page
 - **Project Card Grid:** Displays all available interactive projects with thumbnails
 - **Launch Action:** Users can launch each interactive project in its own page
+- **Featured Projects:** 
+  - Coin Flip: A simple interactive game demonstrating state management
+  - D3 Data Visualizations: Advanced data visualization exploring labor productivity trends
 
 ### Portfolio Collection Section
 
@@ -119,7 +122,115 @@ The project includes custom animations for enhanced visual interest:
 .animate-blink {
   animation: blink 1.2s infinite steps(1);
 }
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+.loading-spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 3px solid hsl(var(--muted)/0.2);
+  border-top-color: hsl(var(--primary));
+  animation: spinner 0.8s linear infinite;
+}
 ```
+
+The spinner animation is used for loading states in data visualizations, providing a consistent user experience while data is being fetched.
+
+## D3.js Data Visualization Implementation
+
+The portfolio includes an advanced data visualization project exploring the relationship between productivity growth and worker compensation from 1979-2024. This section details the technical implementation of this feature.
+
+### Architecture Overview
+
+1. **Integration Approach:** 
+   - The visualization uses D3.js for direct SVG manipulation within React components
+   - React manages component lifecycle while D3 handles the rendering of complex visualizations
+   - TypeScript interfaces ensure type safety throughout the visualization components
+
+2. **Chart Components:**
+   - `LinePlot.tsx`: Renders time-series data with interactive hover effects
+   - `BarChart.tsx`: Creates responsive bar charts with tooltip interactions
+   - `PieChart.tsx`: Generates pie/donut charts with custom legends and accessible colors
+   - All components share a consistent API pattern for reusability
+
+3. **Data Flow:**
+   - CSV data stored in `/public/csv/` directory
+   - Components handle data fetching, parsing and validation internally
+   - Error states and loading states managed within components
+   - Data transformations performed within each component as needed
+
+### Key Technical Features
+
+1. **Responsive Design:**
+   - Charts resize dynamically using ResizeObserver
+   - Different layouts and optimizations for mobile vs. desktop
+   - Consistent minimum dimensions to preserve readability
+   - Horizontally scrollable on small screens when needed
+
+2. **Accessibility:**
+   - Screen reader support with ARIA labels and sr-only text
+   - Keyboard navigation for interactive elements
+   - Color contrast compliance with theme variables
+   - Focus states for interactive elements
+
+3. **Performance Optimizations:**
+   - Efficient data handling with proper cleanup
+   - Conditional rendering to prevent unnecessary redraws
+   - SVG optimizations for smoother interactions
+   - Debounced resize handling
+
+4. **User Experience:**
+   - Consistent loading states with custom spinner animation
+   - Interactive tooltips with position awareness (stays within viewport)
+   - Animated transitions between states
+   - Consistent theme integration using CSS variables
+
+### Styling Integration
+
+The D3 visualizations are integrated with the design system:
+
+1. **Color System Integration:**
+   - Primary color used for main data series
+   - Accent color for comparison data series
+   - Muted colors for grid lines and secondary elements
+   - Background and card colors for containers
+
+2. **Typography Integration:**
+   - Serif fonts for titles and headings
+   - Sans-serif for data labels and explanatory text
+   - Responsive font sizing based on viewport and chart dimensions
+
+3. **Layout Integration:**
+   - Charts follow the same spacing system as other components
+   - Consistent padding and margins using the design system spacing scale
+   - Proper card and border styling matching other components
+
+### Interactive Narrative Structure
+
+The D3 visualization project is structured as a narrative data story:
+
+1. **Section Navigation:**
+   - Tab-like navigation between three data story sections
+   - Each section builds on insights from previous sections
+   - Interactive links embedded in the narrative for progressive disclosure
+
+2. **Content Sections:**
+   - "Analyzing the Trend": Compares productivity growth with earnings/compensation
+   - "Where Profits Go?": Examines corporate profits and productivity factors
+   - "Key Takeaways": Summarizes findings with essential statistics
+
+3. **Contextual Information:**
+   - Each visualization is accompanied by explanatory text
+   - Key statistics highlighted with strong tags
+   - Data sources properly attributed
+
+4. **User Controls:**
+   - Interactive hover states for data exploration
+   - Section navigation with smooth scrolling
+   - Responsive controls that work across devices
 
 ## Navigation Structure
 
@@ -492,7 +603,9 @@ Define the core color palette using HSL values in `globals.css` for light and da
 Refer to `docs/05-components.md` for detailed psychological principles. Apply styles consistently.
 
 #### Example: Button (`src/components/ui/button.tsx`)
+
 Ensure variants use the defined palette:
+
 ```typescript
 // Simplified example within buttonVariants cva
 variants: {
@@ -515,7 +628,9 @@ variants: {
 ```
 
 #### Example: Card (`src/components/ui/card.tsx`)
+
 Ensure card uses theme variables and appropriate spacing/rounding:
+
 ```tsx
 // Simplified example within Card component
 <div
@@ -528,7 +643,9 @@ Ensure card uses theme variables and appropriate spacing/rounding:
 ```
 
 #### Example: Main Navigation (`src/components/main-nav.tsx`)
+
 Apply fonts, colors, and spacing.
+
 ```tsx
 // Simplified example
 <nav className="flex items-center justify-between p-4 md:px-8 border-b">

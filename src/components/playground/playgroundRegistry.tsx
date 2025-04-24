@@ -21,7 +21,7 @@ export const playgroundProjects: PlaygroundProject[] = [
     title: "Labor Productivity & Earnings",
     description: "Interactive data visualizations showing trends in labor productivity and earnings",
     category: "Data Visualization",
-    thumbnailSrc: "/images/color-palette-thumbnail.svg", // Reusing existing SVG for now
+    thumbnailSrc: "/images/productivity-trend.svg", // Reusing existing SVG for now
     thumbnailAlt: "D3.js data visualization chart",
     thumbnailType: "svg",
     techDescription: "D3.js, SVG Graphics",

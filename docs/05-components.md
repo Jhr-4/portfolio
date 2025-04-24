@@ -446,3 +446,84 @@ Our site uses a combination of Google Material Icons and Lucide React icons for 
 - All icons used in UI components include appropriate ARIA labels
 - Interactive icons have proper focus states and keyboard accessibility
 - Non-decorative icons include alternative text for screen readers
+
+## Data Visualization Components
+
+### D3.js Chart Components
+
+The portfolio includes a set of reusable, accessible data visualization components built with D3.js. Each component maintains the Sage/Explorer/Creator brand archetype while providing interactive data exploration capabilities.
+
+#### LinePlot Component
+
+A time-series visualization component that renders line charts with interactive hover states.
+
+**Features:**
+- Dynamic data loading from CSV sources
+- Interactive tooltips with data point values
+- Responsive design with ResizeObserver
+- Built-in error and loading states
+- Accessible hover announcements for screen readers
+- Theme-consistent styling using CSS variables
+
+**Psychological Benefits:**
+- **Data-Driven Insight:** Demonstrates analytical thinking and precision (Sage)
+- **Visual Clarity:** Presents complex data relationships in an intuitive format
+- **Interactive Exploration:** Encourages deeper investigation of patterns (Explorer)
+
+#### BarChart Component
+
+A bar chart visualization component for comparative data display with responsive layout.
+
+**Features:**
+- Horizontally scrollable on small screens
+- Interactive tooltips with bar data
+- Animated transitions between states
+- Custom formatting options for different data types
+- Theme-consistent color system
+
+**Psychological Benefits:**
+- **Comparative Analysis:** Shows ability to evaluate relationships between data points (Sage)
+- **Clean Information Hierarchy:** Organizes data in a structured, understandable format
+- **Visual Impact:** Creates memorable representations of key statistics (Creator)
+
+#### PieChart Component
+
+A pie/donut chart component for showing proportional relationships with custom legends.
+
+**Features:**
+- Interactive slice highlighting on hover
+- Custom legend generation
+- Dynamic percentage calculation
+- Accessible color schemes with good contrast
+- Screen reader announcements for selected segments
+
+**Psychological Benefits:**
+- **Holistic Understanding:** Shows relationships between parts and whole (Sage)
+- **Intuitive Patterns:** Demonstrates information organization skills (Explorer)
+- **Visual Storytelling:** Transforms raw numbers into meaningful narratives (Creator)
+
+#### Data Visualization Psychology
+
+**Integrated Data Narrative:**
+- The D3 visualization project structures data as a coherent narrative
+- Multiple charts work together to tell a progressive story
+- Text context bridges visualizations to guide understanding
+- Interactive elements invite exploration of the dataset
+
+**Technical Excellence (Sage):**
+- Clean, reusable component architecture
+- Strong TypeScript typing for maintainability
+- Efficient data processing and rendering
+- Responsive across device sizes
+
+**Visual Communication (Creator):**
+- Consistent color language (primary for main series, accent for comparison)
+- Typography hierarchy that guides the eye
+- Proportional spacing that creates visual harmony
+- Interactive elements that reveal deeper insights
+
+**Data Exploration (Explorer):**
+- Interactive controls for navigating between related visualizations
+- Hover states that reveal precise data points
+- Progressive disclosure of complexity
+- Context-providing annotations and guides
