@@ -1,0 +1,17 @@
+{
+  "name": "rag-docs-gen",
+  "version": "1.0.0",
+  "description": "RAG system embedding generation and management",
+  "main": "scripts/manage-embeddings.js",
+  "scripts": {
+    "status": "node scripts/manage-embeddings.js status",
+    "init": "node scripts/manage-embeddings.js init",
+    "delete": "node scripts/manage-embeddings.js delete",
+    "generate": "node scripts/manage-embeddings.js generate"
+  },
+  "dependencies": {
+    "@pinecone-database/pinecone": "^2.0.0",
+    "dotenv": "^16.3.1",
+    "langchain": "^0.1.15"
+  }
+}

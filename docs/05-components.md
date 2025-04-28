@@ -527,3 +527,46 @@ A pie/donut chart component for showing proportional relationships with custom l
 - Hover states that reveal precise data points
 - Progressive disclosure of complexity
 - Context-providing annotations and guides
+
+# Project-Specific Components
+
+The portfolio includes several specialized components that are implemented directly in their respective playground project files for better encapsulation and maintainability. These components follow the same design system principles while providing specific functionality for each interactive project.
+
+## Project Components Reference
+
+| Component | Description | Implementation Location |
+|-----------|-------------|------------------------|
+| **RAG Chat Components** | Retrieval-augmented chat interface | `src/app/playground/rag-chat/page.tsx` |
+| **EmbeddingNotice** | Status component for RAG system | `src/app/playground/rag-chat/EmbeddingNotice.tsx` |
+| **D3 Line Chart** | Time-series data visualization | `src/app/playground/d3-visualizations/page.tsx` |
+| **D3 Bar Chart** | Comparative data visualization | `src/app/playground/d3-visualizations/page.tsx` |
+| **D3 Pie Chart** | Proportional data visualization | `src/app/playground/d3-visualizations/page.tsx` |
+| **Coin Flip Game** | Interactive state demo | `src/app/playground/coin-flip/page.tsx` |
+| **Animation Demo** | CSS animation examples | `src/app/playground/animation/page.tsx` |
+
+For detailed documentation on these specialized component implementations:
+- See `docs/07-d3vis-implementation.md` for D3.js visualization components
+- See `docs/08-rag-implementation.md` for RAG chat system components
+
+## Icon System
+
+### Icons Implementation
+
+Our site uses a combination of Google Material Icons and Lucide React icons for consistent, recognizable UI elements across all pages.
+
+**Implementation:**
+- Google Material Icons loaded via CDN in layout.tsx
+- Lucide React icons imported directly in components
+- Icons follow the site's color system, using primary and accent colors for interactive elements
+- Default size set to match our typography scale (typically 24px for standard UI elements)
+
+**Usage Examples:**
+- Navigation: Menu icon from Lucide React in the mobile menu
+- Actions: External links, code snippets, and other functional indicators
+- States: Success, Error, Warning, and Information indicators
+- Content: Document, File, and Media type indicators
+
+**Accessibility:**
+- All icons used in UI components include appropriate ARIA labels
+- Interactive icons have proper focus states and keyboard accessibility
+- Non-decorative icons include alternative text for screen readers

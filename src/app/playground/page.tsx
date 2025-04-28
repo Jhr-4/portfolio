@@ -5,8 +5,8 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { playgroundProjects, getProjectById } from "@/components/playground/playgroundRegistry"
-import type { PlaygroundProject } from "@/components/playground/playgroundFormat"
+import { playgroundProjects, getProjectById } from "@/components/setup-playground/playgroundRegistry"
+import type { PlaygroundProject } from "@/components/setup-playground/playgroundFormat"
 
 export default function Playground() {
   const router = useRouter();

@@ -32,7 +32,7 @@ Welcome! This guide details the technical implementation of the portfolio, align
     *   `src/components/ui/`: Unstyled components from shadcn/ui (Button, Card, etc.).
     *   `src/components/main-nav.tsx`: Main navigation (Server Component).
     *   `src/components/mobile-nav.tsx`: Mobile navigation (Client Component).
-    *   `src/components/playground/`: Contains playground project registration and format definitions.
+    *   `src/components/setup-playground/`: Contains playground project registration and format definitions.
 *   `src/lib/`: Utility functions (e.g., `cn` from shadcn/ui, as well as formatDate, debounce, etc. for future use).
 *   `public/`: Static assets (images, icons).
 *   `docs/`: Design system documentation.
@@ -139,98 +139,17 @@ The project includes custom animations for enhanced visual interest:
 
 The spinner animation is used for loading states in data visualizations, providing a consistent user experience while data is being fetched.
 
-## D3.js Data Visualization Implementation
+## D3.js Data Visualization and RAG Chat Implementation
 
-The portfolio includes an advanced data visualization project exploring the relationship between productivity growth and worker compensation from 1979-2024. This section details the technical implementation of this feature.
+The portfolio includes two advanced playground projects:
 
-### Architecture Overview
+1. **D3 Data Visualizations**: An interactive data visualization exploring productivity and compensation trends
+2. **RAG Chat Application**: A retrieval-augmented generation chat system with document context awareness
 
-1. **Integration Approach:** 
-   - The visualization uses D3.js for direct SVG manipulation within React components
-   - React manages component lifecycle while D3 handles the rendering of complex visualizations
-   - TypeScript interfaces ensure type safety throughout the visualization components
+These features are implemented as self-contained playground applications with their components defined directly in their respective page files for simplicity and maintainability. For detailed documentation on their implementation:
 
-2. **Chart Components:**
-   - `LinePlot.tsx`: Renders time-series data with interactive hover effects
-   - `BarChart.tsx`: Creates responsive bar charts with tooltip interactions
-   - `PieChart.tsx`: Generates pie/donut charts with custom legends and accessible colors
-   - All components share a consistent API pattern for reusability
-
-3. **Data Flow:**
-   - CSV data stored in `/public/csv/` directory
-   - Components handle data fetching, parsing and validation internally
-   - Error states and loading states managed within components
-   - Data transformations performed within each component as needed
-
-### Key Technical Features
-
-1. **Responsive Design:**
-   - Charts resize dynamically using ResizeObserver
-   - Different layouts and optimizations for mobile vs. desktop
-   - Consistent minimum dimensions to preserve readability
-   - Horizontally scrollable on small screens when needed
-
-2. **Accessibility:**
-   - Screen reader support with ARIA labels and sr-only text
-   - Keyboard navigation for interactive elements
-   - Color contrast compliance with theme variables
-   - Focus states for interactive elements
-
-3. **Performance Optimizations:**
-   - Efficient data handling with proper cleanup
-   - Conditional rendering to prevent unnecessary redraws
-   - SVG optimizations for smoother interactions
-   - Debounced resize handling
-
-4. **User Experience:**
-   - Consistent loading states with custom spinner animation
-   - Interactive tooltips with position awareness (stays within viewport)
-   - Animated transitions between states
-   - Consistent theme integration using CSS variables
-
-### Styling Integration
-
-The D3 visualizations are integrated with the design system:
-
-1. **Color System Integration:**
-   - Primary color used for main data series
-   - Accent color for comparison data series
-   - Muted colors for grid lines and secondary elements
-   - Background and card colors for containers
-
-2. **Typography Integration:**
-   - Serif fonts for titles and headings
-   - Sans-serif for data labels and explanatory text
-   - Responsive font sizing based on viewport and chart dimensions
-
-3. **Layout Integration:**
-   - Charts follow the same spacing system as other components
-   - Consistent padding and margins using the design system spacing scale
-   - Proper card and border styling matching other components
-
-### Interactive Narrative Structure
-
-The D3 visualization project is structured as a narrative data story:
-
-1. **Section Navigation:**
-   - Tab-like navigation between three data story sections
-   - Each section builds on insights from previous sections
-   - Interactive links embedded in the narrative for progressive disclosure
-
-2. **Content Sections:**
-   - "Analyzing the Trend": Compares productivity growth with earnings/compensation
-   - "Where Profits Go?": Examines corporate profits and productivity factors
-   - "Key Takeaways": Summarizes findings with essential statistics
-
-3. **Contextual Information:**
-   - Each visualization is accompanied by explanatory text
-   - Key statistics highlighted with strong tags
-   - Data sources properly attributed
-
-4. **User Controls:**
-   - Interactive hover states for data exploration
-   - Section navigation with smooth scrolling
-   - Responsive controls that work across devices
+- See `docs/07-d3vis-implementation.md` for the D3 visualization implementation details
+- See `docs/08-rag-implementation.md` for the RAG chat system implementation details
 
 ## Navigation Structure
 
