@@ -83,3 +83,35 @@
   animation: blink 1.2s infinite steps(1);
 }
 
+/* Blob animation for moving orbs */
+@keyframes float {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(20px, -20px) scale(1.05);
+  }
+  66% {
+    transform: translate(-15px, 15px) scale(0.95);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-float {
+  animation: float 20s infinite alternate ease-in-out;
+}
+
+.animate-delay-2000 {
+  animation-delay: -2s;
+}
+
+.animate-delay-4000 {
+  animation-delay: -4s;
+}
+
+.animate-delay-6000 {
+  animation-delay: -6s;
+}
+

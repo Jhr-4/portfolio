@@ -45,73 +45,62 @@ The "Digital Sandbox" concept unifies both the Interactive Playground and Portfo
 ### Unified Visual Design
 
 Both the playground and projects pages share:
-
-1. **Common Title:** "Welcome to my Digital Sandbox" appears at the top of both pages
-2. **Tabbed Navigation:** A tab-like toggle component that allows users to switch between Interactive Playground and Portfolio Collection
-3. **Shared Visual Language:** Both pages implement the same visual sandbox metaphor with grid lines, gradients, and animated elements
+- **Common Title:** "Welcome to my Digital Sandbox"
+- **Tabbed Navigation:** Toggle between Interactive Playground and Portfolio Collection
+- **Shared Visual Language:** Grid lines, gradients, and animated elements
 
 ### Creative Sandbox Visual Component
 
-This custom-built visual element was added to both pages to reinforce the sandbox concept:
-
-**Key Features:**
+Custom-built visual element reinforcing the sandbox concept:
 - Grid lines representing a development environment
 - Gradient "sand" texture at the bottom
-- Animated concept words with contextually relevant terms (Explore/Build/Learn for playground, Design/Develop/Deploy for projects)
+- Animated concept words with contextually relevant terms
 - Code element with a tag and blinking cursor
+
+### Floating Orb Animations
+
+Semi-transparent colored orbs add visual depth and interest across pages:
+- Implemented with blurred, colored divs using mix-blend-mode and opacity
+- Strategic positioning in background with z-index control
+- Subtle floating animation with staggered timing for natural movement
+- Used throughout the site (homepage, playground, projects)
 
 ### Custom Animations
 
-Simple animations are defined in globals.css to enhance the visual experience:
-- A blinking cursor effect that mimics code editors
+Simple animations defined in globals.css:
+- Blinking cursor effect mimicking code editors
 - Pulse animations using Tailwind's built-in utilities
 - Animation delays for staggered effects
 
 ### Implementation in Page Structure
 
 Both pages follow a similar structure:
-
 1. Main title ("Welcome to my Digital Sandbox")
 2. Toggle navigation between sections
 3. Brief descriptive text
 4. Creative sandbox visual
 5. Content grid (project cards)
 
-This creates a cohesive experience while still differentiating between experimental projects and portfolio work.
-
 ## Playground and Projects Section
-
-The portfolio includes a unified "Digital Sandbox" concept that encompasses both the Interactive Playground projects and the Portfolio Collection. These sections share a consistent visual language but represent different aspects of the work:
 
 ### Shared Design Elements
 
-1. **Page Title:** Both pages use "Welcome to my Digital Sandbox" as the title
-2. **Toggle Navigation:** Users can switch between the Interactive Playground and Portfolio Collection
-3. **Creative Sandbox Visual:** Both pages incorporate a creative visual element with:
-   - Grid lines in the background representing a development environment
-   - A gradient "sand" texture at the bottom 
-   - Animated concept words with staggered pulse animations
-   - A code-inspired element with a blinking cursor animation
+Both pages incorporate:
+- Common page title and toggle navigation
+- Creative sandbox visual with grid lines, gradient texture, animated concept words, and code element
 
 ### Interactive Playground Section
 
 - **Purpose:** Showcases small, experimental interactive projects
-- **Implementation:** Each playground project is fully contained within its own page
-- **Project Card Grid:** Displays all available interactive projects with thumbnails
-- **Launch Action:** Users can launch each interactive project in its own page
-- **Featured Projects:** 
-  - Coin Flip: A simple interactive game demonstrating state management
-  - D3 Data Visualizations: Advanced data visualization exploring labor productivity trends
+- **Implementation:** Self-contained projects with individual pages
+- **Featured Projects:** Coin Flip (state management), D3 Data Visualizations (productivity trends)
 
 ### Portfolio Collection Section
 
-- **Purpose:** Showcases more polished external projects and collaborations
-- **Implementation:** Uses a similar card-based grid layout
-- **External Links:** Cards link to external project deployments when available
+- **Purpose:** Showcases polished external projects
+- **Implementation:** Card-based grid with external links to project deployments
 
 ### Custom Animations
-
-The project includes custom animations for enhanced visual interest:
 
 ```css
 @keyframes blink {
@@ -137,64 +126,55 @@ The project includes custom animations for enhanced visual interest:
 }
 ```
 
-The spinner animation is used for loading states in data visualizations, providing a consistent user experience while data is being fetched.
-
 ## D3.js Data Visualization and RAG Chat Implementation
 
 The portfolio includes two advanced playground projects:
+1. **D3 Data Visualizations**: Interactive visualization of productivity/compensation trends
+2. **RAG Chat Application**: Retrieval-augmented generation chat with document context
 
-1. **D3 Data Visualizations**: An interactive data visualization exploring productivity and compensation trends
-2. **RAG Chat Application**: A retrieval-augmented generation chat system with document context awareness
-
-These features are implemented as self-contained playground applications with their components defined directly in their respective page files for simplicity and maintainability. For detailed documentation on their implementation:
-
-- See `docs/07-d3vis-implementation.md` for the D3 visualization implementation details
-- See `docs/08-rag-implementation.md` for the RAG chat system implementation details
+These are implemented as self-contained applications with detailed documentation:
+- See `docs/07-d3vis-implementation.md` for D3 visualization details
+- See `docs/08-rag-implementation.md` for RAG chat system details
 
 ## Navigation Structure
 
-The site features a responsive navigation system that adapts to different screen sizes:
-
 1. **Desktop Navigation (`main-nav.tsx`):**
-   - Horizontal navigation bar with brand logo
-   - Direct links to main sections (Home, About, Projects)
+   - Horizontal navbar with brand logo and direct section links
    - Server-side rendered for better performance
 
 2. **Mobile Navigation (`mobile-nav.tsx`):**
-   - Client-side component with dynamic import
-   - Uses Sheet component for slide-out menu
-   - Same routes as desktop navigation
-   - Hamburger menu trigger with Lucide React icons
+   - Client-side component with slide-out menu
+   - Hamburger menu trigger using Lucide React icons
 
 3. **Section Toggle:**
-   - Within the Projects/Playground pages, users can toggle between sections
-   - Visual indicators show the current active section
+   - Toggle between Projects/Playground sections with visual indicators
 
 ## Fonts and Icons
 
-1. **Fonts:**
-   - Primary font (sans): Inter from Google Fonts
-   - Secondary font (serif): Source Serif 4 from Google Fonts
-   - Set as CSS variables (`--font-sans`, `--font-serif`) and applied via Tailwind
-
-2. **Icons:**
-   - Google Material Icons (loaded via CDN in layout.tsx)
-   - Lucide React for specific UI elements
+- **Fonts:** Inter (sans) and Source Serif 4 (serif) from Google Fonts
+- **Icons:** Google Material Icons (CDN) and Lucide React components
 
 ## Dark Theme Implementation
 
-The site uses a dark theme by default, with all colors defined as CSS variables directly on the root element:
+The site uses a dark theme by default with HSL color variables:
 
 ```css
 :root {
   --background: 224 71% 4%;      /* #111827 */
   --foreground: 215 20% 96%;     /* #F3F4F6 */
-  --card: 222 47% 11%;           /* #1F2937 */
-  --card-foreground: 215 20% 96%;/* #F3F4F6 */
-  --primary: 217 91% 72%;        /* #60A5FA */
-  --primary-foreground: 221 83% 18%; /* #1E3A8A */
-  --accent: 170 70% 75%;         /* #5EEAD4 */
-  --accent-foreground: 170 80% 20%; /* #115E59 */
+  --card: 222 47% 11%;           /* #1F293--card-foreground: 215 20% 96%;/* #F3F4F6 */
+7 */
+--card-foreground: 215 20% 96%;/* #F3F4F6 */
+  --primary: 217 91% 60A--primary-foreground: 221 83% 18%;;   #1E3A8A */
+5FA  60A--primary-foreground: 221 83% 18%; /* #1E3A8A */
+5FA #60A--primary-foreground: 221 83% 18%; /* #1E3A8A */
+5FA */
+--primary-foreground: 221 83% 18%; /* #1E3A8A */
+  --accent: 170 75--accent-foreground: 170 80% 20%;%;  #115E59 */
+EEAD4/*  5--accent-foreground: 170 80% 20%; /* #115E59 */
+EEAD4/* #5--accent-foreground: 170 80% 20%; /* #115E59 */
+EEAD4 */
+--accent-foreground: 170 80% 20%; /* #115E59 */
   --muted: 217 33% 27%;          /* #374151 */
   --muted-foreground: 215 14% 65%; /* #9CA3AF */
   --border: 217 33% 27%;         /* #374151 */
@@ -207,45 +187,27 @@ The site uses a dark theme by default, with all colors defined as CSS variables 
 }
 ```
 
-While `tailwind.config.mjs` is configured with `darkMode: "class"`, the project currently uses a single dark theme applied by default without theme switching functionality. All components leverage these CSS variables through Tailwind's color utilities like `bg-background`, `text-foreground`, etc.
-
 ## Styling Implementation
 
-1.  **Tailwind CSS:** Utility classes are used directly in components for layout, spacing, typography, etc.
-2.  **CSS Variables:** Colors and border radius are defined as CSS variables in `src/app/globals.css` under the `:root` selector, following shadcn/ui conventions.
-3.  **`tailwind.config.mjs`:**
-    *   Configured for dark mode (`darkMode: ["class"]`).
-    *   Extends the theme to map CSS variables to Tailwind color names (e.g., `primary: "hsl(var(--primary))"`).
-    *   Extends the theme for custom spacing scale.
-    *   Configures fonts (`fontFamily`).
-    *   Includes `tailwindcss-animate` plugin.
-4.  **`globals.css`:**
-    *   Imports Tailwind base, components, and utilities.
-    *   Defines CSS variables for the dark theme.
-    *   Applies base styles (body background/text, heading fonts, link styles, etc.) using `@layer base`.
-    *   Removes default margins from headings/paragraphs.
-5.  **`cn` Utility:** Used within components to merge default styles with variant or prop-based styles.
+1. **Tailwind CSS:** Utility classes for layout, spacing, typography
+2. **CSS Variables:** Colors and border radius defined in `globals.css`
+3. **Tailwind Config:** Maps CSS variables to color names, extends theme for spacing and fonts
+4. **Global Styles:** Base styles for typography and elements in `@layer base`
+5. **Component Styles:** Using `cn` utility for conditional styling
 
 ## Key Files for Theming
 
-*   `docs/03-color-system.md`: Defines the color palette and rationale.
-*   `docs/02-typography.md`: Defines font choices and base styles.
-*   `src/app/globals.css`: Contains CSS variable definitions and base element styles.
-*   `tailwind.config.mjs`: Configures Tailwind to use the CSS variables and custom scales.
+*   `docs/03-color-system.md`: Color palette and rationale
+*   `docs/02-typography.md`: Font choices and base styles
+*   `src/app/globals.css`: CSS variable definitions and base styles
+*   `tailwind.config.mjs`: Tailwind configuration using CSS variables
 
 ## Adding New Components
 
-1.  **Shadcn/ui:** Use the CLI: `npx shadcn-ui@latest add [component-name]`
-2.  **Custom Component:**
-    *   Create the file in `src/components/`.
-    *   Use existing shadcn/ui components or HTML elements.
-    *   Style using Tailwind utility classes.
-    *   Use `cn` for conditional classes if needed.
-    *   Determine if it needs to be a Client Component (`"use client"`) or Server Component (default).
+1. **Shadcn/ui components:** `npx shadcn-ui@latest add [component-name]`
+2. **Custom components:** Create in `src/components/` using Tailwind and existing UI components
 
 ## Metadata and SEO
-
-The site includes comprehensive metadata for search engine optimization:
 
 ```typescript
 export const metadata: Metadata = {
@@ -253,392 +215,29 @@ export const metadata: Metadata = {
     default: "Jay Rana - Software Developer Portfolio",
     template: "%s | Jay Rana Portfolio",
   },
-  description: "Showcasing my software development projects and skills. Explore my work in web development, problem-solving, and more.",
-  authors: [{ name: "Jay Rana" }],
-  keywords: ["software developer", "portfolio", "web development", "full stack", "react", "nextjs", "typescript", "projects", "Jay Rana", "personal website"]
-};
-
-export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "hsl(var(--background))" },
-    { media: "(prefers-color-scheme: dark)", color: "hsl(var(--background))" },
-  ],
-  width: "device-width",
-  initialScale: 1,
+  description: "Showcasing my software development projects and skills...",
+  keywords: ["software developer", "portfolio", "web development"...],
+  // Additional metadata...
 };
 ```
 
-## Configuration Files
-
-### Tailwind Configuration (`tailwind.config.mjs`)
-
-This configuration needs to be updated to reflect the Sage/Explorer/Creator color system, typography, and spacing defined in `docs/02-typography.md`, `docs/03-color-system.md`, and `docs/04-spacing-layout.md`.
-
-```typescript
-// tailwind.config.mjs (Updated Example)
-/** @type {import('tailwindcss').Config} */
-export default {
-  darkMode: "class", // Use class strategy
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-  theme: {
-    extend: {
-      fontFamily: {
-        // Define sans and serif based on docs/02-typography.md
-        sans: ['var(--font-sans)', 'Inter', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-serif)', '"Source Serif Pro"', 'serif'], // Example
-      },
-      colors: {
-        // Define colors based on docs/03-color-system.md
-        // Example using HSL variables defined in globals.css
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))", // Often set to primary
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))", // Optional: Define if needed
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))", // Teal/Emerald from docs/03
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        // Add specific shades if needed (e.g., primary-hover)
-      },
-      borderRadius: {
-        // Align with shadcn/ui defaults or customize based on docs/04
-        lg: "var(--radius)", // Example: 0.5rem
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
-      spacing: {
-        // Define spacing scale based on 4px/8px unit from docs/04
-        // Example:
-        '0.5': '2px',
-        '1': '4px',
-        '1.5': '6px',
-        '2': '8px',
-        '2.5': '10px',
-        '3': '12px',
-        '3.5': '14px',
-        '4': '16px',
-        '5': '20px',
-        '6': '24px',
-        '7': '28px',
-        '8': '32px',
-        '10': '40px',
-        '12': '48px',
-        '16': '64px',
-        // ... add more as needed
-      },
-      container: {
-        center: true,
-        padding: "2rem", // Default padding
-        screens: {
-          "2xl": "1400px", // Max container width
-        },
-      },
-    },
-  },
-  plugins: [require("tailwindcss-animate")], // Ensure animate plugin is present for shadcn/ui
-}
-```
-
-#### CSS Variables Implementation (`src/app/globals.css`)
-
-Define the core color palette using HSL values in `globals.css` for light and dark modes, based on `docs/03-color-system.md`.
-
-```css
-/* src/app/globals.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  :root {
-    /* Define Light Mode HSL values from docs/03 */
-    --background: 0 0% 100%; /* White */
-    --foreground: 222 84% 5%; /* Near Black */
-    --muted: 215 20% 65%; /* Medium Gray */
-    --muted-foreground: 215 16% 47%; /* Darker Gray */
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 84% 5%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 84% 5%;
-    --border: 214 32% 91%; /* Light Gray */
-    --input: 214 32% 91%;
-    --primary: 217 91% 60%; /* Intelligent Blue (Tailwind blue-500) */
-    --primary-foreground: 0 0% 100%; /* White */
-    --secondary: 215 28% 17%; /* Optional: Darker Blue/Gray */
-    --secondary-foreground: 0 0% 100%;
-    --accent: 160 84% 39%; /* Teal/Emerald (Tailwind teal-500) */
-    --accent-foreground: 0 0% 100%; /* Or a dark contrast color */
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --ring: 217 91% 60%; /* Primary color for focus rings */
-    --radius: 0.5rem; /* Default border radius */
-
-    /* Typography Variables from docs/02 */
-    --font-sans: 'Inter', system-ui, sans-serif;
-    --font-serif: 'Source Serif Pro', serif;
-    --line-height-body: 1.7;
-  }
-
-  .dark {
-    /* Define Dark Mode HSL values from docs/03 */
-    --background: 222 47% 11%; /* Very Dark Blue/Gray (Tailwind gray-900) */
-    --foreground: 210 40% 98%; /* Light Gray/Off-White */
-    --muted: 217 33% 50%; /* Medium Gray */
-    --muted-foreground: 215 20% 65%; /* Lighter Gray */
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
-    --border: 217 33% 25%; /* Dark Gray */
-    --input: 217 33% 25%;
-    --primary: 217 91% 60%; /* Keep primary blue consistent or adjust slightly */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 215 28% 25%; /* Optional: Slightly lighter dark blue/gray */
-    --secondary-foreground: 0 0% 100%;
-    --accent: 160 70% 45%; /* Adjust accent for dark mode contrast */
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 63% 51%;
-    --destructive-foreground: 0 0% 100%;
-    --ring: 217 91% 60%;
-    /* Radius and fonts remain the same */
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border; /* Apply border color globally */
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-family: var(--font-sans);
-    line-height: var(--line-height-body);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  /* Base Typography Styles from docs/02 */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-semibold tracking-tight; /* Use Serif for headings */
-  }
-
-  h1 { @apply text-4xl lg:text-5xl xl:text-6xl; }
-  h2 { @apply text-3xl lg:text-4xl; }
-  h3 { @apply text-2xl lg:text-3xl; }
-  h4 { @apply text-xl lg:text-2xl; }
-  /* Add other heading styles as needed */
-
-  p {
-    @apply mb-4; /* Consistent paragraph spacing */
-  }
-
-  /* Add other base styles like links */
-  a {
-    @apply text-primary underline-offset-4 hover:underline;
-  }
-}
-```
-
-## Implementation Checklist
-
-### 1. Typography Implementation
-
-1.  **Install Fonts:** Ensure `Inter` and `Source Serif Pro` (or chosen alternatives) are installed via npm (`@fontsource-variable/inter`, `@fontsource/source-serif-pro`) as shown in `docs/02-typography.md`.
-2.  **Load Fonts:** Import fonts in `src/app/layout.tsx` and assign CSS variables.
-    ```typescript
-    // src/app/layout.tsx
-    import { Inter } from 'next/font/google';
-    import { Source_Serif_Pro } from 'next/font/google'; // Example import
-    import './globals.css';
-    import { cn } from '@/lib/utils';
-
-    const fontSans = Inter({
-      subsets: ['latin'],
-      variable: '--font-sans',
-      display: 'swap',
-    });
-
-    const fontSerif = Source_Serif_Pro({ // Configure weights as needed
-      subsets: ['latin'],
-      weight: ['400', '600', '700'],
-      variable: '--font-serif',
-      display: 'swap',
-    });
-
-    export default function RootLayout({ children }: { children: React.ReactNode }) {
-      return (
-        <html lang="en" suppressHydrationWarning>
-          <body className={cn(
-            "min-h-screen bg-background font-sans antialiased",
-            fontSans.variable,
-            fontSerif.variable
-          )}>
-            {/* Add ThemeProvider if implementing dark mode toggle */}
-            {children}
-          </body>
-        </html>
-      );
-    }
-    ```
-3.  **Apply Base Styles:** Ensure `globals.css` applies `var(--font-sans)` to `body` and `var(--font-serif)` to headings (`h1`-`h6`). Set base `line-height`. (Covered in CSS Variables section above).
-
-### 2. Color System Implementation
-
-1.  **Define CSS Variables:** Set up HSL color variables in `globals.css` for light and dark modes (Covered above).
-2.  **Configure Tailwind:** Ensure `tailwind.config.mjs` references these CSS variables for `colors`, `borderColor`, `backgroundColor`, `textColor`, `ringColor`, etc. (Covered above).
-3.  **Apply Colors:** Use Tailwind utility classes (`bg-background`, `text-foreground`, `text-primary`, `border-border`, `ring-ring`, `text-accent`) throughout components and pages.
-
-### 3. Component Implementation (Sage/Explorer/Creator Alignment)
-
-Refer to `docs/05-components.md` for detailed psychological principles. Apply styles consistently.
-
-#### Example: Button (`src/components/ui/button.tsx`)
-
-Ensure variants use the defined palette:
-
-```typescript
-// Simplified example within buttonVariants cva
-variants: {
-  variant: {
-    default:
-      "bg-primary text-primary-foreground hover:bg-primary/90", // Use primary color
-    destructive:
-      "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-    outline:
-      "border border-input bg-background hover:bg-accent hover:text-accent-foreground", // Use accent for hover
-    secondary:
-      "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-    ghost:
-      "hover:bg-accent hover:text-accent-foreground", // Use accent for hover
-    link:
-      "text-primary underline-offset-4 hover:underline",
-  },
-  // ... sizes
-},
-```
-
-#### Example: Card (`src/components/ui/card.tsx`)
-
-Ensure card uses theme variables and appropriate spacing/rounding:
-
-```tsx
-// Simplified example within Card component
-<div
-  className={cn(
-    "rounded-lg border bg-card text-card-foreground shadow-sm", // Use theme variables
-    className
-  )}
-  {...props}
-/>
-```
-
-#### Example: Main Navigation (`src/components/main-nav.tsx`)
-
-Apply fonts, colors, and spacing.
-
-```tsx
-// Simplified example
-<nav className="flex items-center justify-between p-4 md:px-8 border-b">
-  <Link href="/" className="font-serif text-xl font-semibold text-primary">
-    Your Name / Brand
-  </Link>
-  {/* Desktop Nav */}
-  <div className="hidden md:flex items-center gap-6">
-    {routes.map((route) => (
-      <Link
-        key={route.href}
-        href={route.href}
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-      >
-        {route.label}
-      </Link>
-    ))}
-  </div>
-  {/* Mobile Nav (Sheet Trigger) */}
-  <div className="md:hidden">
-    <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" aria-label="Open menu">
-          <Menu className="h-5 w-5" />
-        </Button>
-      </SheetTrigger>
-      <SheetContent side="left">
-        <SheetHeader>
-          <SheetTitle className="font-serif">Navigation</SheetTitle>
-        </SheetHeader>
-        {/* ... Sheet links */}
-      </SheetContent>
-    </Sheet>
-  </div>
-</nav>
-```
-
-### 4. Content Implementation
-
-- **Homepage (`src/app/page.tsx`):** Rewrite headings and text to be insightful, clear, and focused on skills/value proposition for recruiters. Use `font-serif` for main headings. Structure content logically using Cards or other layout elements, applying spacing from `docs/04-spacing-layout.md`.
-- **About Page (`src/app/about/page.tsx`):** Reflect the Sage/Explorer/Creator journey – curiosity, learning, building.
-- **Projects Page (`src/app/projects/page.tsx`):** This is critical. Use Cards or a similar structure to present projects clearly. For each project:
-    - Use `font-serif` for the project title (`CardTitle`).
-    - Clearly describe the problem, solution, and your role (Sage/Creator).
-    - Highlight key technologies used (Precision).
-    - Mention innovative aspects or challenges overcome (Explorer).
-    - Include links to live demos or source code (Buttons with `primary` or `outline` variant).
-    - Use the `accent` color sparingly for highlighting key results or technologies.
-
-## Testing Protocol (Sage/Explorer/Creator Focus)
+## Testing Protocol
 
 ### 1. Visual & Functional Testing
-- **Consistency:** Verify colors, fonts, spacing match the design system across all pages and components.
-- **Responsiveness:** Test thoroughly on various screen sizes (mobile, tablet, desktop). Layout should adapt gracefully (`docs/04-spacing-layout.md`).
-- **Interaction States:** Check hover, focus, active states for all interactive elements (buttons, links, inputs).
-- **Browser Compatibility:** Test on major browsers (Chrome, Firefox, Safari, Edge).
+- Color/font/spacing consistency across all pages
+- Responsiveness across device sizes
+- Interaction states and browser compatibility
 
-### 2. Accessibility Testing (Clarity & Precision)
-- **WCAG Compliance:** Use automated tools (axe-core) and manual checks to ensure AA compliance.
-- **Contrast:** Verify all text meets contrast requirements (4.5:1 normal, 3:1 large) in both light and dark modes.
-- **Keyboard Navigation:** Ensure all interactive elements are reachable and operable via keyboard.
-- **Screen Reader:** Test with screen readers (NVDA, VoiceOver) for logical flow and clear labeling.
-- **Semantic HTML:** Validate the use of correct HTML tags (headings, landmarks, lists).
+### 2. Accessibility Testing
+- WCAG compliance, contrast ratios, keyboard navigation
+- Screen reader compatibility and semantic HTML
 
-### 3. Performance Testing (Efficiency)
-- **Lighthouse:** Audit for Performance, Accessibility, Best Practices, SEO.
-- **Core Web Vitals:** Monitor LCP, FID (or INP), CLS.
-- **Bundle Size:** Analyze JavaScript bundle sizes; optimize where necessary.
+### 3. Performance Testing
+- Lighthouse audits and Core Web Vitals monitoring
+- Bundle size optimization
 
-### 4. Content & Messaging Review (Sage Voice)
-- **Clarity:** Is the language clear, concise, and easy to understand for a recruiter audience?
-- **Precision:** Is technical information accurate?
-- **Insight:** Does the content convey expertise and thoughtful problem-solving?
-- **Tone:** Does the voice align with the Sage/Explorer/Creator archetype (insightful, curious, competent)?
+### 4. Content & Messaging Review
+- Clarity, precision, and alignment with Sage/Explorer/Creator archetype
 
 ## Quality Assurance Checklist
 
@@ -651,17 +250,113 @@ Apply fonts, colors, and spacing.
 - [ ] **Performance:** Lighthouse scores acceptable, Core Web Vitals healthy.
 - [ ] **Functionality:** All links work, forms submit (if any), interactive elements behave as expected.
 
-## Maintenance Guidelines
-
-- **Consistency:** Adhere strictly to the defined typography, color, and spacing systems when adding new content or components.
-- **Component Updates:** When updating shadcn/ui components, re-verify styling against the design system.
-- **Documentation:** Keep these implementation docs (`06-implementation.md`) and related design docs (`01-05`) updated with any significant changes.
-- **Regular Audits:** Periodically re-run accessibility and performance tests.
-
 ## Resources
 
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [shadcn/ui Documentation](https://ui.shadcn.com)
-- [WCAG 2.1 Guidelines](https://www.w3.org/TR/WCAG21/)
-- Project Design Docs (`docs/01-05.md`)
+### External Libraries & Dependencies
+
+| Resource | Purpose | Version | Documentation |
+|----------|---------|---------|---------------|
+| Next.js | Framework | 14.x | [nextjs.org](https://nextjs.org/docs) |
+| TypeScript | Language | 5.x | [typescriptlang.org](https://www.typescriptlang.org/docs/) |
+| Tailwind CSS | Styling | 3.x | [tailwindcss.com](https://tailwindcss.com/docs) |
+| shadcn/ui | UI Components | latest | [ui.shadcn.com](https://ui.shadcn.com/) |
+| Lucide React | Icons | latest | [lucide.dev/react](https://lucide.dev/guide/packages/lucide-react) |
+| D3.js | Data Visualization | 7.x | [d3js.org](https://d3js.org/) |
+| React | UI Library | 18.x | [react.dev](https://react.dev/) |
+| Nomic AI | Embeddings | latest | [nomic.ai](https://docs.nomic.ai/) |
+
+### Key Tool Versions
+
+- Node.js: v18.x or later
+- npm: v9.x or later
+- VS Code: Latest version with recommended extensions
+
+### Assets
+
+- All custom SVG icons and thumbnails are stored in `public/images/`
+- CSV data files are located in `public/csv/`
+- RAG document embeddings are generated from source files in `rag-docs-gen/docs/`
+
+## Maintenance Guidelines
+
+### Regular Maintenance Tasks
+
+1. **Dependency Updates**
+   - Run `npm outdated` monthly to identify outdated packages
+   - Update Next.js with caution, testing each major version
+   - Keep shadcn/ui components updated using their CLI
+   - Test thoroughly after any dependency updates
+
+2. **Performance Monitoring**
+   - Run Lighthouse audits quarterly
+   - Monitor Core Web Vitals in Google Search Console
+   - Check bundle sizes with `next/bundle-analyzer`
+   - Optimize images and assets as needed
+
+3. **Content Updates**
+   - Keep project descriptions and skills current
+   - Update portfolio projects when new work is available
+   - Refresh playground projects with new technologies
+
+### Code Standards
+
+1. **TypeScript**
+   - Maintain strict type checking
+   - Avoid `any` types except when absolutely necessary
+   - Use interface definitions for component props
+   - Keep types in separate files for complex components
+
+2. **Component Architecture**
+   - Keep playground projects self-contained in their page files
+   - Extract reusable logic to custom hooks in `src/lib/`
+   - Document complex components with JSDoc comments
+   - Follow the same styling patterns established in existing code
+
+3. **Styling Approach**
+   - Use Tailwind utility classes for most styling
+   - Create custom utilities in `tailwind.config.mjs` for repeated patterns
+   - Keep custom CSS in `globals.css` minimal
+   - Use CSS variables for theme values
+
+### Testing Procedures
+
+1. **Visual Testing**
+   - Manual testing across devices (mobile, tablet, desktop)
+   - Browser compatibility checks (Chrome, Firefox, Safari, Edge)
+   - Dark theme verification for all components
+
+2. **Functional Testing**
+   - Test all interactive elements (buttons, links, forms)
+   - Verify data fetching and visualization components
+   - Test navigation paths and routing
+
+3. **Accessibility Testing**
+   - Run axe DevTools or similar for automated checks
+   - Test with keyboard navigation
+   - Verify screen reader compatibility
+   - Check color contrast ratios
+
+### Deployment Process
+
+1. **Pre-deployment**
+   - Run `npm run build` to verify build success
+   - Check for TypeScript/ESLint errors
+   - Review changes in a local production build
+
+2. **Deployment**
+   - Deploy using Vercel or similar platform
+   - Set environment variables for API endpoints if needed
+   - Configure caching policies for static assets
+
+3. **Post-deployment**
+   - Verify all pages load correctly
+   - Check mobile responsiveness
+   - Monitor error reporting
+
+### Documentation Updates
+
+Keep the following documentation up to date:
+- `README.md` for project overview
+- All files in the `docs/` directory
+- JSDoc comments for functions and components
+- Update this maintenance guide when processes change

@@ -447,6 +447,28 @@ Our site uses a combination of Google Material Icons and Lucide React icons for 
 - Interactive icons have proper focus states and keyboard accessibility
 - Non-decorative icons include alternative text for screen readers
 
+### Floating Orb Components
+
+Semi-transparent colored orbs that create depth and visual interest throughout the site.
+
+**Implementation:**
+- Rendered as styled div elements with varying size, opacity and blur effects
+- Positioned using absolute positioning with strategic z-index management
+- Animated with CSS keyframes for natural floating movement
+- Applied across homepage, playground, and projects sections
+
+**Features:**
+- Staggered animation timing (different delay values) creates organic movement patterns
+- Mix-blend-mode integration for seamless background blending
+- Responsive positioning that adjusts to viewport size
+- Color palette aligned with the site's accent and primary colors
+- Layered at different depths using opacity and size variation
+
+**Psychological Benefits:**
+- Creates a sense of depth and dimension (Explorer)
+- Adds subtle visual interest without distracting from content (Sage)
+- Reinforces the "Digital Sandbox" theme with floating elements (Creator)
+
 ## Data Visualization Components
 
 ### D3.js Chart Components
@@ -547,26 +569,3 @@ The portfolio includes several specialized components that are implemented direc
 For detailed documentation on these specialized component implementations:
 - See `docs/07-d3vis-implementation.md` for D3.js visualization components
 - See `docs/08-rag-implementation.md` for RAG chat system components
-
-## Icon System
-
-### Icons Implementation
-
-Our site uses a combination of Google Material Icons and Lucide React icons for consistent, recognizable UI elements across all pages.
-
-**Implementation:**
-- Google Material Icons loaded via CDN in layout.tsx
-- Lucide React icons imported directly in components
-- Icons follow the site's color system, using primary and accent colors for interactive elements
-- Default size set to match our typography scale (typically 24px for standard UI elements)
-
-**Usage Examples:**
-- Navigation: Menu icon from Lucide React in the mobile menu
-- Actions: External links, code snippets, and other functional indicators
-- States: Success, Error, Warning, and Information indicators
-- Content: Document, File, and Media type indicators
-
-**Accessibility:**
-- All icons used in UI components include appropriate ARIA labels
-- Interactive icons have proper focus states and keyboard accessibility
-- Non-decorative icons include alternative text for screen readers

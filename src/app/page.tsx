@@ -19,9 +19,15 @@ export default function Home() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-primary-foreground/40">
+    <div className="min-h-screen bg-gradient-to-br from-background to-primary-foreground/40 relative overflow-hidden">
+      {/* Moving orbs in the background - increased contrast */}
+      <div className="absolute top-1/4 -left-36 w-96 h-96 bg-blue-400/15 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-float"></div>
+      <div className="absolute bottom-1/4 -right-36 w-96 h-96 bg-teal-400/25 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-float animate-delay-2000"></div>
+      <div className="absolute top-3/4 left-1/3 w-80 h-80 bg-indigo-400/15 rounded-full mix-blend-screen filter blur-3xl opacity-40 animate-float animate-delay-4000"></div>
+      <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-cyan-400/20 rounded-full mix-blend-screen filter blur-3xl opacity-40 animate-float animate-delay-6000"></div>
+      
       {/* Hero Section */}
-      <section className="container mx-auto px-4 pt-8 pb-24">
+      <section className="container mx-auto px-4 pt-8 pb-24 relative">
         <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16">
           {/* Left section with intro and CTAs */}
           <div className="flex-1 space-y-6 text-center md:text-left">
@@ -105,7 +111,7 @@ export default function Home() {
       </section>
       
       {/* Skills Section - Moved lower */}
-      <section className="container mx-auto px-4 py-16 bg-card/30 rounded-t-3xl border-t border-border">
+      <section className="container mx-auto px-4 py-16 bg-card/30 rounded-t-3xl border-t border-border relative z-10">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-serif font-semibold text-primary mb-8 text-center">Skills & Interests</h2>
           

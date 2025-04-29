@@ -9,7 +9,7 @@ export default function AnimationPage() {
   const router = useRouter()
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-accent/20 flex flex-col items-center pt-1 px-4 pb-16">
+    <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/10 flex flex-col items-center pt-1 px-4 pb-16">
       <main className="max-w-5xl w-full space-y-8 py-8">
         {/* Header with back button */}
         <div className="flex items-center justify-between">

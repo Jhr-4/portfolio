@@ -16,8 +16,14 @@ export default function Playground() {
   };
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-accent/20 flex flex-col items-center pt-16 px-4 pb-16">
-      <main className="max-w-5xl w-full space-y-8 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/10 flex flex-col items-center pt-16 px-4 pb-16 relative overflow-hidden">
+      {/* Repositioned orbs with different placements */}
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/10 rounded-full mix-blend-screen filter blur-3xl opacity-40 animate-float"></div>
+      <div className="absolute top-32 -right-20 w-72 h-72 bg-blue-400/10 rounded-full mix-blend-screen filter blur-3xl opacity-40 animate-float"></div>
+      <div className="absolute -bottom-20 left-1/4 w-96 h-96 bg-teal-400/10 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-float animate-delay-2000"></div>
+      <div className="absolute top-1/2 -left-32 w-80 h-80 bg-indigo-400/10 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-float animate-delay-4000"></div>
+      
+      <main className="max-w-5xl w-full space-y-8 py-8 relative z-10">
         <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary text-center mb-4">Welcome to my Digital Sandbox</h1>
         
         {/* Tabs for navigation between projects and playground */}
@@ -45,7 +51,7 @@ export default function Playground() {
 
 
             <div className="max-w-2xl mx-auto text-lg text-foreground/90">
-              <p>These are interactive projects integrated into my portfolio. Small experiments with concepts or technologies I'd like to explore.</p>
+              <p>These are interactive AI projects integrated into my portfolio. Small experiments/demos with areas I'm currently exploring.</p>
             </div>
 
             {/* Creative "sandbox" logo */}

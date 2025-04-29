@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter, Source_Serif_4 } from "next/font/google";
 import { MainNav } from "@/components/main-nav";
 import { cn } from "@/lib/utils";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -49,6 +50,7 @@ export default function RootLayout({
       <body className={`font-sans antialiased`}>
         <MainNav />
         {children}
+        <Analytics />
       </body>
     </html>
   );
