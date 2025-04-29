@@ -1,0 +1,6 @@
+/rag-docs-gen
+/rag-docs-gen/**
+
+*.log
+.env.local
+.env
