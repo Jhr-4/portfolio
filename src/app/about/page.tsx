@@ -1,6 +1,7 @@
 // About page: personal/professional background
 import Link from "next/link"
 import { BookOpen, Briefcase, Sparkles } from "lucide-react"
+import { StarryBackground } from "@/components/ui/starry-background"
 
 // Vertical timeline item component with centered icons
 function TimelineItem({ 
@@ -45,11 +46,21 @@ function TimelineItem({
 export default function About() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-primary-foreground/40 flex flex-col items-center pt-20 px-4 pb-16 relative overflow-hidden">
-      {/* Moving orbs in the background - similar to home page */}
-      <div className="absolute top-1/4 -left-36 w-96 h-96 bg-blue-400/15 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-float"></div>
+            {/* Moving orbs in the background - similar to home page */}
+            <div className="absolute top-1/4 -left-36 w-96 h-96 bg-blue-400/15 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-float"></div>
       <div className="absolute bottom-1/4 -right-36 w-96 h-96 bg-teal-400/25 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-float animate-delay-2000"></div>
       <div className="absolute top-3/4 left-1/3 w-80 h-80 bg-indigo-400/15 rounded-full mix-blend-screen filter blur-3xl opacity-40 animate-float animate-delay-4000"></div>
       <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-cyan-400/20 rounded-full mix-blend-screen filter blur-3xl opacity-40 animate-float animate-delay-6000"></div>
+
+      {/* Using the reusable StarryBackground component */}
+      <StarryBackground 
+        starsCount={{
+          primary: 40,
+          secondary: 30,
+          accent: 20,
+          dust: 15
+        }}
+      />
       
       <main className="max-w-4xl w-full space-y-8 py-12 relative z-10">
         <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary text-center mb-8">About Me</h1>
@@ -57,7 +68,7 @@ export default function About() {
         {/* Introduction at the top */}
         <section className="mb-8">
           <p className="text-lg text-foreground">
-            Hey, I'm Jay Rana, a Computer Science undergraduate at NJIT, eager to learn and solve problems through technology. I currently work as an Web Specialist and am exploring various fields like software development, web technologies, and AI.
+            Hey, I'm Jay Rana, a Computer Science undergraduate at NJIT, passionate to learn and solve problems through technology. I currently work as an Web Specialist and am exploring various fields like software development, web technologies, and AI.
           </p>
         </section>
         
@@ -124,7 +135,7 @@ export default function About() {
               
               <div className="ml-6">
                 <TimelineItem 
-                  year="Present"
+                  year="2024 - Present"
                   title="IS/Web Specialist"
                   subtitle="NJIT's Civic Engagement Computer Center"
                   details="Developing websites for non-profit organizations in Northern New Jersey"
@@ -139,7 +150,7 @@ export default function About() {
         {/* Contact section - without the border-t */}
         <div className="pt-8 pb-4 text-center">
           <Link 
-            href="mailto:jhr4@njit.edu" 
+            href="/contact" 
             className="inline-block px-6 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:bg-accent/90 transition-colors"
           >
             Get In Touch
@@ -157,7 +168,7 @@ export default function About() {
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-medium text-center mb-3 text-accent">Languages</h3>
               <div className="flex flex-wrap gap-2 justify-center">
-                {["Java", "Python", "PHP", "JavaScript", "TypeScript", "SQL"].map((skill) => (
+                {["Java", "Python", "PHP", "JavaScript", "C++", "MySQL", "HTML/CSS"].map((skill) => (
                   <span key={skill} className="bg-primary/10 text-primary text-sm px-3 py-1 rounded-full">
                     {skill}
                   </span>
@@ -168,7 +179,7 @@ export default function About() {
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-medium text-center mb-3 text-accent">Frameworks</h3>
               <div className="flex flex-wrap gap-2 justify-center">
-                {["React", "Next.js", "Node.js", "Express", "Tailwind CSS"].map((skill) => (
+                {["Pytest", "Bootstraps", "Tailwind", "React (Learning)"].map((skill) => (
                   <span key={skill} className="bg-primary/10 text-primary text-sm px-3 py-1 rounded-full">
                     {skill}
                   </span>
@@ -179,7 +190,7 @@ export default function About() {
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-medium text-center mb-3 text-accent">Tools</h3>
               <div className="flex flex-wrap gap-2 justify-center">
-                {["Git", "Docker", "MySQL", "AI APIs", "VS Code"].map((skill) => (
+                {["Git", "Docker", "AI APIs", "VS Code", "Unity", "Figma"].map((skill) => (
                   <span key={skill} className="bg-primary/10 text-primary text-sm px-3 py-1 rounded-full">
                     {skill}
                   </span>

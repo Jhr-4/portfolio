@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Linkedin, Github, MailOpen } from "lucide-react"
 import Image from "next/image"
+import { StarryBackground } from "@/components/ui/starry-background"
 
 export default function Home() {
   // Condensed list of key skills
@@ -24,7 +25,16 @@ export default function Home() {
       <div className="absolute top-1/4 -left-36 w-96 h-96 bg-blue-400/15 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-float"></div>
       <div className="absolute bottom-1/4 -right-36 w-96 h-96 bg-teal-400/25 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-float animate-delay-2000"></div>
       <div className="absolute top-3/4 left-1/3 w-80 h-80 bg-indigo-400/15 rounded-full mix-blend-screen filter blur-3xl opacity-40 animate-float animate-delay-4000"></div>
-      <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-cyan-400/20 rounded-full mix-blend-screen filter blur-3xl opacity-40 animate-float animate-delay-6000"></div>
+
+      {/* Using the reusable StarryBackground component */}
+      <StarryBackground 
+        starsCount={{
+          primary: 60,  // More stars for the homepage
+          secondary: 45,
+          accent: 30,
+          dust: 25
+        }}
+      />
       
       {/* Hero Section */}
       <section className="container mx-auto px-4 pt-8 pb-24 relative">
@@ -71,7 +81,7 @@ export default function Home() {
                 variant="outline"
                 asChild
               >
-                <a href="https://drive.google.com/file/d/1Ae3dx-PYWJt1_luJGHlUZnlBSK0RAdI7/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Resume</a>
+                <Link href="/contact">Contact Me</Link>
               </Button>
               <Button 
                 className="font-medium bg-accent hover:bg-accent/90 text-accent-foreground" 

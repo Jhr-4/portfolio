@@ -422,6 +422,66 @@ This document outlines the core reusable components used in the portfolio.
 *   Components follow the Sage/Explorer/Creator archetype with emphasis on clarity, precision, and thoughtful construction.
 *   Custom animations (like `animate-blink`) are defined in `globals.css` and used for interactive elements.
 
+## Background Components
+
+### StarryBackground Component
+
+The StarryBackground component is a reusable visual element that creates an immersive, animated star field, reflecting the Explorer archetype's sense of discovery and infinite possibilities.
+
+**Import:** `import { StarryBackground } from "@/components/ui/starry-background"`
+
+**Props Interface:**
+```tsx
+interface StarryBackgroundProps {
+  starsCount?: {
+    primary?: number;    // Larger, brighter stars (default: 30)
+    secondary?: number;  // Medium stars (default: 20)
+    accent?: number;     // Colored stars using the accent color (default: 15)
+    dust?: number;       // Tiny background stars (default: 10)
+  }
+}
+```
+
+**Features:**
+- Dynamic star generation with randomized positions and subtle animations
+- Customizable density through the `starsCount` prop
+- Responsive design that adapts to container dimensions
+- Operates on a separate z-index layer to avoid interfering with content
+
+### Floating Orbs Background
+
+The floating orbs create a modern, dynamic visual aesthetic with colorful, animated bubbles that add depth and visual interest to the page backgrounds.
+
+**Implementation:**
+- Create multiple div elements with absolute positioning in the background
+- Apply blur effects with classes like `blur-3xl` 
+- Use semi-transparent colors (`bg-blue-400/15`, `bg-teal-400/25`, etc.)
+- Implement `mix-blend-screen` for color blending
+- Add animation with the `animate-float` class with staggered delays
+
+**Features:**
+- Strategic positioning using absolute positioning with negative margins
+- Subtle animations using custom keyframe animations
+- Color palette aligned with the site's accent and primary colors
+- Different sizes (e.g., w-96 h-96, w-80 h-80) create depth perception 
+
+**Psychological Benefits:**
+- **Dynamism:** The subtle floating motion adds life to static content (Explorer)
+- **Depth Perception:** Creates layers of visual interest that draw the eye (Creator)
+- **Visual Interest:** Provides an engaging backdrop without overwhelming content (Sage/Explorer balance)
+- **Abstract Representation:** The orbs can be interpreted as ideas, possibilities, or concepts (Sage)
+
+### Combined Background Strategy
+
+The portfolio uses a strategic layering of background elements to create visual depth and interest:
+
+1. **Base Layer:** The standardized gradient (`bg-gradient-to-br from-background to-primary-foreground/40`)
+2. **Middle Layer:** Floating orbs with different colors, sizes, and animation timings
+3. **Optional Top Layer:** StarryBackground component when additional visual interest is desired
+4. **Content Layer:** Main content with appropriate z-index to appear above all background elements
+
+This layered approach creates a sense of depth and dimension while maintaining readability and focus on the main content. The combination reinforces the Explorer archetype through visual discovery and the Creator archetype through thoughtful visual composition.
+
 # Components
 
 ## Icon System
@@ -569,3 +629,30 @@ The portfolio includes several specialized components that are implemented direc
 For detailed documentation on these specialized component implementations:
 - See `docs/07-d3vis-implementation.md` for D3.js visualization components
 - See `docs/08-rag-implementation.md` for RAG chat system components
+
+# Form Components
+
+The portfolio includes a set of form UI components from shadcn/ui, styled to match the design system.
+
+## Core Form Components
+
+1. **`Input` Component**
+   - Import: `import { Input } from "@/components/ui/input"`
+   - Semi-transparent background with primary color focus rings
+   - Enhanced with Material Icons for visual cues
+
+2. **`Textarea` Component**
+   - Import: `import { Textarea } from "@/components/ui/textarea"`
+   - Consistent styling with Input component
+   - Custom min-height properties for adequate writing space
+
+3. **`Label` Component**
+   - Import: `import { Label } from "@/components/ui/label"`
+   - Enhanced with icons and primary color indicators for required fields
+   - Bold styling for improved scanability
+
+**Psychological Benefits:**
+- **Structure:** Clear form layout supports logical thinking process (Sage)
+- **Feedback:** Visual cues provide immediate response to user actions (Explorer)
+- **Refinement:** Subtle styling details demonstrate attention to craft (Creator)
+```

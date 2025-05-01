@@ -11,6 +11,8 @@ const routes = [
   //{ href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/playground", label: "My Work" },
+  { href: "/projects", label: "Projects" },
+  { href: "/contact", label: "Contact" },
 ]
 
 export function MobileNav() {
