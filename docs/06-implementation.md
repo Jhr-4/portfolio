@@ -126,7 +126,7 @@ Both pages incorporate:
 }
 ```
 
-## D3.js Data Visualization and RAG Chat Implementation
+## Other Implementations
 
 The portfolio includes two advanced playground projects:
 1. **D3 Data Visualizations**: Interactive visualization of productivity/compensation trends
@@ -135,6 +135,8 @@ The portfolio includes two advanced playground projects:
 These are implemented as self-contained applications with detailed documentation:
 - See `docs/07-d3vis-implementation.md` for D3 visualization details
 - See `docs/08-rag-implementation.md` for RAG chat system details
+
+Additionally see docs/09-contact-implementation.md for Contact Form workings details
 
 ## Navigation Structure
 
@@ -230,6 +232,9 @@ The validation system uses a multi-layered approach:
    - Custom validation logic in the `validateForm()` function
    - Validates name (min 2 characters), email (regex pattern), and message (min length)
    - Returns validation state and detailed error messages
+
+3. **Server Side Validation**
+  - Similar validation to JS but, present in api/email/send
 
 3. **Visual Error States**
    - Real-time error feedback as users type

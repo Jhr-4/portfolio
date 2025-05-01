@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, FormEvent } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -9,15 +9,31 @@ import { Label } from "@/components/ui/label"
 import { StarryBackground } from "@/components/ui/starry-background"
 import { Github, Linkedin, Mail, MapPin, Clock, ArrowUpRight, User, MessageSquare, Send } from "lucide-react"
 
+interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+interface FormErrors {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
+    subject: "",
     message: ""
   })
-  const [errors, setErrors] = useState({
+  const [errors, setErrors] = useState<FormErrors>({
     name: "",
     email: "",
+    subject: "",
     message: ""
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -41,7 +57,7 @@ export default function ContactPage() {
 
   const validateForm = () => {
     let isValid = true
-    const newErrors = { name: "", email: "", message: "" }
+    const newErrors = { name: "", email: "", subject: "", message: "" }
     
     // Name validation
     if (!formData.name || formData.name.trim().length < 2) {
@@ -49,18 +65,27 @@ export default function ContactPage() {
       isValid = false
     }
     
-    // Email validation (beyond HTML5 validation)
+    // Email validation
     if (!formData.email) {
       newErrors.email = "Email is required"
       isValid = false
     } else {
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
       if (!emailPattern.test(formData.email)) {
         newErrors.email = "Please enter a valid email address"
         isValid = false
       }
     }
     
+    // Subject validation
+    if (!formData.subject.trim()) {
+      newErrors.subject = "Subject is required";
+      isValid = false;
+    } else if (formData.subject.trim().length < 5) {
+      newErrors.subject = "Subject must be at least 5 characters";
+      isValid = false;
+    }
+
     // Message validation
     if (!formData.message || formData.message.trim().length < 50) {
       newErrors.message = "Message must be at least 50 characters long"
@@ -74,7 +99,6 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     
-    // JavaScript validation
     if (!validateForm()) {
       return
     }
@@ -83,11 +107,29 @@ export default function ContactPage() {
       setIsSubmitting(true)
       setFormStatus(null)
       
-      // Here you would normally call an API endpoint to send the email
-      // For now we'll simulate a successful submission
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      // Send email using our server-side API endpoint
+      const response = await fetch('/api/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
       
-      // Simulate successful form submission
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message. Please try again.');
+      }
+      
+      console.log('Email successfully sent!', data);
+      
+      // Show success message
       setFormStatus({
         success: true,
         message: "Message sent successfully! I'll get back to you soon."
@@ -97,13 +139,16 @@ export default function ContactPage() {
       setFormData({
         name: "",
         email: "",
+        subject: "",
         message: ""
       })
     } catch (error) {
       console.error("Form submission error:", error)
       setFormStatus({
         success: false,
-        message: "Something went wrong. Please try again."
+        message: typeof error === 'object' && error !== null && 'message' in error 
+          ? String(error.message)
+          : "Something went wrong. Please try again."
       })
     } finally {
       setIsSubmitting(false)
@@ -114,6 +159,7 @@ export default function ContactPage() {
     <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/10 flex flex-col items-center pt-16 px-4 pb-16 relative overflow-hidden">
       {/* Using the reusable StarryBackground component */}
       <StarryBackground 
+        key="testing"
         starsCount={{
           primary: 50,  // More primary stars
           secondary: 35,
@@ -137,21 +183,14 @@ export default function ContactPage() {
           <div className="bg-card/90 backdrop-blur-sm border border-border rounded-lg p-6 md:p-8 shadow-lg transition-all hover:shadow-xl h-full flex flex-col">
             <form onSubmit={handleSubmit} className="space-y-6 flex-grow flex flex-col">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {/* Name Field - HTML5 validation */}
+{/* NAME */}
                 <div className="space-y-2">
                   <Label htmlFor="name" className="text-foreground flex items-center gap-2 font-bold">
                     <User className="text-primary text-base" />
                     Name <span className="text-primary">*</span>
                   </Label>
-                  <Input 
-                    id="name"
-                    name="name"
-                    placeholder="Your name" 
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="bg-background/50 border-border focus:ring-primary focus:border-primary h-12" 
-                    required
-                    minLength={2}
+                  <Input id="name" name="name" placeholder="Your name" value={formData.name}
+                    onChange={handleChange} className="bg-background/50 border-border focus:ring-primary focus:border-primary h-12" required minLength={2}
                     aria-invalid={errors.name ? "true" : "false"}
                   />
                   {errors.name && (
@@ -159,22 +198,15 @@ export default function ContactPage() {
                   )}
                 </div>
                 
-                {/* Email Field - HTML5 validation */}
+{/*EMAIL*/}
                 <div className="space-y-2">
                   <Label htmlFor="email" className="text-foreground flex items-center gap-2 font-bold">
                     <Mail className="text-primary text-base" />
                     Email <span className="text-primary">*</span>
                   </Label>
                   <Input 
-                    id="email"
-                    name="email"
-                    placeholder="yourname@example.com" 
-                    type="email" 
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="bg-background/50 border-border focus:ring-primary focus:border-primary h-12" 
-                    required
-                    aria-invalid={errors.email ? "true" : "false"}
+                    id="email" name="email" placeholder="yourname@example.com" type="email"
+                     value={formData.email} onChange={handleChange} className="bg-background/50 border-border focus:ring-primary focus:border-primary h-12" required aria-invalid={errors.email ? "true" : "false"}
                   />
                   {errors.email && (
                     <p className="text-sm text-red-500 mt-1">{errors.email}</p>
@@ -182,22 +214,30 @@ export default function ContactPage() {
                 </div>
               </div>
               
-              {/* Message Field - HTML5 validation */}
+{/*SUBJECT*/}
+              <div className="space-y-2">
+                <Label htmlFor="subject" className="text-foreground flex items-center gap-2 font-bold">
+                  <ArrowUpRight className="text-primary text-base" />
+                  Subject <span className="text-primary">*</span>
+                </Label>
+                <Input 
+                  id="subject" name="subject" placeholder="What's this about?" 
+                  value={formData.subject} onChange={handleChange} className="bg-background/50 border-border focus:ring-primary focus:border-primary h-12" required
+                  minLength={5} aria-invalid={errors.subject ? "true" : "false"}
+                />
+                {errors.subject && (
+                  <p className="text-sm text-red-500 mt-1">{errors.subject}</p>
+                )}
+              </div>
+              
+{/*BODY*/}
               <div className="space-y-2 flex-grow flex flex-col">
                 <Label htmlFor="message" className="text-foreground flex items-center gap-2 font-bold">
                   <MessageSquare className="text-primary text-base" />
                   Message <span className="text-primary">*</span>
                 </Label>
                 <Textarea 
-                  id="message"
-                  name="message"
-                  placeholder="What would you like to discuss? (min. 50 characters)"
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="bg-background/50 border-border resize-none focus:ring-primary focus:border-primary flex-grow min-h-[180px]" 
-                  required
-                  minLength={50}
-                  aria-invalid={errors.message ? "true" : "false"}
+                  id="message" name="message" placeholder="What would you like to discuss? (min. 50 characters)" value={formData.message} onChange={handleChange} className="bg-background/50 border-border resize-none focus:ring-primary focus:border-primary flex-grow min-h-[180px]" required minLength={50} aria-invalid={errors.message ? "true" : "false"}
                 />
                 {errors.message && (
                   <p className="text-sm text-red-500 mt-1">{errors.message}</p>

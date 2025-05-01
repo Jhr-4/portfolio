@@ -424,11 +424,12 @@ This document outlines the core reusable components used in the portfolio.
 
 ## Background Components
 
-### StarryBackground Component
+### StarryBackground Component (Updated)
 
-The StarryBackground component is a reusable visual element that creates an immersive, animated star field, reflecting the Explorer archetype's sense of discovery and infinite possibilities.
-
-**Import:** `import { StarryBackground } from "@/components/ui/starry-background"`
+The StarryBackground component now uses a config-driven approach for efficiency:
+- All star types are generated using a single `useMemo` and a configuration array.
+- This reduces code duplication and improves performance.
+- The API and props remain the same, but the implementation is more concise and maintainable.
 
 **Props Interface:**
 ```tsx
@@ -443,10 +444,11 @@ interface StarryBackgroundProps {
 ```
 
 **Features:**
-- Dynamic star generation with randomized positions and subtle animations
-- Customizable density through the `starsCount` prop
-- Responsive design that adapts to container dimensions
-- Operates on a separate z-index layer to avoid interfering with content
+- Efficient, config-driven star generation
+- Customizable density via `starsCount`
+- Responsive and visually immersive
+
+If you previously read about multiple separate star generation hooks, note that the new implementation is streamlined and more performant.
 
 ### Floating Orbs Background
 
@@ -655,4 +657,7 @@ The portfolio includes a set of form UI components from shadcn/ui, styled to mat
 - **Structure:** Clear form layout supports logical thinking process (Sage)
 - **Feedback:** Visual cues provide immediate response to user actions (Explorer)
 - **Refinement:** Subtle styling details demonstrate attention to craft (Creator)
-```
+
+# Email API Integration (`@emailjs/nodejs`)
+
+A new email API is implemented using the `@emailjs/nodejs` library to securely send emails from the server (used in the contact form).
