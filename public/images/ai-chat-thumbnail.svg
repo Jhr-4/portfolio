@@ -1,41 +1,54 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
-  <!-- Background -->
-  <rect width="300" height="300" fill="#f8f9fa" />
+  <!-- No background rectangle for transparency -->
   
-  <!-- Chat interface background -->
-  <rect x="40" y="40" width="220" height="220" rx="12" fill="#ffffff" stroke="#e0e0e0" stroke-width="2" />
+  <!-- Chat interface with dark theme -->
+  <rect x="30" y="30" width="240" height="240" rx="16" fill="#111827" fill-opacity="0.9" stroke="#374151" stroke-width="2" />
+  
+  <!-- Decorative elements for modern tech feel -->
+  <circle cx="50" cy="50" r="4" fill="#60A5FA" />
+  <circle cx="65" cy="50" r="4" fill="#5EEAD4" />
+  <circle cx="80" cy="50" r="4" fill="#F3F4F6" />
+  
+  <!-- Header text -->
+  <text x="150" y="60" font-family="'Inter', sans-serif" font-size="14" text-anchor="middle" fill="#F3F4F6" font-weight="bold">RAG Chat</text>
   
   <!-- User message -->
-  <g transform="translate(60, 80)">
+  <g transform="translate(50, 90)">
     <!-- User icon -->
-    <circle cx="15" cy="15" r="15" fill="#dbeafe" />
-    <text x="15" y="21" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#3b82f6">U</text>
+    <circle cx="15" cy="15" r="15" fill="#1F2937" stroke="#374151" stroke-width="1" />
+    <text x="15" y="20" font-family="'Inter', sans-serif" font-size="12" text-anchor="middle" fill="#F3F4F6">You</text>
     
     <!-- Message bubble -->
-    <rect x="40" y="0" width="150" height="30" rx="15" fill="#f1f5f9" />
-    <text x="50" y="20" font-family="Arial, sans-serif" font-size="12" fill="#475569">What is prompt engineering?</text>
+    <rect x="40" y="0" width="170" height="30" rx="15" fill="#1F2937" stroke="#374151" stroke-width="1" />
+    <text x="50" y="20" font-family="'Inter', sans-serif" font-size="12" fill="#F3F4F6">Is AI the future of coding?</text>
   </g>
   
   <!-- AI message -->
-  <g transform="translate(60, 130)">
+  <g transform="translate(50, 140)">
     <!-- AI icon -->
-    <circle cx="15" cy="15" r="15" fill="#e0e7ff" />
-    <text x="15" y="21" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#6366f1">AI</text>
+    <circle cx="15" cy="15" r="15" fill="#60A5FA" stroke="#374151" stroke-width="1" />
+    <text x="15" y="20" font-family="'Inter', sans-serif" font-size="12" text-anchor="middle" fill="#111827">AI</text>
     
     <!-- Message bubble -->
-    <rect x="40" y="0" width="150" height="60" rx="15" fill="#e0e7ff" />
-    <text x="50" y="20" font-family="Arial, sans-serif" font-size="12" fill="#4338ca">
-      <tspan x="50" y="20">Prompt engineering is the</tspan>
-      <tspan x="50" y="40">practice of designing inputs</tspan>
-      <tspan x="50" y="60">for AI language models.</tspan>
+    <rect x="40" y="0" width="170" height="60" rx="15" fill="#60A5FA" stroke="#60A5FA" stroke-width="1" />
+    <text x="55" y="25" font-family="'Inter', sans-serif" font-size="12" fill="#111827">
+      <tspan x="55" y="25">AI is reshaping coding today.</tspan>
+      <tspan x="55" y="45">The future is now.</tspan>
     </text>
   </g>
   
   <!-- Text input field -->
-  <rect x="60" y="210" width="180" height="30" rx="15" fill="#f1f5f9" stroke="#d1d5db" stroke-width="1" />
-  <text x="75" y="230" font-family="Arial, sans-serif" font-size="12" fill="#9ca3af">Type a message...</text>
+  <rect x="50" y="230" width="170" height="30" rx="15" fill="#1F2937" stroke="#374151" stroke-width="1" />
+  <text x="65" y="250" font-family="'Inter', sans-serif" font-size="12" fill="#9CA3AF">Ask something...</text>
   
   <!-- Send button -->
-  <circle cx="230" cy="225" r="10" fill="#3b82f6" />
-  <path d="M226,225 L234,225 M230,221 L234,225 L230,229" stroke="#ffffff" stroke-width="2" fill="none" />
+  <circle cx="230" cy="245" r="15" fill="#5EEAD4" />
+  <path d="M224,245 L236,245 M230,239 L236,245 L230,251" stroke="#115E59" stroke-width="2" fill="none" />
+  
+  <!-- Decorative elements -->
+  <g opacity="0.5">
+    <circle cx="270" cy="70" r="15" fill="#60A5FA" opacity="0.2" />
+    <circle cx="40" cy="200" r="10" fill="#5EEAD4" opacity="0.2" />
+    <circle cx="260" cy="210" r="20" fill="#60A5FA" opacity="0.1" />
+  </g>
 </svg>

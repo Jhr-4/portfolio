@@ -68,6 +68,31 @@ For dark mode, we invert the luminance while maintaining hues:
 - **Surface**: `#1E293B` (Gray-800)
 - **Border**: `#334155` (Gray-700)
 
+## Standardized Background Gradient
+
+A consistent background gradient is used across all pages to create visual cohesion throughout the portfolio:
+
+```css
+bg-gradient-to-br from-background to-primary-foreground/40
+```
+
+This subtle gradient flows from the background color to a semi-transparent primary foreground color in a bottom-right direction. It creates depth while maintaining readability and serves as the foundation for other visual elements.
+
+### Background Layering System
+
+The portfolio implements a multi-layered background system that combines several visual elements:
+
+1. **Base Gradient**: The standardized gradient that provides consistency across all pages
+2. **Floating Orbs**: Colorful, semi-transparent bubbles with blur effects that add visual interest
+   - Uses colors like `bg-blue-400/15`, `bg-teal-400/25`, `bg-indigo-400/15`, `bg-cyan-400/20`
+   - Implements `mix-blend-screen`, `blur-3xl` and varying opacity levels
+   - Animated with the `animate-float` class and staggered delays
+3. **Starry Background** (on select pages): A component that renders tiny animated stars
+   - Customizable density through the `starsCount` prop
+   - Different star colors (primary, secondary, accent) for visual variety
+
+This layered approach creates visual depth while maintaining the brand's creative and explorative qualities. The combination of subtle gradient, floating orbs, and optional starry background reinforces the digital sandbox concept throughout the site.
+
 ## Color Accessibility
 
 All color combinations have been tested to ensure:

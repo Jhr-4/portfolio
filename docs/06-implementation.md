@@ -126,7 +126,7 @@ Both pages incorporate:
 }
 ```
 
-## D3.js Data Visualization and RAG Chat Implementation
+## Other Implementations
 
 The portfolio includes two advanced playground projects:
 1. **D3 Data Visualizations**: Interactive visualization of productivity/compensation trends
@@ -135,6 +135,8 @@ The portfolio includes two advanced playground projects:
 These are implemented as self-contained applications with detailed documentation:
 - See `docs/07-d3vis-implementation.md` for D3 visualization details
 - See `docs/08-rag-implementation.md` for RAG chat system details
+
+Additionally see docs/09-contact-implementation.md for Contact Form workings details
 
 ## Navigation Structure
 
@@ -162,19 +164,12 @@ The site uses a dark theme by default with HSL color variables:
 :root {
   --background: 224 71% 4%;      /* #111827 */
   --foreground: 215 20% 96%;     /* #F3F4F6 */
-  --card: 222 47% 11%;           /* #1F293--card-foreground: 215 20% 96%;/* #F3F4F6 */
-7 */
---card-foreground: 215 20% 96%;/* #F3F4F6 */
-  --primary: 217 91% 60A--primary-foreground: 221 83% 18%;;   #1E3A8A */
-5FA  60A--primary-foreground: 221 83% 18%; /* #1E3A8A */
-5FA #60A--primary-foreground: 221 83% 18%; /* #1E3A8A */
-5FA */
---primary-foreground: 221 83% 18%; /* #1E3A8A */
-  --accent: 170 75--accent-foreground: 170 80% 20%;%;  #115E59 */
-EEAD4/*  5--accent-foreground: 170 80% 20%; /* #115E59 */
-EEAD4/* #5--accent-foreground: 170 80% 20%; /* #115E59 */
-EEAD4 */
---accent-foreground: 170 80% 20%; /* #115E59 */
+  --card: 222 47% 11%;           /* #1F2937 */
+  --card-foreground: 215 20% 96%;/* #F3F4F6 */
+  --primary: 217 91% 72%;        /* #60A5FA */
+  --primary-foreground: 221 83% 18%; /* #1E3A8A */
+  --accent: 170 70% 75%;         /* #5EEAD4 */
+  --accent-foreground: 170 80% 20%; /* #115E59 */
   --muted: 217 33% 27%;          /* #374151 */
   --muted-foreground: 215 14% 65%; /* #9CA3AF */
   --border: 217 33% 27%;         /* #374151 */
@@ -221,6 +216,131 @@ export const metadata: Metadata = {
 };
 ```
 
+## Form Validation Implementation
+
+The portfolio implements a comprehensive form validation system, primarily showcased in the Contact page.
+
+### Form Validation Strategy
+
+The validation system uses a multi-layered approach:
+
+1. **HTML5 Validation**
+   - Native validation attributes (`required`, `type="email"`, `minLength`)
+   - First line of defense with browser-native validation UI
+
+2. **JavaScript Validation**
+   - Custom validation logic in the `validateForm()` function
+   - Validates name (min 2 characters), email (regex pattern), and message (min length)
+   - Returns validation state and detailed error messages
+
+3. **Server Side Validation**
+  - Similar validation to JS but, present in api/email/send
+
+3. **Visual Error States**
+   - Real-time error feedback as users type
+   - Error messages displayed beneath invalid fields
+   - ARIA attributes (`aria-invalid="true"`) for accessibility
+
+4. **Form State Management**
+   ```tsx
+   // State management using React hooks
+   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+   const [errors, setErrors] = useState({ name: "", email: "", message: "" });
+   const [isSubmitting, setIsSubmitting] = useState(false);
+   const [formStatus, setFormStatus] = useState<{ success?: boolean; message?: string } | null>(null);
+   ```
+
+5. **Error Clearing on Input**
+   ```tsx
+   // Clear errors when user starts typing
+   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+     const { name, value } = e.target;
+     setFormData({ ...formData, [name]: value });
+     
+     if (errors[name as keyof typeof errors]) {
+       setErrors({ ...errors, [name]: "" });
+     }
+   }
+   ```
+
+### Form Submission Feedback
+
+The Contact form implements multiple visual states to provide clear feedback:
+
+1. **Default State:** Standard button with icon and text
+2. **Loading State:** Disabled button with spinner animation
+3. **Success/Error Feedback:** Colored notification box with appropriate message
+
+This approach follows the Sage/Explorer/Creator archetype by providing structured feedback (Sage), clear interaction states (Explorer), and refined visual design (Creator).
+
+## Contact Page Implementation
+
+The Contact page (`src/app/contact/page.tsx`) serves as a showcase for the portfolio's form implementation and UI components.
+
+### Page Structure
+
+The page utilizes a two-column responsive layout:
+
+```
++-----------------------------------------+
+|               Header                    |
++-----------------------------------------+
+| Contact Form      |  Contact Details    |
+| - Name input      |  - GitHub link      |
+| - Email input     |  - LinkedIn link    |
+| - Message area    |  - Email contact    |
+| - Submit button   |  - Location info    |
++-----------------------------------------+
+```
+
+### Visual Design Elements
+
+1. **Background Treatment**
+   - Implements the standardized gradient background
+   - Uses the StarryBackground component
+   - Incorporates floating orbs for visual depth
+
+2. **Card-Based Layout**
+   - Semi-transparent card backgrounds with backdrop blur
+   - Subtle border and shadow effects
+   - Proper z-index management for content visibility
+
+3. **Form UI Enhancement**
+   - Material Icons paired with form labels
+   - Primary color indicators for required fields
+   - Clear visual hierarchy with consistent spacing
+
+4. **Responsive Behavior**
+   - Two columns on desktop (form and contact details)
+   - Single stacked column on mobile
+   - Preserved form function and readability at all sizes
+
+### Implementation Pattern
+
+The form and validation system follows this pattern for each input:
+
+```tsx
+<div className="space-y-2">
+  <Label htmlFor="name" className="flex items-center gap-2 font-bold">
+    <span className="material-icons text-primary text-base">person</span>
+    Name <span className="text-primary">*</span>
+  </Label>
+  <Input 
+    id="name"
+    name="name"
+    value={formData.name}
+    onChange={handleChange}
+    className="bg-background/50" 
+    required
+    minLength={2}
+    aria-invalid={errors.name ? "true" : "false"}
+  />
+  {errors.name && <p className="text-sm text-red-500">{errors.name}</p>}
+</div>
+```
+
+This creates a consistent validation pattern that prioritizes user experience and accessibility while maintaining the design system's visual language.
+
 ## Testing Protocol
 
 ### 1. Visual & Functional Testing
@@ -250,113 +370,17 @@ export const metadata: Metadata = {
 - [ ] **Performance:** Lighthouse scores acceptable, Core Web Vitals healthy.
 - [ ] **Functionality:** All links work, forms submit (if any), interactive elements behave as expected.
 
-## Resources
-
-### External Libraries & Dependencies
-
-| Resource | Purpose | Version | Documentation |
-|----------|---------|---------|---------------|
-| Next.js | Framework | 14.x | [nextjs.org](https://nextjs.org/docs) |
-| TypeScript | Language | 5.x | [typescriptlang.org](https://www.typescriptlang.org/docs/) |
-| Tailwind CSS | Styling | 3.x | [tailwindcss.com](https://tailwindcss.com/docs) |
-| shadcn/ui | UI Components | latest | [ui.shadcn.com](https://ui.shadcn.com/) |
-| Lucide React | Icons | latest | [lucide.dev/react](https://lucide.dev/guide/packages/lucide-react) |
-| D3.js | Data Visualization | 7.x | [d3js.org](https://d3js.org/) |
-| React | UI Library | 18.x | [react.dev](https://react.dev/) |
-| Nomic AI | Embeddings | latest | [nomic.ai](https://docs.nomic.ai/) |
-
-### Key Tool Versions
-
-- Node.js: v18.x or later
-- npm: v9.x or later
-- VS Code: Latest version with recommended extensions
-
-### Assets
-
-- All custom SVG icons and thumbnails are stored in `public/images/`
-- CSV data files are located in `public/csv/`
-- RAG document embeddings are generated from source files in `rag-docs-gen/docs/`
-
 ## Maintenance Guidelines
 
-### Regular Maintenance Tasks
+- **Consistency:** Adhere strictly to the defined typography, color, and spacing systems when adding new content or components.
+- **Component Updates:** When updating shadcn/ui components, re-verify styling against the design system.
+- **Documentation:** Keep these implementation docs (`06-implementation.md`) and related design docs (`01-05`) updated with any significant changes.
+- **Regular Audits:** Periodically re-run accessibility and performance tests.
 
-1. **Dependency Updates**
-   - Run `npm outdated` monthly to identify outdated packages
-   - Update Next.js with caution, testing each major version
-   - Keep shadcn/ui components updated using their CLI
-   - Test thoroughly after any dependency updates
+## Resources
 
-2. **Performance Monitoring**
-   - Run Lighthouse audits quarterly
-   - Monitor Core Web Vitals in Google Search Console
-   - Check bundle sizes with `next/bundle-analyzer`
-   - Optimize images and assets as needed
-
-3. **Content Updates**
-   - Keep project descriptions and skills current
-   - Update portfolio projects when new work is available
-   - Refresh playground projects with new technologies
-
-### Code Standards
-
-1. **TypeScript**
-   - Maintain strict type checking
-   - Avoid `any` types except when absolutely necessary
-   - Use interface definitions for component props
-   - Keep types in separate files for complex components
-
-2. **Component Architecture**
-   - Keep playground projects self-contained in their page files
-   - Extract reusable logic to custom hooks in `src/lib/`
-   - Document complex components with JSDoc comments
-   - Follow the same styling patterns established in existing code
-
-3. **Styling Approach**
-   - Use Tailwind utility classes for most styling
-   - Create custom utilities in `tailwind.config.mjs` for repeated patterns
-   - Keep custom CSS in `globals.css` minimal
-   - Use CSS variables for theme values
-
-### Testing Procedures
-
-1. **Visual Testing**
-   - Manual testing across devices (mobile, tablet, desktop)
-   - Browser compatibility checks (Chrome, Firefox, Safari, Edge)
-   - Dark theme verification for all components
-
-2. **Functional Testing**
-   - Test all interactive elements (buttons, links, forms)
-   - Verify data fetching and visualization components
-   - Test navigation paths and routing
-
-3. **Accessibility Testing**
-   - Run axe DevTools or similar for automated checks
-   - Test with keyboard navigation
-   - Verify screen reader compatibility
-   - Check color contrast ratios
-
-### Deployment Process
-
-1. **Pre-deployment**
-   - Run `npm run build` to verify build success
-   - Check for TypeScript/ESLint errors
-   - Review changes in a local production build
-
-2. **Deployment**
-   - Deploy using Vercel or similar platform
-   - Set environment variables for API endpoints if needed
-   - Configure caching policies for static assets
-
-3. **Post-deployment**
-   - Verify all pages load correctly
-   - Check mobile responsiveness
-   - Monitor error reporting
-
-### Documentation Updates
-
-Keep the following documentation up to date:
-- `README.md` for project overview
-- All files in the `docs/` directory
-- JSDoc comments for functions and components
-- Update this maintenance guide when processes change
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [shadcn/ui Documentation](https://ui.shadcn.com)
+- [WCAG 2.1 Guidelines](https://www.w3.org/TR/WCAG21/)
+- Project Design Docs (`docs/01-05.md`)

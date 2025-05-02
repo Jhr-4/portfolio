@@ -16,7 +16,7 @@ export default function Playground() {
   };
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/10 flex flex-col items-center pt-16 px-4 pb-16 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-background to-primary-foreground/40 flex flex-col items-center pt-16 px-4 pb-16 relative overflow-hidden">
       {/* Repositioned orbs with different placements */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/10 rounded-full mix-blend-screen filter blur-3xl opacity-40 animate-float"></div>
       <div className="absolute top-32 -right-20 w-72 h-72 bg-blue-400/10 rounded-full mix-blend-screen filter blur-3xl opacity-40 animate-float"></div>
@@ -51,7 +51,7 @@ export default function Playground() {
 
 
             <div className="max-w-2xl mx-auto text-lg text-foreground/90">
-              <p>These are interactive AI projects integrated into my portfolio. Small experiments/demos with areas I'm currently exploring.</p>
+              <p>These are interactive AI integrated projects into my portfolio. Small experiments/demos with areas I'm currently exploring.</p>
             </div>
 
             {/* Creative "sandbox" logo */}

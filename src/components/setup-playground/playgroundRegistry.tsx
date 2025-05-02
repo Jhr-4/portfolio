@@ -24,20 +24,20 @@ export const playgroundProjects: PlaygroundProject[] = [
     thumbnailSrc: "/images/productivity-trend.svg", // Reusing existing SVG for now
     thumbnailAlt: "D3.js data visualization chart",
     thumbnailType: "svg",
-    techDescription: "D3.js, SVG Graphics",
+    techDescription: "D3.js, Data Story",
     techIcon: "insights",
     component: () => <></>, // Empty component for coming soon projects
     isComingSoon: false
   },
   {
     id: "rag-chat",
-    title: "RAG Chat Application",
+    title: "Eidon AI Philosopher - RAG Chat App",
     description: "Retrieval-Augmented Generation chatbot with document context awareness",
     category: "AI Demo",
     thumbnailSrc: "/images/ai-chat-thumbnail.svg", // Reusing existing SVG
     thumbnailAlt: "RAG chat interface",
     thumbnailType: "svg",
-    techDescription: "Vector DB, LLM API",
+    techDescription: "Groq, Pinecone Vector DB, Nomic Atlast",
     techIcon: "psychology",
     component: () => <></>,
     isComingSoon: false

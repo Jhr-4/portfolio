@@ -13,7 +13,8 @@ const MobileNav = dynamic(() => import('./mobile-nav').then(mod => mod.MobileNav
 const routes = [
   //{ href: "/", label: "Home" }, the logo already goes to home..
   { href: "/about", label: "About" },
-  { href: "/playground", label: "My Work" },
+  { href: "/playground", label: "Playground" },
+  { href: "/contact", label: "Contact" },
 ]
 
 export function MainNav() {
