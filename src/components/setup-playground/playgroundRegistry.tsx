@@ -4,19 +4,6 @@ import { PlaygroundProject } from "./playgroundFormat";
 // Registry of all playground projects
 export const playgroundProjects: PlaygroundProject[] = [
   {
-    id: "coin-flip",
-    title: "Coin Flip",
-    description: "A simple heads or tails coin flip simulator",
-    category: "Simple Interactive",
-    thumbnailSrc: "/images/coin-flip-thumbnail.svg",
-    thumbnailAlt: "Coin flip animation",
-    thumbnailType: "svg",
-    techDescription: "React Hooks",
-    techIcon: "casino",
-    component: () => <></>, // Replaced with empty component as implementation is now in page
-    isComingSoon: false
-  },
-  {
     id: "d3-visualizations",
     title: "Labor Productivity & Earnings",
     description: "Interactive data visualizations showing trends in labor productivity and earnings",

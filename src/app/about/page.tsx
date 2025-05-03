@@ -52,7 +52,6 @@ export default function About() {
       <div className="absolute top-3/4 left-1/3 w-80 h-80 bg-indigo-400/15 rounded-full mix-blend-screen filter blur-3xl opacity-40 animate-float animate-delay-4000"></div>
       <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-cyan-400/20 rounded-full mix-blend-screen filter blur-3xl opacity-40 animate-float animate-delay-6000"></div>
 
-      {/* Using the reusable StarryBackground component */}
       <StarryBackground 
         starsCount={{
           primary: 40,

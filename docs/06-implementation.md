@@ -93,7 +93,7 @@ Both pages incorporate:
 
 - **Purpose:** Showcases small, experimental interactive projects
 - **Implementation:** Self-contained projects with individual pages
-- **Featured Projects:** Coin Flip (state management), D3 Data Visualizations (productivity trends)
+- **Featured Projects:** D3 Data Visualizations (productivity trends), Eidon Rag Chat, and 1 coming soon.
 
 ### Portfolio Collection Section
 
@@ -297,8 +297,9 @@ The page utilizes a two-column responsive layout:
 
 1. **Background Treatment**
    - Implements the standardized gradient background
-   - Uses the StarryBackground component
-   - Incorporates floating orbs for visual depth
+   - Uses the StarryBackground component on all NON-Project/Interactive Pages
+   - Allows for point of interest on the actual project/interactive rather than background.
+   - Incorporates floating orbs for visual depth on all Pages
 
 2. **Card-Based Layout**
    - Semi-transparent card backgrounds with backdrop blur

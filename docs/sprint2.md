@@ -112,8 +112,6 @@
             page.tsx                  # Chat interface implementation
             EmbeddingNotice.tsx       # Component to check embedding status
             persona.json              # Configuration for assistant personality
-          coin-flip/                  # Simple interactive game
-            page.tsx                  # Coin flip game implementation
           animation/                  # Animation examples
             page.tsx                  # CSS animation showcase
         projects/

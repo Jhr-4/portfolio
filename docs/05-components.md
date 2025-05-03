@@ -283,7 +283,7 @@ A custom-built visual representation that unifies the playground and projects se
 
 #### Interactive Playground Components
 
-Each playground component (CoinFlip, Animation, etc.) is implemented directly in its respective page file, adhering to a consistent structure:
+Each playground component (RAG Chat, D3 Visualization, etc.) is implemented directly in its respective page file, adhering to a consistent structure:
 
 ```tsx
 export default function PlaygroundPage() {
@@ -625,7 +625,6 @@ The portfolio includes several specialized components that are implemented direc
 | **D3 Line Chart** | Time-series data visualization | `src/app/playground/d3-visualizations/page.tsx` |
 | **D3 Bar Chart** | Comparative data visualization | `src/app/playground/d3-visualizations/page.tsx` |
 | **D3 Pie Chart** | Proportional data visualization | `src/app/playground/d3-visualizations/page.tsx` |
-| **Coin Flip Game** | Interactive state demo | `src/app/playground/coin-flip/page.tsx` |
 | **Animation Demo** | CSS animation examples | `src/app/playground/animation/page.tsx` |
 
 For detailed documentation on these specialized component implementations:

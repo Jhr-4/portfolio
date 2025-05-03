@@ -157,9 +157,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/10 flex flex-col items-center pt-16 px-4 pb-16 relative overflow-hidden">
-      {/* Using the reusable StarryBackground component */}
       <StarryBackground 
-        key="testing"
         starsCount={{
           primary: 50,  // More primary stars
           secondary: 35,
