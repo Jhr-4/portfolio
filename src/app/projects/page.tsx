@@ -10,20 +10,40 @@ import { StarryBackground } from "@/components/ui/starry-background"
 // List of external projects to display
 const externalProjects = [
   {
-    title: "Project One Title",
-    description: "A brief description of Project One, highlighting key features and technologies used.",
-    link: "#"
+    title: "StellarNews",
+    description: "A web application that serves users recent space articles from various sources, eliminating the need to surfing across numerous websites to see the current space news.",
+    link: "https://github.com/Jhr-4/StellarNews",
+    tech: "PHP, MySQL, HTML, Bootstrap, SpaceNews API, Git",
+    image: "/images/projects/StellarNews.png"
   },
   {
-    title: "Project Two Title",
-    description: "A brief description of Project Two, highlighting key features and technologies used.",
-    link: "#"
+    title: "CLI Calculator",
+    description: "Simple yet Complex CLI Calculator Project with Unit Testing (pytest), Logging (Processes & Errors), & OOP / Design Patterns.",
+    link: "https://github.com/Jhr-4/CLI_Calculator",
+    tech: "Python, pytest, OOP, Design Patterns, Logging",
+    image: "/images/projects/CLI_Calculator.png"
   },
   {
-    title: "Project Three Title",
-    description: "A brief description of Project Three, highlighting key features and technologies used.",
-    link: "#"
+    title: "CurrentAI - Headless Drupal CMS",
+    description: "Collaborative Headless Drupal CMS project built with Dockerized components and hosted on DigitalOcean.",
+    link: "https://github.com/Jhr-4/IS373_AI_News",
+    tech: "Drupal, Docker, DigitalOcean, Headless CMS",
+    image: "/images/projects/CurrentAI.png"
   },
+  {
+    title: "Roll-A-Ball",
+    description: "A roll a ball game with the objective of collecting cherries to progress and avoiding ghosts & obstacles.",
+    link: "https://github.com/Jhr-4/RollABall-Sprint2",
+    tech: "C#, Unity",
+    image: "/images/projects/RollABall.webp"
+  },
+  {
+    title: "Grade Calculator",
+    description: "A user-friendly Grade Calculator web application. Allows grades to be saved making it easy to track grades and modify upon getting more assignments (First Project).",
+    link: "https://github.com/Jhr-4/GradeCalculator",
+    tech: "HTML, CSS, JavaScript",
+    image: "/images/projects/GradeCalculator.png"
+  }
 ];
 
 export default function Projects() {
@@ -75,7 +95,7 @@ export default function Projects() {
         <section className="space-y-8">
           <div className="text-center mb-12 space-y-6 flex flex-col items-center">
             <div className="max-w-2xl mx-auto text-lg text-foreground/90">
-              <p>A collection of external projects and collaborations showcasing various skills and technologies.</p>
+              <p>A collection of my past projects, showcasing various skills and technologies I have experience in. </p>
             </div>
             
             {/* Creative "sandbox" logo for consistency with playground page */}
@@ -119,27 +139,63 @@ export default function Projects() {
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {externalProjects.map((project, index) => (
-              <Card key={index} className="flex flex-col bg-card hover:shadow-md transition-shadow duration-200">
-                <CardHeader>
-                  <CardTitle className="text-xl font-serif text-primary">{project.title}</CardTitle>
-                  <CardDescription className="text-muted-foreground">{project.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="mt-auto">
-                  {project.link && project.link !== "#" ? (
-                    <Link
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-medium text-primary hover:underline"
-                    >
-                      View Project
-                    </Link>
-                  ) : (
-                    <span className="text-sm text-muted-foreground">Details coming soon</span>
+              <Card key={index} className="flex flex-col bg-card hover:shadow-md transition-shadow duration-200 overflow-hidden mx-auto w-full">
+                {/* Image*/}
+                <div className="w-full overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-[256px] object-fill"
+                  />
+                </div>
+                
+                <div className="px-4 py-3 flex flex-col items-center text-center">
+                  {/* Centered title */}
+                  <CardTitle className="text-lg font-serif text-foreground/90 mb-2">{project.title}</CardTitle>
+                  
+                  {/* Centered technologies list without label */}
+                  {project.tech && (
+                    <div className="mb-3 flex flex-wrap justify-center gap-1">
+                      {project.tech.split(',').map((tech, techIndex) => (
+                        <span 
+                          key={techIndex} 
+                          className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full"
+                        >
+                          {tech.trim()}
+                        </span>
+                      ))}
+                    </div>
                   )}
-                </CardContent>
+                  
+                  {/* Centered description */}
+                  <CardDescription className="text-muted-foreground text-sm">
+                    {project.description}
+                  </CardDescription>
+                </div>
+                
+                {/* Button at bottom */}
+                <div className="mt-auto flex justify-center">
+                  {project.link && project.link !== "#" ? (
+                    <Button
+                      variant="outline"
+                      size="default"
+                      className="border-primary hover:bg-primary hover:text-primary-foreground transition-colors text-sm w-full py-1.5"
+                      asChild
+                    >
+                      <Link
+                        href={project.link}
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        &#128279; View Project
+                      </Link>
+                    </Button>
+                  ) : (
+                    <Button variant="outline" className="py-1.5" disabled>Details coming soon</Button>
+                  )}
+                </div>
               </Card>
             ))}
           </div>

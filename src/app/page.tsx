@@ -66,7 +66,7 @@ export default function Home() {
               </h2>
             </div>
             <p className="text-xl text-foreground/90 max-w-xl leading-relaxed">
-              👋 Hey there, I'm a Computer Science student passionate about software development, web technologies, and exploring emerging tech.
+              👋 Hey there, I'm a undergrad Computer Science student at NJIT passionate about software development, web technologies, and exploring emerging tech.
             </p>
             
             <div className="flex items-center text-muted-foreground justify-center md:justify-start">
@@ -157,7 +157,7 @@ export default function Home() {
                 </li>
                 <li className="flex items-start">
                   <span className="material-icons text-accent mr-2">code</span>
-                  <span>Building accessible and user-centered web applications</span>
+                  <span>Building accessible and user-centered applications</span>
                 </li>
                 <li className="flex items-start">
                   <span className="material-icons text-accent mr-2">psychology</span>

@@ -61,7 +61,7 @@ export default function Playground() {
 
 
             <div className="max-w-2xl mx-auto text-lg text-foreground/90">
-              <p>These are interactive AI integrated projects into my portfolio. Small experiments/demos with areas I'm currently exploring.</p>
+              <p>These are interactive AI integrated projects. Small experiments/demos with areas I'm currently exploring with the help of AI.</p>
             </div>
 
             {/* Creative "sandbox" logo */}
