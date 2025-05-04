@@ -8,7 +8,7 @@ export const playgroundProjects: PlaygroundProject[] = [
     title: "Labor Productivity & Earnings",
     description: "Interactive data visualizations showing trends in labor productivity and earnings",
     category: "Data Visualization",
-    thumbnailSrc: "/images/productivity-trend.svg", // Reusing existing SVG for now
+    thumbnailSrc: "/images/playground/productivity-trend.svg", // Reusing existing SVG for now
     thumbnailAlt: "D3.js data visualization chart",
     thumbnailType: "svg",
     techDescription: "D3.js, Data Story",
@@ -21,7 +21,7 @@ export const playgroundProjects: PlaygroundProject[] = [
     title: "Eidon AI Philosopher - RAG Chat App",
     description: "Retrieval-Augmented Generation chatbot with document context awareness",
     category: "AI Demo",
-    thumbnailSrc: "/images/ai-chat-thumbnail.svg", // Reusing existing SVG
+    thumbnailSrc: "/images/playground/ai-chat-thumbnail.svg", // Reusing existing SVG
     thumbnailAlt: "RAG chat interface",
     thumbnailType: "svg",
     techDescription: "Groq, Pinecone Vector DB, Nomic Atlast",
@@ -34,7 +34,7 @@ export const playgroundProjects: PlaygroundProject[] = [
     title: "Animation Playground",
     description: "Explore CSS, Canvas, SVG, and WebGL animations",
     category: "Creative Coding",
-    thumbnailSrc: "/images/animation-thumbnail.svg",
+    thumbnailSrc: "/images/playground/animation-thumbnail.svg",
     thumbnailAlt: "Animation demo",
     thumbnailType: "svg",
     techDescription: "Web Animations",
