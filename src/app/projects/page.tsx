@@ -1,6 +1,5 @@
 "use client"
 
-// Projects page with navigation to Playground
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -142,13 +141,42 @@ export default function Projects() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {externalProjects.map((project, index) => (
               <Card key={index} className="flex flex-col bg-card hover:shadow-md transition-shadow duration-200 overflow-hidden mx-auto w-full">
-                {/* Image*/}
-                <div className="w-full overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-[256px] object-fill"
-                  />
+
+                {/* Image with play button overlay for Roll-A-Ball */}
+                <div className="w-full overflow-hidden relative">
+                  {project.title === "Roll-A-Ball" ? (
+                    <>
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="w-full h-[256px] object-cover"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/50 transition-colors">
+                        <Button
+                          variant="default"
+                          size="lg"
+                          className="bg-primary hover:bg-primary/90 text-primary-foreground transition-transform hover:scale-105 gap-2 rounded-full"
+                          asChild
+                        >
+                          <Link
+                            href="https://jhr4.itch.io/rollaball-v1-3"
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="hover:no-underline"
+                          >
+                            <span className="material-icons">play_arrow</span>
+                            Play Game
+                          </Link>
+                        </Button>
+                      </div>
+                    </>
+                  ) : (
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-[256px] object-fill"
+                    />
+                  )}
                 </div>
                 
                 <div className="px-4 py-3 flex flex-col items-center text-center">
