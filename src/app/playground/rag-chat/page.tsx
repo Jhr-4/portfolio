@@ -11,9 +11,10 @@ export default function RagChatPage() {
   const router = useRouter()
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-primary-foreground/40 flex flex-col items-center pt-1 px-4 pb-16">
-      <main className="max-w-5xl w-full space-y-8 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-background to-primary-foreground/40 flex flex-col items-center pt-2  px-4 pb-2">
+      <main className="max-w-5xl w-full space-y-8 py-2">
         {/* Header with back button */}
+        {/*
         <div className="flex items-center justify-between">
           <Button 
             variant="ghost" 
@@ -25,22 +26,20 @@ export default function RagChatPage() {
           </Button>
         </div>
 
+
         <div className="space-y-4">
           <h1 className="text-3xl md:text-4xl font-serif font-bold text-primary">
             RAG Chat Application
           </h1>
-        </div>
+        </div>*/}
         
         {/* Project content area */}
-        <div className="bg-card border border-border rounded-lg p-6 min-h-[80vh]">
-          <Card className="border-border overflow-hidden">
-            <CardHeader>
+        <div>
+          <Card className="overflow-hidden">
+            {/*<CardHeader>
               <CardTitle className="font-serif text-2xl">Retrieval-Augmented Generation Chat</CardTitle>
-              <CardDescription>
-                AI chatbot with document context awareness using vector databases and LLM APIs
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="p-4">
+            </CardHeader>*/}
+            <CardContent className="p-2">
               <RagChatDemo />
             </CardContent>
             <CardFooter className="border-t border-border flex flex-col sm:flex-row items-start gap-4 text-sm text-muted-foreground">
@@ -227,7 +226,7 @@ function RagChatDemo() {
   };
 
   return (
-      <div className="flex flex-col h-[calc(100vh)] border border-border rounded-lg overflow-hidden">
+      <div className="flex flex-col h-[calc(90vh)] border border-border rounded-lg overflow-hidden">
         {/* Messages Area */}
         <div 
           ref={messagesContainerRef} 
@@ -269,25 +268,36 @@ function RagChatDemo() {
             </div>
           )}
         </div>
-        
-        {/* Input Area */}
-        <div className="border-t border-border p-4">
-          <form onSubmit={handleSendMessage} className="flex gap-2 bg-muted/50 p-1 rounded-full">
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder={messagesRemaining > 0 
-                ? "Ask something about AI, RAG systems, or technology..." 
-                : "Message limit reached. Try again later."}
-              disabled={loading || messagesRemaining <= 0}
-              className="flex-1 py-2 px-4 rounded-full border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-            />
+          {/* Input Area */}
+        <div className="border-t border-border p-4 xs:p-2">          <form onSubmit={handleSendMessage} className="flex items-center">
+            <div className="relative flex-1">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder={messagesRemaining > 0 
+                  ? "Ask a question..." 
+                  : "Message limit reached."}
+                disabled={loading || messagesRemaining <= 0}
+                className="w-full py-2 pl-3 pr-12 sm:pr-4 sm:pl-4 rounded-full border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary text-sm sm:text-base"
+              />
+              {/* Mobile send button (overlay) */}
+              <Button 
+                type="submit" 
+                disabled={loading || messagesRemaining <= 0}
+                variant="default"
+                className="absolute right-1 top-1/2 -translate-y-1/2 rounded-full w-9 h-9 p-0 flex items-center justify-center sm:hidden"
+              >
+                <span className="material-icons text-sm">send</span>
+              </Button>
+            </div>
+            
+            {/* Desktop send button */}
             <Button 
               type="submit" 
               disabled={loading || messagesRemaining <= 0}
               variant="default"
-              className="rounded-full px-4"
+              className="hidden sm:flex ml-2 rounded-full px-4 items-center"
             >
               <span className="material-icons text-sm mr-1">send</span>
               <span>Send</span>
