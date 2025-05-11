@@ -17,6 +17,5 @@ export interface PlaygroundProject {
   
   techDescription: string; // Short description of technologies used
   techIcon: string;   // Material icon name for the tech stack
-  component: React.ComponentType; // The actual interactive component
   isComingSoon?: boolean; // Flag for projects not yet implemented
 }

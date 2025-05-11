@@ -80,9 +80,10 @@ export function EmbeddingsNotice({ className }: EmbeddingsNoticeProps) {
 
   return (
     <div className={`bg-green-500/10 text-green-900 dark:text-green-300 p-4 rounded-md ${className}`}>
-      <h3 className="font-medium mb-1">RAG System Ready</h3>
+      <h3 className="font-medium mb-1">Eidon RAG System Ready</h3>
       <p className="text-sm">
-        {status.count} document chunks available for answering questions.
+        AI chatbot with document context awareness using vector databases and LLM APIs
+        <br/>{status.count} document chunks available for answering questions. 
       </p>
     </div>
   );

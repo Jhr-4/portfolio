@@ -156,9 +156,10 @@ export default function D3VisualizationsPage() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-primary-foreground/40 flex flex-col items-center pt-1 px-2 md:px-4 pb-16">
-      <main className="max-w-5xl w-full space-y-8 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-background to-primary-foreground/40 flex flex-col items-center pt-1 px-2 pb-2">
+      <main className="max-w-5xl w-full space-y-8 py-2">
         {/* Header with back button */}
+        {/*
         <div className="flex items-center justify-between">
           <Button 
             variant="ghost" 
@@ -178,14 +179,14 @@ export default function D3VisualizationsPage() {
             Examining the relationship between productivity growth and worker compensation
           </p>
         </div>
-        
+        */}
         {/* Project content area */}
         <div className="bg-card border border-border rounded-lg p-2 md:p-6 min-h-[80vh]">
           <Card className="border-border overflow-hidden">
             <CardHeader>
-              <CardTitle className="font-serif text-2xl">D3.js Data Visualizations</CardTitle>
+              <CardTitle className="font-serif text-2xl">Labor Productivity & Earnings - D3.js Data Visualization</CardTitle>
               <CardDescription>
-                Interactive data visualizations showing the divergence between productivity growth and worker earnings
+                Examining the relationship between productivity growth and worker compensation
               </CardDescription>
             </CardHeader>
             <CardContent className="p-0 md:p-6">

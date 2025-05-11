@@ -13,7 +13,6 @@ export const playgroundProjects: PlaygroundProject[] = [
     thumbnailType: "svg",
     techDescription: "D3.js, Data Story",
     techIcon: "insights",
-    component: () => <></>, // Empty component for coming soon projects
     isComingSoon: false
   },
   {
@@ -26,7 +25,17 @@ export const playgroundProjects: PlaygroundProject[] = [
     thumbnailType: "svg",
     techDescription: "Groq, Pinecone Vector DB, Nomic Atlast",
     techIcon: "psychology",
-    component: () => <></>,
+    isComingSoon: false
+  },  {
+    id: "euler-path",
+    title: "Euler Path Game",
+    description: "Interactive visualization of Euler paths in graph theory",
+    category: "Algorithm Visualization",
+    thumbnailSrc: "/images/playground/euler-path-thumbnail.svg",
+    thumbnailAlt: "Euler path visualization",
+    thumbnailType: "svg",
+    techDescription: "Graph Theory, Interactive Algorithm",
+    techIcon: "route",
     isComingSoon: false
   },
   {
@@ -39,7 +48,6 @@ export const playgroundProjects: PlaygroundProject[] = [
     thumbnailType: "svg",
     techDescription: "Web Animations",
     techIcon: "animation",
-    component: () => <></>,
     isComingSoon: false
   }
 ];

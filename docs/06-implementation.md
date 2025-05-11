@@ -126,15 +126,27 @@ Both pages incorporate:
 }
 ```
 
-## Other Implementations
+## Playground Interactives
 
-The portfolio includes two advanced playground projects:
+The portfolio includes three advanced playground interactives:
 1. **D3 Data Visualizations**: Interactive visualization of productivity/compensation trends
 2. **RAG Chat Application**: Retrieval-augmented generation chat with document context
+3. **Euler Path Game**: Interactive graph theory puzzle game
 
 These are implemented as self-contained applications with detailed documentation:
 - See `docs/07-d3vis-implementation.md` for D3 visualization details
 - See `docs/08-rag-implementation.md` for RAG chat system details
+- See `docs/10-euler-implementation.md` for Euler Path game details
+
+All playgorund interactives have the following:
+- Optimized positioning to ensure chat is visible above the fold
+- Clean, minimalist design with maximized chat space and removed title/description
+- Full-width card layout (`max-w-7xl`) to optimize horizontal space
+- Fully responsive design with adaptive layouts for different screen sizes:
+  - Mobile-specific input with overlay send button
+  - Desktop-specific send button with text label
+  - Optimized padding and spacing for small screens
+  - Responsive typography
 
 Additionally see docs/09-contact-implementation.md for Contact Form workings details
 
