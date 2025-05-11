@@ -198,17 +198,6 @@ export default function About() {
             </div>
           </div>
         </section>
-        
-        {/* Navigation links */}
-        <div className="text-center mt-12">
-          <Link href="/projects" className="text-primary hover:underline">
-            View my projects
-          </Link>
-          <span className="mx-2 text-muted-foreground">|</span>
-          <Link href="/" className="text-primary hover:underline">
-            Back to Home
-          </Link>
-        </div>
       </main>
     </div>
   )

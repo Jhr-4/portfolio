@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Inter, Source_Serif_4 } from "next/font/google";
 import { MainNav } from "@/components/main-nav";
+import { Footer } from "@/components/footer";
 import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -41,15 +42,31 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en" className={`${inter.variable} ${sourceSerif4.variable}`}>
+}>) {  return (
+    <html lang="en" className={`${inter.variable} ${sourceSerif4.variable}`} suppressHydrationWarning>
       <head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <meta name="theme-color" content="hsl(var(--background))" />
+        <meta name="color-scheme" content="dark" />
       </head>
-      <body className={`font-sans antialiased`}>
-        <MainNav />
-        {children}
+      <body className={`font-sans antialiased min-h-screen flex flex-col`}>
+        {/* Skip to content link - hidden until focused */}
+        <a 
+          href="#main-content" 
+          className="sr-only focus:not-sr-only focus:fixed focus:top-0 focus:left-0 focus:z-[10001] focus:bg-background focus:text-primary focus:px-4 focus:py-2 focus:outline-none focus:ring-2 focus:ring-ring"
+        >
+          Skip to content
+        </a>
+        
+        <header>
+          <MainNav />
+        </header>
+        
+        <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
+          {children}
+        </main>
+        
+        <Footer />
         <Analytics />
       </body>
     </html>

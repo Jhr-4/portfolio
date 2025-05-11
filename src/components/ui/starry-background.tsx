@@ -84,9 +84,8 @@ export function StarryBackground({
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [starsCount.primary, starsCount.secondary, starsCount.accent, starsCount.dust]);
-
   return (
-    <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
       {/* Grid lines for digital sandbox feel */}
       <div className="absolute inset-0" style={{ opacity: gridOpacity }}>
         {[...Array(20)].map((_, i) => (

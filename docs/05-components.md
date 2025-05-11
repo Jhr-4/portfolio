@@ -357,7 +357,14 @@ This document outlines the core reusable components used in the portfolio.
     *   **Dependencies:** `Link` (Next.js), `MobileNav` (dynamic import).
     *   **Styling:** Uses `bg-background`, `border-b`, `text-primary` (brand), `text-foreground/80` (links).
 
-2.  **`MobileNav` (`@/components/mobile-nav.tsx`)**
+2.  **`Footer` (`@/components/footer.tsx`)**
+    *   **Description:** The site footer providing copyright information, site navigation, and social links.
+    *   **Structure:** Server Component.
+    *   **Dependencies:** `Link` (Next.js), `lucide-react` icons (Github, Linkedin, Mail).
+    *   **Styling:** Uses `mt-auto`, `border-t`, `bg-background/95`, with responsive layout (flex-col to flex-row).
+    *   **Features:** Displays logo, current year copyright, navigation mirrors main-nav, social media icons.
+
+3.  **`MobileNav` (`@/components/mobile-nav.tsx`)**
     *   **Description:** Client-side component providing the mobile navigation experience using a slide-out sheet.
     *   **Structure:** Client Component (`"use client"`).
     *   **Dependencies:** `useState`, `Link` (Next.js), `lucide-react` (Menu icon), `@/components/ui/sheet`.
@@ -485,6 +492,34 @@ The portfolio uses a strategic layering of background elements to create visual 
 This layered approach creates a sense of depth and dimension while maintaining readability and focus on the main content. The combination reinforces the Explorer archetype through visual discovery and the Creator archetype through thoughtful visual composition.
 
 # Components
+
+## Footer Component
+
+### Footer Implementation
+
+The site includes a consistent footer component that reinforces the brand identity while providing essential navigation and contact options across all pages.
+
+**Implementation:**
+- Located in `@/components/footer.tsx`
+- Server component rendered in the root layout
+- Contains brand logo, copyright notice, site navigation links, and social media links
+- Maintains consistent styling with the main navigation
+
+**Structure:**
+```tsx
+<footer className="mt-auto border-t border-border bg-background/95">
+  <div className="container mx-auto px-4 py-8">
+    {/* Logo and copyright */}
+    {/* Navigation links */}
+    {/* Social media links */}
+  </div>
+</footer>
+```
+
+**Layout Integration:**
+- Added to the root layout with flex column structure
+- Uses `min-h-screen` and `flex-1` to ensure footer stays at the bottom
+- Maintains the site's spacing system and color palette
 
 ## Icon System
 
