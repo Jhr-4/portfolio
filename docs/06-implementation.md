@@ -219,7 +219,7 @@ The site uses a dark theme by default with HSL color variables:
 ```typescript
 export const metadata: Metadata = {
   title: {
-    default: "Jay Rana - Software Developer Portfolio",
+    default: "Jay Rana - Portfolio",
     template: "%s | Jay Rana Portfolio",
   },
   description: "Showcasing my software development projects and skills...",

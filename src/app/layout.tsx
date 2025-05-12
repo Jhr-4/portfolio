@@ -21,12 +21,12 @@ const sourceSerif4 = Source_Serif_4({
 
 export const metadata: Metadata = {
   title: {
-    default: "Jay Rana - Software Developer Portfolio",
+    default: "Jay Rana - Portfolio",
     template: "%s | Jay Rana Portfolio",
   },
   description: "Showcasing my software development projects and skills. Explore my work in web development, problem-solving, and more.",
   authors: [{ name: "Jay Rana" }],
-  keywords: ["software developer", "portfolio", "web development", "full stack", "react", "nextjs", "typescript", "projects", "Jay Rana", "personal website"]
+  keywords: ["software developer", "portfolio", "web development", "full stack", "internship", "web specialist", "projects", "Jay Rana", "personal website"]
 };
 
 export const viewport: Viewport = {
