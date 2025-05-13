@@ -22,12 +22,7 @@ const socialLinks = [
     href: "https://www.linkedin.com/in/jay-rana-23441a298/", 
     label: "LinkedIn", 
     icon: <Linkedin className="h-5 w-5" /> 
-  },
-  { 
-    href: "mailto:jhr4@njit.edu", 
-    label: "Email", 
-    icon: <Mail className="h-5 w-5" /> 
-  },
+  }
 ]
 
 export function Footer() {

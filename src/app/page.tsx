@@ -109,14 +109,6 @@ export default function Home() {
                 <Github className="text-primary hover:scale-125 focus-visible:scale-125 transition-transform" strokeWidth={1.25} absoluteStrokeWidth />
                 <span className="sr-only">GitHub Profile</span>
               </a>
-              <a 
-                href="mailto:jhr4@njit.edu" 
-                aria-label="Email Contact" 
-                className="p-2 rounded-full hover:bg-muted/30 focus-visible:bg-muted/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-all"
-              >
-                <MailOpen className="text-primary hover:scale-125 focus-visible:scale-125 transition-transform" strokeWidth={1.25} absoluteStrokeWidth />
-                <span className="sr-only">Email Contact</span>
-              </a>
             </div>
           </div>
           

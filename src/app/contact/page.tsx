@@ -304,18 +304,6 @@ export default function ContactPage() {
                 </div>
                 <ArrowUpRight className="text-foreground/50 group-hover:text-primary transition-colors" size={24} />
               </Link>
-              
-              <Link 
-                href="mailto:jhr4@njit.edu" 
-                className="flex items-center gap-3 p-3 bg-background/40 border border-border rounded-md hover:bg-background/70 transition-colors group"
-              >
-                <Mail className="text-primary" size={24} />
-                <div className="flex-1">
-                  <span className="font-medium">Email</span>
-                  <span className="block text-sm text-foreground/70">jhr4@njit.edu</span>
-                </div>
-                <ArrowUpRight className="text-foreground/50 group-hover:text-primary transition-colors" size={24} />
-              </Link>
 
               {/* Location without box */}
               <div className="flex items-start gap-3 p-3 border-t border-border pt-6 mt-3">
