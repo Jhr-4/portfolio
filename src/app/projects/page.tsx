@@ -76,16 +76,16 @@ export default function Projects() {
         <div className="flex justify-center mb-6">
           <div className="inline-flex rounded-md bg-muted p-1">
             <button
-              onClick={navigateToPlayground}
-              className="px-6 py-2 text-sm font-medium rounded-md text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Interactive Playground
-            </button>
-            <button
               className="px-6 py-2 text-sm font-medium rounded-md bg-background text-foreground"
               aria-current="page"
             >
               Portfolio Collection
+            </button>
+            <button
+              onClick={navigateToPlayground}
+              className="px-6 py-2 text-sm font-medium rounded-md text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Interactive Playground
             </button>
           </div>
         </div>
@@ -149,7 +149,7 @@ export default function Projects() {
                       <img 
                         src={project.image} 
                         alt={project.title} 
-                        className="w-full h-[256px] object-cover"
+                        className="w-full h-[256px] object-fill"
                       />
                       <div className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/50 transition-colors">
                         <Button

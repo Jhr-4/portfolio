@@ -50,7 +50,7 @@ export default function RagChatPage() {
                   <li>LangChain.js RecursiveCharacterTextSplitter</li>
                   <li>Pinecone serverless vector database</li>
                   <li>Nomic Atlas embedding model (nomic-embed-text-v1.5)</li>
-                  <li>Groq API with Llama3-8B model</li>
+                  <li>Groq API with Llama-3.1-8B model</li>
                 </ul>
               </div>
             </CardFooter>

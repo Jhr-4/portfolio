@@ -13,7 +13,7 @@ const MobileNav = dynamic(() => import('./mobile-nav').then(mod => mod.MobileNav
 const routes = [
   //{ href: "/", label: "Home" }, the logo already goes to home..
   { href: "/about", label: "About" },
-  { href: "/playground", label: "Playground" },
+  { href: "/projects", label: "Projects" },
   //{ href: "/projects", label: "Projects" },
   { href: "/contact", label: "Contact" },
 ]
@@ -22,7 +22,7 @@ export function MainNav() {
   return (
     <nav className="top-0 sticky flex items-center justify-between w-full py-4 px-4 md:px-8 border-b border-border bg-background/95 z-[10000]">      {/* Logo */}
       <Link href="/" className="font-serif text-xl font-semibold text-primary hover:text-primary/90 focus-visible:text-primary/90 transition-colors flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm">
-        <img src="/jr-logo.svg" alt="JR Logo" className="h-12 w-12 -my-2" />
+        <img src="/jr-logo.svg" alt="JR Logo" className="h-12 w-12 -my-2  pointer-events-none" />
         <span className="sr-only">Home</span>
       </Link>
       {/* Desktop navigation links */}

@@ -79,7 +79,7 @@ export default function About() {
             <div className="space-y-4 mb-10">
               <h3 className="text-xl font-serif font-semibold text-primary mb-3">My Projects & Interests</h3>
               <p className="text-foreground mb-4">
-                This portfolio showcases my work, including an AI Playground page with experimental projects. I'm experimenting with autocoder tools (GitHub Copilot Agents, Windsurf, etc.) and exploring AI integrations such as with RAG applications. Currently, I'm developing these AI-powered tools while enhancing my prompt engineering and problem solving skills while learning effective ways to integrate AI into practical, useful projects.
+                This portfolio showcases my past projects and things I'm currently working on. Some past projects include: <strong>SellarNews</strong> a platform to get all space news in one place, a <strong>gradebook style calculator</strong>, and an <strong>CMS project</strong>. Additionally, there's an AI Playground page with integrated projects created by experimenting with autocoder tools (e.g., GitHub Copilot Agents, Windsurf) to build skills like prompt engineering and learn to integrate AI (including RAG applications) into practical projects.
               </p>
             </div>
             

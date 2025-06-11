@@ -45,10 +45,10 @@ export default function Home() {
               <div className="relative z-10 rounded-2xl overflow-hidden border-4 border-border bg-card shadow-xl max-w-xs mx-auto">
                 <Image 
                   src="/images/avatar.png"
-                  alt="Software developer workspace with code on screen" 
+                  alt="Humanized portait created with lego bricks structure." 
                   width={400} 
                   height={300} 
-                  className="w-full h-auto object-contain"
+                  className="w-full h-auto object-contain mix-blend-luminosity pointer-events-none"
                   priority
                 />                
               </div>
@@ -120,7 +120,7 @@ export default function Home() {
                 alt="Software developer workspace with code on screen" 
                 width={500} 
                 height={375} 
-                className="w-full h-auto object-contain"
+                className="w-full h-auto object-contain mix-blend-luminosity pointer-events-none"
                 priority
               />
             </div>

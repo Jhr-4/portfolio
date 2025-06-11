@@ -40,16 +40,16 @@ export default function Playground() {
         <div className="flex justify-center mb-6">
           <div className="inline-flex rounded-md bg-muted p-1">
             <button
-              className="px-6 py-2 text-sm font-medium rounded-md bg-background text-foreground"
-              aria-current="page"
-            >
-              Interactive Playground
-            </button>
-            <button
               onClick={navigateToProjects}
               className="px-6 py-2 text-sm font-medium rounded-md text-muted-foreground hover:text-foreground transition-colors"
             >
               Portfolio Collection
+            </button>
+            <button
+              className="px-6 py-2 text-sm font-medium rounded-md bg-background text-foreground"
+              aria-current="page"
+            >
+              Interactive Playground
             </button>
           </div>
         </div>

@@ -41,7 +41,7 @@ export function Footer() {
           {/* Logo and copyright */}
           <div className="flex flex-col items-center md:items-start">
             <Link href="/" className="font-serif text-xl font-semibold text-primary hover:text-primary/90 transition-colors flex items-center gap-2">
-              <img src="/jr-logo.svg" alt="JR Logo" className="h-10 w-10" />
+              <img src="/jr-logo.svg" alt="JR Logo" className="h-10 w-10 pointer-events-none" />
               <span>Jay Rana</span>
             </Link>
             <p className="text-sm text-muted-foreground mt-2">

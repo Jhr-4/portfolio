@@ -38,6 +38,7 @@ export const playgroundProjects: PlaygroundProject[] = [
     techIcon: "route",
     isComingSoon: false
   },
+/*Basic Format:
   {
     id: "animation",
     title: "Animation Playground",
@@ -49,7 +50,7 @@ export const playgroundProjects: PlaygroundProject[] = [
     techDescription: "Web Animations",
     techIcon: "animation",
     isComingSoon: false
-  }
+  }*/
 ];
 
 // Helper function to get a project by ID
