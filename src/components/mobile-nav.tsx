@@ -10,8 +10,8 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 const routes = [
   //{ href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/playground", label: "Playground" },
-  //{ href: "/projects", label: "Projects" },  
+  //{ href: "/playground", label: "Playground" },
+  { href: "/projects", label: "Projects" },  
   { href: "/contact", label: "Contact" },
 ]
 

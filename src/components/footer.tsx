@@ -7,7 +7,7 @@ import { Github, Linkedin, Mail } from "lucide-react"
 const routes = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/playground", label: "Playground" },
+  { href: "/projects", label: "Projects" },
   { href: "/contact", label: "Contact" },
 ]
 
