@@ -26,7 +26,20 @@ export const metadata: Metadata = {
   },
   description: "Showcasing my software development projects and skills. Explore my work in web development, problem-solving, and more.",
   authors: [{ name: "Jay Rana" }],
-  keywords: ["software developer", "portfolio", "web development", "full stack", "internship", "web specialist", "projects", "Jay Rana", "personal website"]
+  keywords: ["software developer", "portfolio", "web development", "full stack", "internship", "web specialist", "projects", "Jay Rana", "personal website"],
+  openGraph:{
+    title: "Jay Rana - Portfolio",
+    description: "Showcasing my software development projects and skills. Explore my work in web development, problem-solving, and more.",
+    url: "https://portfolio-rosy-tau-89.vercel.app/",
+    siteName: "Jay Rana - Portfolio",
+    images: [
+      {
+      url: "/images/avatar.png",
+      width: 1200,
+      height: 630,
+      }
+    ],
+  }
 };
 
 export const viewport: Viewport = {
