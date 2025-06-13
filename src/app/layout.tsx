@@ -33,9 +33,7 @@ export const metadata: Metadata = {
     url: "https://portfolio-rosy-tau-89.vercel.app/",
     images: [
       {
-      url: "https://portfolio-rosy-tau-89.vercel.app/preview.png",
-      width: 1200,
-      height: 630,
+      url: "https://portfolio-rosy-tau-89.vercel.app/images/preview.png",
       }
     ],
     type: "website"
