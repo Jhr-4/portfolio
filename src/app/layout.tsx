@@ -34,11 +34,12 @@ export const metadata: Metadata = {
     siteName: "Jay Rana - Portfolio",
     images: [
       {
-      url: "/images/avatar.png",
+      url: "https://portfolio-rosy-tau-89.vercel.app/images/avatar.png",
       width: 1200,
       height: 630,
       }
     ],
+    type: "website"
   }
 };
 
