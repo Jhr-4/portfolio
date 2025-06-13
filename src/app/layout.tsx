@@ -31,10 +31,9 @@ export const metadata: Metadata = {
     title: "Jay Rana - Portfolio",
     description: "Showcasing my software development projects and skills. Explore my work in web development, problem-solving, and more.",
     url: "https://portfolio-rosy-tau-89.vercel.app/",
-    siteName: "Jay Rana - Portfolio",
     images: [
       {
-      url: "https://portfolio-rosy-tau-89.vercel.app/images/avatar.png",
+      url: "https://portfolio-rosy-tau-89.vercel.app/preview.png",
       width: 1200,
       height: 630,
       }
