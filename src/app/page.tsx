@@ -54,7 +54,7 @@ export default function Home() {
               </div>
             </div>
             <div className="inline-block bg-primary/10 text-primary rounded-full px-4 py-1 text-sm font-medium border border-primary/20 mx-auto md:mx-0">
-              Software Developer & Explorer
+              Software Developer
             </div>
             <div>
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight mb-2">
@@ -65,7 +65,7 @@ export default function Home() {
               </h2>
             </div>
             <p className="text-xl text-foreground/90 max-w-xl leading-relaxed">
-              👋 Hey there, I'm a undergrad Computer Science student at NJIT passionate about software development, web technologies, and exploring emerging tech.
+              👋 Hey there, I'm an undergrad Computer Science student at NJIT passionate about software development, web technologies, and exploring emerging tech.
             </p>
             
             <div className="flex items-center text-muted-foreground justify-center md:justify-start">

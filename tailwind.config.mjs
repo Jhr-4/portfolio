@@ -51,14 +51,6 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Remove the old Everyman brand colors
-        // primary: { ... }, // Removed
-        // secondary: { ... }, // Removed
-        // accent: { ... }, // Removed
-        // neutral: { ... }, // Removed
-        // success: { ... }, // Removed
-        // error: { ... }, // Removed
-        // warning: { ... }, // Removed
       },
       borderRadius: {
         // Align with shadcn/ui defaults or customize based on docs/04

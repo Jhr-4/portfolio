@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useRef, useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 interface StarryBackgroundProps {
   gridOpacity?: number;
@@ -30,6 +30,12 @@ export function StarryBackground({
     dust: 20
   }
 }: StarryBackgroundProps) {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   // Helper config for star types
   const starConfigs = [
     {
@@ -68,6 +74,10 @@ export function StarryBackground({
 
   // useMemo to generate all stars only when counts change
   const stars = useMemo(() => {
+    if (!isMounted) {
+      return [];
+    }
+
     return starConfigs.flatMap(cfg =>
       Array.from({ length: cfg.count }, (_, i) => ({
         key: `${cfg.type}-${i}`,
@@ -82,8 +92,13 @@ export function StarryBackground({
         },
       }))
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [starsCount.primary, starsCount.secondary, starsCount.accent, starsCount.dust]);
+  }, [
+    isMounted,
+    starsCount.primary,
+    starsCount.secondary,
+    starsCount.accent,
+    starsCount.dust,
+  ]);
   return (
     <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
       {/* Grid lines for digital sandbox feel */}

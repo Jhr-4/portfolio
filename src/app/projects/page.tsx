@@ -10,14 +10,14 @@ import { StarryBackground } from "@/components/ui/starry-background"
 const externalProjects = [
   {
     title: "StellarNews",
-    description: "A web application that serves users recent space articles from various sources, eliminating the need to surfing across numerous websites to see the current space news.",
+    description: "A web application that serves users recent space articles from various sources, eliminating the need of surfing across numerous websites to see the current space news.",
     link: "https://github.com/Jhr-4/StellarNews",
     tech: "PHP, MySQL, HTML, Bootstrap, SpaceNews API, Git",
     image: "/images/projects/StellarNews.png"
   },
   {
     title: "CLI Calculator",
-    description: "Simple yet Complex CLI Calculator Project with Unit Testing (pytest), Logging (Processes & Errors), & OOP / Design Patterns.",
+    description: "CLI Calculator Project with Unit Testing (pytest), Logging (Processes & Errors), & OOP / Design Patterns.",
     link: "https://github.com/Jhr-4/CLI_Calculator",
     tech: "Python, pytest, OOP, Design Patterns, Logging",
     image: "/images/projects/CLI_Calculator.png"
@@ -38,7 +38,7 @@ const externalProjects = [
   },
   {
     title: "Grade Calculator",
-    description: "A user-friendly Grade Calculator web application. Allows grades to be saved making it easy to track grades and modify upon getting more assignments (First Project).",
+    description: "A user-friendly Grade Calculator web application. Allows grades to be saved making it easy to track grades and modify upon getting more assignments.",
     link: "https://github.com/Jhr-4/GradeCalculator",
     tech: "HTML, CSS, JavaScript",
     image: "/images/projects/GradeCalculator.png"
