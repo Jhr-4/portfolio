@@ -1,7 +1,7 @@
 // Footer component for site-wide use
 // Contains copyright, navigation links, and social media
 import Link from "next/link"
-import { Github, Linkedin, Mail } from "lucide-react"
+import { Github, Linkedin } from "lucide-react"
 
 // Navigation routes - should match main-nav
 const routes = [
