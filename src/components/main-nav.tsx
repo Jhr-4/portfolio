@@ -1,3 +1,4 @@
+'use client'
 // Main site navigation bar (desktop & mobile)
 // Contains brand/logo, navigation links, and mobile menu
 import Link from "next/link"

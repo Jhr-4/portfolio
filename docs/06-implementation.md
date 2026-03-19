@@ -140,7 +140,7 @@ These are implemented as self-contained applications with detailed documentation
 
 All playgorund interactives have the following:
 - Optimized positioning to ensure chat is visible above the fold
-- Clean, minimalist design with maximized chat space and removed title/description
+- Clean, minimalist design with maximized chat space
 - Full-width card layout (`max-w-7xl`) to optimize horizontal space
 - Fully responsive design with adaptive layouts for different screen sizes:
   - Mobile-specific input with overlay send button
