@@ -19,7 +19,7 @@ const socialLinks = [
     icon: <Github className="h-5 w-5" /> 
   },
   { 
-    href: "https://www.linkedin.com/in/jay-rana-23441a298/", 
+    href: "https://www.linkedin.com/in/rjay04/", 
     label: "LinkedIn", 
     icon: <Linkedin className="h-5 w-5" /> 
   }

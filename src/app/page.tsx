@@ -90,7 +90,7 @@ export default function Home() {
             </div>
               <div className="flex flex-wrap gap-4 pt-2 justify-center md:justify-start" aria-label="Social Media Links">
               <a 
-                href="https://www.linkedin.com/in/jay-rana-23441a298/" 
+                href="https://www.linkedin.com/in/rjay04/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 aria-label="LinkedIn Profile" 
@@ -174,7 +174,7 @@ export default function Home() {
               
               <div className="mt-6 pt-6 border-t border-border">
                 <p className="text-foreground/80 italic">
-                  "I'm looking for opportunities to learn while making meaningful contributions."
+                  I'm looking for opportunities to learn while making meaningful contributions.
                 </p>
               </div>
             </div>

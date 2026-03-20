@@ -292,7 +292,7 @@ export default function ContactPage() {
               </Link>
               
               <Link 
-                href="https://linkedin.com/in/jay-rana-23441a298" 
+                href="https://linkedin.com/in/rjay04" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 p-3 bg-background/40 border border-border rounded-md hover:bg-background/70 transition-colors group"
@@ -300,7 +300,7 @@ export default function ContactPage() {
                 <Linkedin className="text-primary" size={24} />
                 <div className="flex-1">
                   <span className="font-medium">LinkedIn</span>
-                  <span className="block text-sm text-foreground/70">linkedin.com/in/jay-rana-23441a298</span>
+                  <span className="block text-sm text-foreground/70">linkedin.com/in/rjay04</span>
                 </div>
                 <ArrowUpRight className="text-foreground/50 group-hover:text-primary transition-colors" size={24} />
               </Link>
