@@ -59,7 +59,7 @@ export function Footer() {
               </Link>
             ))}
             <Link 
-              href="https://drive.google.com/file/d/1Ae3dx-PYWJt1_luJGHlUZnlBSK0RAdI7/view?usp=sharing" 
+              href="/resume" 
               className="text-sm font-medium text-foreground/70 transition-colors hover:text-primary focus-visible:text-primary" 
               target="_blank"
               rel="noopener noreferrer"

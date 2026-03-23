@@ -45,7 +45,7 @@ export function MobileNav() {
             </Link>
           ))}
           <Link 
-            href="https://drive.google.com/file/d/1Ae3dx-PYWJt1_luJGHlUZnlBSK0RAdI7/view?usp=sharing" 
+            href="/resume" 
             onClick={() => setIsOpen(false)}
             className="block w-full rounded-lg px-4 py-3 text-base font-medium text-left text-foreground hover:bg-muted focus-visible:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-colors" 
             target="_blank"

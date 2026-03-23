@@ -246,7 +246,7 @@ export default function ContactPage() {
               <Button 
                 type="submit" 
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-primary to-secondary border border-primary/10 hover:from-primary/90 hover:to-secondary/90 transition-all hover:scale-[1.02] font-medium text-white shadow-[0_0_10px_rgba(67,97,238,0.5)] hover:shadow-[0_0_15px_rgba(67,97,238,0.65)] h-12 mt-4"
+                className="w-full border border-primary/10 hover:from-primary/90 hover:to-secondary/90 transition-all hover:scale-[1.02] font-medium text-white shadow-[0_0_10px_rgba(67,97,238,0.5)] hover:shadow-[0_0_15px_rgba(67,97,238,0.65)] h-12 mt-4"
               >
                 {isSubmitting ? (
                   <span className="flex items-center gap-2">

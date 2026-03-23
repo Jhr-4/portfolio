@@ -149,7 +149,7 @@ export default function Projects() {
                       <img 
                         src={project.image} 
                         alt={project.title} 
-                        className="w-full h-[256px] object-fill"
+                        className="w-full h-[256px] object-cover object-center"
                       />
                       <div className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/50 transition-colors">
                         <Button
@@ -174,14 +174,14 @@ export default function Projects() {
                     <img 
                       src={project.image} 
                       alt={project.title} 
-                      className="w-full h-[256px] object-fill"
+                      className="w-full h-[256px] object-cover"
                     />
                   )}
                 </div>
                 
                 <div className="px-4 py-3 flex flex-col items-center text-center">
                   {/* Centered title */}
-                  <CardTitle className="text-lg font-serif text-foreground/90 mb-2">{project.title}</CardTitle>
+                  <CardTitle className="text-lg font-serif  text-accent/90 mb-2">{project.title}</CardTitle>
                   
                   {/* Centered technologies list without label */}
                   {project.tech && (

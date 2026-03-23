@@ -38,7 +38,7 @@ export function MainNav() {
           </Link>
         ))}
         <Link 
-          href="https://drive.google.com/file/d/1Ae3dx-PYWJt1_luJGHlUZnlBSK0RAdI7/view?usp=sharing" 
+          href="/resume" 
           className="text-base font-medium text-foreground/80 transition-colors hover:text-primary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm px-2 py-1" 
           target="_blank"
           rel="noopener noreferrer"

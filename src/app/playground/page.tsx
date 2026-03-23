@@ -98,7 +98,7 @@ export default function Playground() {
               {/* Code element with blinking cursor */}
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-card border border-border px-3 py-1 rounded-md shadow-sm">
                 <div className="flex items-center gap-1">
-                  <span className="text-xs font-mono text-primary">&lt;digitalSandbox /&gt;</span>
+                  <span className="text-xs font-mono text-primary">&lt;expPlayground /&gt;</span>
                   <span className="h-3.5 w-0.5 bg-accent animate-blink"></span>
                 </div>
               </div>
@@ -132,8 +132,8 @@ function ProjectCard({ project }: { project: PlaygroundProject }) {
     <Card className="group overflow-hidden border-border hover:shadow-md transition-shadow duration-200">
       <CardHeader className="pb-3">
         <div className="flex justify-between items-start">
-          <CardTitle className="font-serif text-xl">{project.title}</CardTitle>
-          <span className={`${categoryStyle} text-xs px-2 py-1 rounded-full`}>
+          <CardTitle className="font-serif text-accent text-xl">{project.title}</CardTitle>
+          <span className={`${categoryStyle} text-xs px-2 py-1 text-center rounded-full`}>
             {project.category}
           </span>
         </div>
