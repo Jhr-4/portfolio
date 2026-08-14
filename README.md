@@ -1,4 +1,4 @@
-# 🚀 AI-Enhanced Developer Portfolio
+# AI-Enhanced Developer Portfolio
 
 ## Approach to Portfolio Development
 
@@ -6,13 +6,13 @@ This portfolio showcases a way to develop professional websites using AI technol
 
 The result is a uniquely tailored portfolio that showcases technical abilities while demonstrating how AI collaboration can enhance the development process.
 
-## 💻 Tech Stack
+## Tech Stack
 
 - **Next.js** - React framework with App Router
 - **Tailwind CSS** - Utility-first styling approach
 - **Vercel** - Deployment and analytics
 
-## 🎮 Interactive Playground Projects
+## Interactive Playground Projects
 All these projects were integrated to the theme of the website with the AI.
 
 * **RAG-Powered AI Chat Experience**: Conversational AI system using Retrieval-Augmented Generation with Pinecone, LangChain, and Groq to provide informed responses about AI technology concepts.

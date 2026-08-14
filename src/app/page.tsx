@@ -117,7 +117,7 @@ export default function Home() {
             <div className="relative z-10 rounded-2xl overflow-hidden border-4 border-border bg-card shadow-xl max-w-md mx-auto">
               <Image 
                 src="/images/avatar.png"
-                alt="Software developer workspace with code on screen" 
+                alt="Lego self persona waving" 
                 width={500} 
                 height={375} 
                 className="w-full h-auto object-contain mix-blend-luminosity pointer-events-none"

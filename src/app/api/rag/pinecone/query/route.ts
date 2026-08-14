@@ -71,6 +71,12 @@ export async function POST(request: NextRequest) {
     console.log('Generating embedding for query');
     const embeddings = new NomicEmbeddings(nomicApiKey);
     const queryEmbedding = await embeddings.embedQuery(sanitizedQuery);
+    if (!Array.isArray(queryEmbedding) || queryEmbedding.length === 0) {
+      return NextResponse.json({
+        success: false,
+        message: "Embedding provider returned an invalid vector"
+      }, { status: 502 });
+    }
     
     // Get index
     const index = pinecone.index(PINECONE_INDEX_NAME);
@@ -106,9 +112,11 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error("Error querying Pinecone:", error);
+    const message = error instanceof Error ? error.message : String(error);
     return NextResponse.json({
       success: false,
-      error: "An error occurred while processing your request"
+      error: "An error occurred while processing your request",
+      ...(process.env.NODE_ENV !== "production" ? { detail: message } : {})
     }, { status: 500 });
   }
 }

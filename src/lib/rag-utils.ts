@@ -10,7 +10,6 @@
  * script and must be generated before the app can provide RAG functionality.
  */
 
-import { formatDocumentsAsString } from "langchain/util/document";
 import personaConfig from '@/app/playground/rag-chat/persona.json';
 
 // Types for our RAG chat system
@@ -39,6 +38,18 @@ export interface Persona {
 
 // Export the persona for use in components
 export const PERSONA: Persona = personaConfig as Persona;
+
+interface RetrievedDocument {
+  pageContent: string;
+  metadata?: {
+    source?: string;
+    title?: string;
+  };
+}
+
+function formatDocumentsAsString(documents: RetrievedDocument[]): string {
+  return documents.map((document) => document.pageContent).join("\n\n");
+}
 
 // Class to handle RAG functionality
 export class RAGSystem {
@@ -123,7 +134,7 @@ export class RAGSystem {
       }
       
       // Process retrieved matches
-      const retrievedDocs = queryData.matches.map((match: any) => {
+      const retrievedDocs = queryData.matches.map((match: any): RetrievedDocument => {
         return {
           pageContent: match.content,
           metadata: {
@@ -134,7 +145,7 @@ export class RAGSystem {
       });
       
       // Add source information to each retrieved chunk
-      const docsWithSources = retrievedDocs.map((doc: any) => {
+      const docsWithSources = retrievedDocs.map((doc: RetrievedDocument): RetrievedDocument => {
         const source = doc.metadata?.title || "Unknown Source";
         return {
           ...doc,

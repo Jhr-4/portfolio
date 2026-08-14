@@ -201,7 +201,7 @@ export default function D3VisualizationsPage() {
                   <li>Interactive, accessible SVG chart rendering</li>
                   <li>Complex economic data interpretation</li>
                   <li>Responsive design with theme integration using GitHub's Copilot Agent</li>
-                  <li><a href="https://github.com/Jhr-4/DataVisualization_ProductivityEarnings" target="_blank">GitHub Repo: Original Visualization Project</a></li>
+                  <li><a href="https://github.com/Jhr-4/DataVisualization_ProductivityEarnings" target="_blank" rel="noreferrer">GitHub Repo: Original Visualization Project</a></li>
                 </ul>
               </div>
             </CardFooter>
