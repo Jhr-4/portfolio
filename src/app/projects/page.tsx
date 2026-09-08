@@ -16,18 +16,31 @@ const externalProjects = [
     image: "/images/projects/StellarNews.png"
   },
   {
+    title: "Pixel Art Generator",
+    description: "Custom trained SD 1.5 LoRA using a 500+ image dataset compiled from open-licensed sources, optimized to train in ~2 hours under 8GB VRAM on Colab. Deployed with a Gradio demo for generating 16x16 pixel-art game assets.",
+    link: "https://colab.research.google.com/github/Jhr-4/PixelArt_LoRA/blob/main/PixelArt_LoRA_Gradio.ipynb",
+    tech: "Python, LoRA, Stable Diffusion, Gradio",
+    image: "/images/projects/PixelLoRA.png"
+  },
+  {
+    title: "CurrentAI - Headless Drupal CMS",
+    description: "Headless CMS platform running Drupal in Docker containers on a DigitalOcean droplet, with Traefik for reverse proxying and a GitHub Actions CI/CD pipeline for automated deployments.",
+    link: "https://github.com/Jhr-4/IS373_AI_News",
+    tech: "Drupal, Docker, DigitalOcean, Traefik, GitHub Actions",
+    image: "/images/projects/CurrentAI.png"
+  },
+  {
+    title: "FlightMaster",
+    description: "Flight intelligence chat app combining RAG with an MCP style tool-calling architecture, pulling real time data from multiple APIs via backend services and rendering it in structured UI components.",
+    tech: "Next.js, React, Groq, AI Agents, Codex",
+    image: "/images/projects/FlightMaster.png"
+  },
+  {
     title: "CLI Calculator",
     description: "CLI Calculator Project with Unit Testing (pytest), Logging (Processes & Errors), & OOP / Design Patterns.",
     link: "https://github.com/Jhr-4/CLI_Calculator",
     tech: "Python, pytest, OOP, Design Patterns, Logging",
     image: "/images/projects/CLI_Calculator.png"
-  },
-  {
-    title: "CurrentAI - Headless Drupal CMS",
-    description: "Collaborative Headless Drupal CMS project built with Dockerized components and hosted on DigitalOcean.",
-    link: "https://github.com/Jhr-4/IS373_AI_News",
-    tech: "Drupal, Docker, DigitalOcean, Headless CMS",
-    image: "/images/projects/CurrentAI.png"
   },
   {
     title: "Roll-A-Ball",
@@ -221,7 +234,7 @@ export default function Projects() {
                       </Link>
                     </Button>
                   ) : (
-                    <Button variant="outline" className="py-1.5" disabled>Details coming soon</Button>
+                    <span className="py-1.5" />
                   )}
                 </div>
               </Card>
