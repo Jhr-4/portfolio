@@ -1,62 +1,9 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import Link from "next/link"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { StarryBackground } from "@/components/ui/starry-background"
-
-// List of external projects to display
-const externalProjects = [
-  {
-    title: "StellarNews",
-    description: "A web application that serves users recent space articles from various sources, eliminating the need of surfing across numerous websites to see the current space news.",
-    link: "https://github.com/Jhr-4/StellarNews",
-    tech: "PHP, MySQL, HTML, Bootstrap, SpaceNews API, Git",
-    image: "/images/projects/StellarNews.png"
-  },
-  {
-    title: "Pixel Art Generator",
-    description: "Custom trained SD 1.5 LoRA using a 500+ image dataset compiled from open-licensed sources, optimized to train in ~2 hours under 8GB VRAM on Colab. Deployed with a Gradio demo for generating 16x16 pixel-art game assets.",
-    link: "https://colab.research.google.com/github/Jhr-4/PixelArt_LoRA/blob/main/PixelArt_LoRA_Gradio.ipynb",
-    tech: "Python, LoRA, Stable Diffusion, Gradio",
-    image: "/images/projects/PixelLoRA.png"
-  },
-  {
-    title: "CurrentAI - Headless Drupal CMS",
-    description: "Headless CMS platform running Drupal in Docker containers on a DigitalOcean droplet, with Traefik for reverse proxying and a GitHub Actions CI/CD pipeline for automated deployments.",
-    link: "https://github.com/Jhr-4/IS373_AI_News",
-    tech: "Drupal, Docker, DigitalOcean, Traefik, GitHub Actions",
-    image: "/images/projects/CurrentAI.png"
-  },
-  {
-    title: "FlightMaster",
-    description: "Flight intelligence chat app combining RAG with an MCP style tool-calling architecture, pulling real time data from multiple APIs via backend services and rendering it in structured UI components.",
-    tech: "Next.js, React, Groq, AI Agents, Codex",
-    image: "/images/projects/FlightMaster.png"
-  },
-  {
-    title: "CLI Calculator",
-    description: "CLI Calculator Project with Unit Testing (pytest), Logging (Processes & Errors), & OOP / Design Patterns.",
-    link: "https://github.com/Jhr-4/CLI_Calculator",
-    tech: "Python, pytest, OOP, Design Patterns, Logging",
-    image: "/images/projects/CLI_Calculator.png"
-  },
-  {
-    title: "Roll-A-Ball",
-    description: "A roll a ball game with the objective of collecting cherries to progress and avoiding ghosts & obstacles.",
-    link: "https://github.com/Jhr-4/RollABall-Sprint2",
-    tech: "C#, Unity",
-    image: "/images/projects/RollABall.webp"
-  },
-  {
-    title: "Grade Calculator",
-    description: "A user-friendly Grade Calculator web application. Allows grades to be saved making it easy to track grades and modify upon getting more assignments.",
-    link: "https://github.com/Jhr-4/GradeCalculator",
-    tech: "HTML, CSS, JavaScript",
-    image: "/images/projects/GradeCalculator.png"
-  }
-];
+import { ProjectCard } from "@/components/project-card"
+import { projects } from "@/data/projects"
 
 export default function Projects() {
   const router = useRouter();
@@ -152,96 +99,12 @@ export default function Projects() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {externalProjects.map((project, index) => (
-              <Card key={index} className="flex flex-col bg-card hover:shadow-md transition-shadow duration-200 overflow-hidden mx-auto w-full">
-
-                {/* Image with play button overlay for Roll-A-Ball */}
-                <div className="w-full overflow-hidden relative">
-                  {project.title === "Roll-A-Ball" ? (
-                    <>
-                      <img 
-                        src={project.image} 
-                        alt={project.title} 
-                        className="w-full h-[256px] object-cover object-center"
-                      />
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/50 transition-colors">
-                        <Button
-                          variant="default"
-                          size="lg"
-                          className="bg-primary hover:bg-primary/90 text-primary-foreground transition-transform hover:scale-105 gap-2 rounded-full"
-                          asChild
-                        >
-                          <Link
-                            href="https://jhr4.itch.io/rollaball-v1-3"
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="hover:no-underline"
-                          >
-                            <span className="material-icons">play_arrow</span>
-                            Play Game
-                          </Link>
-                        </Button>
-                      </div>
-                    </>
-                  ) : (
-                    <img 
-                      src={project.image} 
-                      alt={project.title} 
-                      className="w-full h-[256px] object-cover"
-                    />
-                  )}
-                </div>
-                
-                <div className="px-4 py-3 flex flex-col items-center text-center">
-                  {/* Centered title */}
-                  <CardTitle className="text-lg font-serif  text-accent/90 mb-2">{project.title}</CardTitle>
-                  
-                  {/* Centered technologies list without label */}
-                  {project.tech && (
-                    <div className="mb-3 flex flex-wrap justify-center gap-1">
-                      {project.tech.split(',').map((tech, techIndex) => (
-                        <span 
-                          key={techIndex} 
-                          className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full"
-                        >
-                          {tech.trim()}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                  
-                  {/* Centered description */}
-                  <CardDescription className="text-muted-foreground text-sm">
-                    {project.description}
-                  </CardDescription>
-                </div>
-                
-                {/* Button at bottom */}
-                <div className="mt-auto flex justify-center">
-                  {project.link && project.link !== "#" ? (
-                    <Button
-                      variant="outline"
-                      size="default"
-                      className="border-primary hover:bg-primary hover:text-primary-foreground transition-colors text-sm w-full py-1.5"
-                      asChild
-                    >
-                      <Link
-                        href={project.link}
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                      >
-                        &#128279; View Project
-                      </Link>
-                    </Button>
-                  ) : (
-                    <span className="py-1.5" />
-                  )}
-                </div>
-              </Card>
+            {projects.map((project) => (
+              <ProjectCard key={project.title} project={project} />
             ))}
           </div>
           
-          {externalProjects.length === 0 && (
+          {projects.length === 0 && (
             <p className="text-center text-muted-foreground text-lg">
               Project details are being added. Check back soon!
             </p>

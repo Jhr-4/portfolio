@@ -1,9 +1,11 @@
 // Home page: modernized single-screen design
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { Linkedin, Github, MailOpen } from "lucide-react"
+import { Linkedin, Github } from "lucide-react"
 import Image from "next/image"
 import { StarryBackground } from "@/components/ui/starry-background"
+import { ProjectCard } from "@/components/project-card"
+import { featuredProjects } from "@/data/projects"
 
 export default function Home() {
   // Condensed list of key skills
@@ -128,7 +130,31 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Skills Section - Moved lower */}      <section className="container mx-auto px-4 py-16 bg-card/30 rounded-t-3xl border-t border-border relative z-10">
+      {/* Feat. Projects */}
+      <section aria-labelledby="featured-projects-heading" className="container relative z-10 mx-auto px-4 py-16">
+        <div className="mx-auto max-w-8xl">
+          <div className="mb-8 text-center">
+            <h2 id="featured-projects-heading" className="font-serif text-3xl font-semibold text-primary">
+              Featured Projects
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {featuredProjects.map((project) => (
+              <ProjectCard key={project.title} project={project} />
+            ))}
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <Button variant="outline" className="border-primary hover:bg-primary hover:text-primary-foreground" asChild>
+              <Link href="/projects">View More Projects</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section*/}      
+      <section className="container mx-auto px-4 py-16 bg-card/30 rounded-t-3xl border-t border-border relative z-10">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-serif font-semibold text-primary mb-8 text-center" id="skills-section">Skills & Interests</h2>
           
