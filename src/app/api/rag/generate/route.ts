@@ -24,7 +24,7 @@ function getLLM() {
     // Use a faster model that still has good capabilities
     llmInstance = new ChatGroq({
       apiKey: groqApiKey,
-      model: "llama-3.1-8b-instant", // Using a smaller, faster model
+      model: "openai/gpt-oss-20b", // Using a smaller, faster model
       temperature: 0.2, // Lower temperature for more concise responses
       maxTokens: 1024, // Limit token output for faster responses
     });
